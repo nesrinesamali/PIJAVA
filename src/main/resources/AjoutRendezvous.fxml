@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cotrollers.AjoutRendezvous">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="402.0">
+               <children>
+                  <Text fill="#1ce8a1" focusTraversable="true" fontSmoothingType="LCD" strokeLineCap="ROUND" strokeWidth="0.0" text="Réserver Votre Rendez-vous" textAlignment="JUSTIFY">
+                     <font>
+                        <Font name="Comic Sans MS" size="45.0" />
+                     </font>
+                     <effect>
+                        <Glow />
+                     </effect>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Patient" wrappingWidth="78.93673324584961">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="100.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Impact" size="15.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="nompatient" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Médecin" wrappingWidth="81.33672714233398">
+                     <font>
+                        <Font name="Impact" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="100.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="nommedecin" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="81.33672714233398">
+                     <font>
+                        <Font name="Impact" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="100.0" />
+                     </HBox.margin>
+                  </Text>
+                  <DatePicker fx:id="date" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Heure" wrappingWidth="81.33672714233398">
+                     <font>
+                        <Font name="Impact" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="100.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="heure" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox layoutX="1.0" layoutY="386.0" prefHeight="100.0" prefWidth="598.0">
+         <children>
+            <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" mnemonicParsing="false" onAction="#AjoutRendezvous" prefHeight="26.0" prefWidth="583.0" style="-fx-background-color: #7FFFD4;" text="Réserver" textAlignment="RIGHT" textOverrun="CENTER_WORD_ELLIPSIS">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="100.0" top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Impact" size="13.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="583.0" style="-fx-background-color: #7FFFD4;" styleClass="#7FFFD4" text="Button" textAlignment="RIGHT" textOverrun="CENTER_WORD_ELLIPSIS">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="100.0" right="100.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

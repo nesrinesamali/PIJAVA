@@ -2,6 +2,7 @@ package services;
 
 import models.Rendezvous;
 import models.Rendezvous;
+import models.User;
 import utils.MyDatabase;
 
 import java.sql.*;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RendezvousService implements IService<Rendezvous>{
+
 
     private Connection connection;
 
@@ -18,25 +20,51 @@ public class RendezvousService implements IService<Rendezvous>{
 
     @Override
     public void create(Rendezvous rendezvous) throws SQLException {
-        String sql = "insert into rendezvous (heure,nommedecin,nompatient,date,etat,reponse_id)"+
-                "values('"+rendezvous.getHeure()+"','"+rendezvous.getNommedecin()+"'" +
-                ","+rendezvous.getNompatient()+rendezvous.getDate()+ ","+rendezvous.getEtat()+"','"+rendezvous.getReponse_id()+")";
-        Statement statement = connection.createStatement();
-        statement.executeUpdate(sql);
+        String sql = "INSERT INTO rendezvous (reponse_id, nompatient, nommedecin, date, heure, etat, user_id) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pijava", "root", "");
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            // Set values for parameters
+            pstmt.setNull(1, java.sql.Types.VARCHAR);
+            pstmt.setString(2, rendezvous.getNompatient());
+            pstmt.setString(3, rendezvous.getNommedecin());
+            pstmt.setDate(4, rendezvous.getDate());
+            pstmt.setString(5, rendezvous.getHeure());
+            pstmt.setBoolean(6, rendezvous.getEtat());
+           // pstmt.setInt(7, rendezvous.getUser().getId());
+
+
+            User user = rendezvous.getUser();
+            if (user != null) {
+                pstmt.setInt(7, user.getId());
+            } else {
+                // Handle the case where the User object is null
+                // For example, you can set user_id to NULL or throw an exception
+                pstmt.setNull(7, java.sql.Types.INTEGER);
+            }
+
+            // Execute the statement
+            pstmt.executeUpdate();
+            // Execute the statement
+            //pstmt.executeUpdate();
+        }
     }
 
-    @Override
-    public void update(Rendezvous rendezvous) throws SQLException {
-        String sql = "update rendezvous set heure = ?,date=?, nommedecin = ?, nompatient,date=?,etat=?,reponse_id = ? where id = ?";
-        PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, rendezvous.getNommedecin());
-        ps.setString(2, rendezvous.getNompatient());
-        ps.setString(2, rendezvous.getHeure());
-        ps.setDate(2, rendezvous.getDate());
 
-        ps.setInt(3,rendezvous.getReponse_id());
-        ps.setInt(4,rendezvous.getId());
-        ps.executeUpdate();
+
+    @Override
+    public void update(Rendezvous rd) throws SQLException {
+        String query = "UPDATE rendezvous SET nompatient=?, nommedecin=?, date=?, heure=? WHERE id=?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, rd.getNompatient());
+            preparedStatement.setString(2, rd.getNommedecin());
+            preparedStatement.setDate(3, rd.getDate());
+            preparedStatement.setString(4, rd.getHeure());
+            preparedStatement.setInt(5, rd.getId());
+            preparedStatement.executeUpdate();
+        }
     }
 
     @Override
@@ -60,11 +88,47 @@ public class RendezvousService implements IService<Rendezvous>{
             r.setDate(rs.getDate("date"));
             r.setNompatient(rs.getString("nompatient"));
             r.setNommedecin(rs.getString("nommedecin"));
-            r.setEtat(rs.getInt("etat"));
+            r.setEtat(rs.getBoolean("etat"));
             r.setHeure(rs.getString("heure"));
 
             rendezvous.add(r);
         }
         return rendezvous;
     }
+
+
+    public User getUserById(int userId) {
+        String selectQuery = "SELECT * FROM user WHERE id = ?";
+        try (PreparedStatement preparedStatement = MyDatabase.getInstance().getConnection().prepareStatement(selectQuery)) {
+            preparedStatement.setInt(1, userId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+
+                }
+
+                    String nom = resultSet.getString("nom");
+                    String prenom = resultSet.getString("prenom");
+                    String typemaladie = resultSet.getString("typemaladie");
+                    String specialite= resultSet.getString("specialite");
+                    String groupesanguin = resultSet.getString("groupesanguin");
+                    int brochure = resultSet.getInt("brochure");
+                    Boolean is_banned=resultSet.getBoolean("is_banned");
+                    Boolean is_verified=resultSet.getBoolean("is_verified");
+                    String roles = resultSet.getString("roles");
+                    String email = resultSet.getString("email");
+                    int id=resultSet.getInt("id");
+                    String password= resultSet.getString("password");
+
+                    return new User(id,nom,prenom,typemaladie,specialite,groupesanguin,brochure,is_verified,is_banned,password,roles,email);
+                }
+            } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+
+
+    }
+
+
+
 }
+

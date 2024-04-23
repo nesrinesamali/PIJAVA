@@ -1,11 +1,15 @@
 package models;
 
+import jakarta.persistence.OneToOne;
+
 import java.sql.Date;
 
 public class Reponse {
     private int id;
     private Date date;
     private String description;
+    @OneToOne
+    private Rendezvous rendezvous;
     public Reponse() {
     }
     public Reponse(int id, Date date, String description) {

@@ -4,24 +4,16 @@ import java.sql.Date;
 
 public class Rendezvous {
     private int id,reponse_id;
+    private User user;
     private String nompatient;
 
     private String nommedecin;
     private Date date;
     private String heure;
-    private int etat;
+    private boolean etat;
 
 
     public Rendezvous() {
-    }
-    public Rendezvous(int id, int reponse_id, String nompatient, String nommedecin, Date date, String heure, int etat) {
-        this.id = id;
-        this.reponse_id = reponse_id;
-        this.nompatient = nompatient;
-        this.nommedecin = nommedecin;
-        this.date = date;
-        this.heure = heure;
-        this.etat = etat;
     }
 
     public int getId() {
@@ -36,8 +28,16 @@ public class Rendezvous {
         return reponse_id;
     }
 
-    public void setReponse_id(int reponse_id) {
+    public void setReponse_id(Integer reponse_id) {
         this.reponse_id = reponse_id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getNompatient() {
@@ -56,7 +56,6 @@ public class Rendezvous {
         this.nommedecin = nommedecin;
     }
 
-
     public Date getDate() {
         return date;
     }
@@ -73,11 +72,11 @@ public class Rendezvous {
         this.heure = heure;
     }
 
-    public int getEtat() {
+    public boolean getEtat() {
         return etat;
     }
 
-    public void setEtat(int etat) {
+    public void setEtat(boolean etat) {
         this.etat = etat;
     }
 
@@ -86,11 +85,23 @@ public class Rendezvous {
         return "Rendezvous{" +
                 "id=" + id +
                 ", reponse_id=" + reponse_id +
+                ", user=" + user +
                 ", nompatient='" + nompatient + '\'' +
                 ", nommedecin='" + nommedecin + '\'' +
                 ", date=" + date +
                 ", heure='" + heure + '\'' +
                 ", etat=" + etat +
                 '}';
+    }
+
+    public Rendezvous(int id, int reponse_id, String nompatient, String nommedecin, Date date, String heure, boolean etat, User user) {
+        this.id = id;
+        this.reponse_id = reponse_id;
+        this.user = user;
+        this.nompatient = nompatient;
+        this.nommedecin = nommedecin;
+        this.date = date;
+        this.heure = heure;
+        this.etat = etat;
     }
 }

@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<ScrollPane prefHeight="450.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="">
+    <content>
+        <AnchorPane prefHeight="443.0" prefWidth="990.0">
+            <children>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="$CONTROLLER_NAME$">
-   <children>
-      <TableView layoutX="51.0" layoutY="60.0" prefHeight="270.0" prefWidth="462.0">
-        <columns>
-          <TableColumn fx:id="c1" prefWidth="75.0" text="C1" />
-          <TableColumn fx:id="c2" prefWidth="75.0" text="C2" />
-            <TableColumn fx:id="c3" prefWidth="75.0" text="Column X" />
-            <TableColumn fx:id="c4" prefWidth="75.0" text="Column X" />
-        </columns>
-      </TableView>
-   </children>
-</AnchorPane>
+                <TableView fx:id="tv" layoutX="77.0" layoutY="37.0" prefHeight="260.0" prefWidth="698.0" visible="true">
+                    <columns>
+                        <TableColumn fx:id="nompatient" prefWidth="161.0" text="Nom Patient " />
+                        <TableColumn fx:id="nommedecin" prefWidth="161.0" text="Nom médecin" />
+                        <TableColumn fx:id="date" prefWidth="139.0" text="Date" />
+                        <TableColumn fx:id="heure" prefWidth="150.0" text="Heure " />
+                  <TableColumn fx:id="action" prefWidth="84.80002441406248" text="action" />
+                    </columns>
+                </TableView>
+                <Button layoutX="268.0" layoutY="327.0" mnemonicParsing="false" onAction="#SupprimerRendezvous" style="-fx-background-radius: 100;" text="Supprimer">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button layoutX="373.0" layoutY="327.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="83.0" style="-fx-background-radius: 100;" text="Modifier">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </content>
+</ScrollPane>

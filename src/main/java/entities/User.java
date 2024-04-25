@@ -35,8 +35,19 @@ public class User {
     }
 
 
+    public User(int id, String nom, String email, String roles, String prenom, String statuteligibilite, String token) {
+        this.id = id;
+        this.nom = nom;
+        this.email = email;
+        this.roles = roles;
+        this.prenom = prenom;
+        this.statuteligibilite = statuteligibilite;
+        this.token = token;
+    }
 
+    public User() {
 
+    }
 
     public int getId() {
         return id;

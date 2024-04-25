@@ -13,22 +13,23 @@
    <children>
       <ImageView fitHeight="439.0" fitWidth="558.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/img.jpg" />
+            <Image url="@img/8fd8t8d.jpg" />
          </image>
       </ImageView>
       <AnchorPane layoutX="81.0" layoutY="28.0" opacity="0.72" prefHeight="234.0" prefWidth="450.0" style="-fx-background-color: #ffffff;">
          <children>
-            <TextField layoutX="134.0" layoutY="83.0" prefHeight="26.0" prefWidth="182.0" />
-            <Label layoutX="86.0" layoutY="75.0" text="Email" />
-            <Label layoutX="50.0" layoutY="133.0" text="Mot de passe" />
+            <TextField fx:id="emailTF" layoutX="134.0" layoutY="83.0" prefHeight="26.0" prefWidth="182.0" />
+            <Label layoutX="50.0" layoutY="88.0" text="Email              :" />
+            <Label layoutX="50.0" layoutY="133.0" text="Mot de passe :" />
             <Label layoutX="146.0" layoutY="14.0" prefHeight="26.0" prefWidth="158.0" text="Login" textAlignment="CENTER">
                <font>
                   <Font size="48.0" />
                </font>
             </Label>
-            <PasswordField layoutX="134.0" layoutY="129.0" prefHeight="26.0" prefWidth="182.0" />
-            <Button layoutX="316.0" layoutY="178.0" mnemonicParsing="false" text="Connecter" />
-            <Label layoutX="134.0" layoutY="182.0" text="Sinscrire?" textFill="#c12828" />
+            <PasswordField fx:id="mdpTF" layoutX="134.0" layoutY="129.0" prefHeight="26.0" prefWidth="182.0" />
+            <Button layoutX="316.0" layoutY="178.0" mnemonicParsing="false" onAction="#Connect" text="Connecter" />
+            <Label fx:id="forgor" layoutX="134.0" layoutY="182.0" onMouseClicked="#GoToRegister" text="S'inscrire  ?" textFill="#c12828" />
+            <Label layoutX="233.0" layoutY="182.0" onMouseClicked="#forgor" text="Forgot ?" />
          </children>
       </AnchorPane>
    </children>

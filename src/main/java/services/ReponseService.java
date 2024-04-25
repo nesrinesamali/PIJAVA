@@ -17,12 +17,15 @@ public class ReponseService implements IService<Reponse>{
         connection = MyDatabase.getInstance().getConnection();
     }
 
+
+
     @Override
     public void create(Reponse reponse) throws SQLException {
-        String sql = "insert into reponse (date,description)"+
-                "values('"+reponse.getDate()+"',"+reponse.getDescription()+")";
-        Statement statement = connection.createStatement();
-        statement.executeUpdate(sql);
+        String sql = "insert into reponse set date=?, description = ? ";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setDate(1, reponse.getDate());
+        ps.setString(2, reponse.getDescription());
+        ps.executeUpdate();
     }
 
     @Override

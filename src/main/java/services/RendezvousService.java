@@ -6,6 +6,7 @@ import models.User;
 import utils.MyDatabase;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,19 +51,31 @@ public class RendezvousService implements IService<Rendezvous>{
             // Execute the statement
             //pstmt.executeUpdate();
         }
+
     }
 
 
 
     @Override
     public void update(Rendezvous rd) throws SQLException {
-        String query = "UPDATE rendezvous SET nompatient=?, nommedecin=?, date=?, heure=? WHERE id=?";
+        String query = "UPDATE rendezvous SET nompatient=?, nommedecin=?, date=?, heure=?,etat=?  WHERE id=?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, rd.getNompatient());
             preparedStatement.setString(2, rd.getNommedecin());
             preparedStatement.setDate(3, rd.getDate());
             preparedStatement.setString(4, rd.getHeure());
-            preparedStatement.setInt(5, rd.getId());
+            preparedStatement.setBoolean(5,rd.getEtat());
+            preparedStatement.setInt(6,rd.getId());
+            preparedStatement.executeUpdate();
+        }
+    }
+
+
+    public void updateResponseId(Rendezvous rd) throws SQLException {
+        String query = "UPDATE rendezvous SET reponse_id=? WHERE id=?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, rd.getReponse_id());
+            preparedStatement.setInt(2, rd.getId());
             preparedStatement.executeUpdate();
         }
     }
@@ -128,6 +141,28 @@ public class RendezvousService implements IService<Rendezvous>{
 
     }
 
+    public List<Rendezvous> getRendezvousByDate(LocalDate date) {
+        List<Rendezvous> rendezvousForDate = new ArrayList<>();
+        String sql = "SELECT * FROM rendezvous WHERE date = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setDate(1, Date.valueOf(date));
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    Rendezvous rendezvous = new Rendezvous();
+                    rendezvous.setId(resultSet.getInt("id"));
+                    rendezvous.setNompatient(resultSet.getString("nompatient"));
+                    rendezvous.setNommedecin(resultSet.getString("nommedecin"));
+                    rendezvous.setDate(resultSet.getDate("date"));
+                    rendezvous.setHeure(resultSet.getString("heure"));
+                    rendezvous.setEtat(resultSet.getBoolean("etat"));
+                    rendezvousForDate.add(rendezvous);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Gérer l'exception de manière appropriée
+        }
+        return rendezvousForDate;
+    }
 
 
 }

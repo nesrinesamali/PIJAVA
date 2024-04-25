@@ -25,14 +25,14 @@
             <children>
                 <HBox prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <ToolBar accessibleRole="CONTEXT_MENU" prefHeight="48.0" prefWidth="803.0" style="-fx-background-color: #00008B;" />
+                        <ToolBar accessibleRole="CONTEXT_MENU" prefHeight="48.0" prefWidth="803.0" style="-fx-background-color: #001F3F;" />
                     </children>
                 </HBox>
                 <HBox prefHeight="100.0" prefWidth="402.0">
                     <children>
-                        <Text fill="#d9a250" lineSpacing="5.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" text="Réserver votre rendez-vous" textAlignment="CENTER" wrappingWidth="403.552734375">
+                        <Text fill="#d9a250" lineSpacing="5.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier votre rendez-vous" textAlignment="CENTER" wrappingWidth="497.95275115966797">
                             <font>
-                                <Font name="Microsoft Uighur Bold" size="33.0" />
+                                <Font name="Impact" size="39.0" />
                             </font>
                             <HBox.margin>
                                 <Insets bottom="20.0" left="140.0" right="20.0" top="5.0" />
@@ -87,7 +87,7 @@
         </VBox>
         <HBox layoutX="153.0" layoutY="321.0" prefHeight="96.0" prefWidth="446.0">
             <children>
-                <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" mnemonicParsing="false" onMouseClicked="#update" prefHeight="37.0" prefWidth="132.0" style="-fx-background-color: #00008B;" styleClass="#00008B" text="update" textAlignment="RIGHT" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS">
+                <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" mnemonicParsing="false" onMouseClicked="#update" prefHeight="37.0" prefWidth="132.0" style="-fx-background-color: #FFA500; -fx-background-radius: 100;" styleClass="#00008B" text="update" textAlignment="RIGHT" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS">
                     <HBox.margin>
                         <Insets bottom="20.0" left="300.0" right="20.0" top="40.0" />
                     </HBox.margin>

@@ -18,7 +18,11 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AjoutRendezvous implements Initializable {
 
@@ -47,6 +51,7 @@ public class AjoutRendezvous implements Initializable {
     private Label heureErrorLabel;
 
     RendezvousService rs = new RendezvousService();
+    Rendezvous rendezvous;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -79,6 +84,48 @@ public class AjoutRendezvous implements Initializable {
             nompatientErrorLabel.setText("Le nom du patient doit avoir au moins 4 caractères.");
             return;
         }
+        // Vérifier la séparation d'une heure avec les rendez-vous existants
+
+        Pattern pattern = Pattern.compile("^([01]?[0-9]|2[0-3]):[0-5][0-9]$");
+        Matcher matcher = pattern.matcher(selectedHeure);
+
+        if (!matcher.matches()) {
+            // Afficher un message d'erreur si le format de l'heure est invalide
+            heureErrorLabel.setText("Veuillez entrer une heure valide au format HH:mm.");
+            return;
+        }
+
+        // Récupérer les rendez-vous existants pour la même date
+        List<Rendezvous> rendezvousExistants = rs.getRendezvousByDate(selectedDate);
+
+        // Vérifier la séparation d'une heure avec les rendez-vous existants
+        for (Rendezvous rendezvous : rendezvousExistants) {
+            // Calculer la différence entre l'heure du rendez-vous existant et l'heure du nouveau rendez-vous
+            //long diffMinutes = java.time.Duration.between(Rendezvous.getHeure(), selectedHeure).toMinutes();
+// Convertir les chaînes de caractères en objets LocalTime
+            LocalTime heureRendezvous = LocalTime.parse(rendezvous.getHeure());
+            LocalTime heureSelectionnee = LocalTime.parse(selectedHeure);
+
+// Calculer la différence de temps entre les deux heures
+            long diffMinutes = java.time.Duration.between(heureRendezvous, heureSelectionnee).toMinutes();
+
+            // Vérifier si la différence est inférieure à 60 minutes (une heure)
+            if (Math.abs(diffMinutes) < 60) {
+                // Afficher un message d'erreur
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur de saisie");
+                alert.setHeaderText("Impossible d'ajouter le rendez-vous");
+                alert.setContentText("Il doit y avoir une séparation d'une heure entre les rendez-vous pour la même date.");
+                alert.showAndWait();
+                return; // Arrêter l'ajout du rendez-vous
+            }
+        }
+
+        // Si la validation réussit, créer le nouvel objet Rendezvous et l'ajouter
+        // au service pour la création dans la base de données
+        // ...
+
+
 
         // Créer un nouvel objet Rendezvous avec les valeurs récupérées
         Rendezvous newRendezvous = new Rendezvous();
@@ -132,5 +179,8 @@ public class AjoutRendezvous implements Initializable {
             alert.showAndWait();
         }
     }
+    @FXML
+    private TextField pictureTF;
+
 
 }

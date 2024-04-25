@@ -3,9 +3,11 @@ package cotrollers;
 import cotrollers.AfficherRendezvous;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import models.Rendezvous;
 import services.RendezvousService;
 
@@ -71,6 +73,15 @@ public class ModifierRendezvous implements Initializable {
         try {
             rs.update(rd);
             System.out.println("Rendezvous updated successfully!");
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Modifié !");
+            alert.setHeaderText(null);
+            alert.setContentText("Rendez-vous modifié !");
+            alert.showAndWait();
+            Stage stage = (Stage) nompatient.getScene().getWindow();
+
+            // Close the current stage
+            stage.close();
             // Appeler la méthode refreshTableView() du contrôleur parent pour rafraîchir le TableView
             parentFXMLLoader.RefreshTable() ;
         } catch (Exception e) {

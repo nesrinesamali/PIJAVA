@@ -41,4 +41,14 @@ public class Reponse {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "Reponse{" +
+                "id=" + id +
+                ", date=" + date +
+                ", description='" + description + '\'' +
+                ", rendezvous=" + rendezvous +
+                '}';
+    }
 }

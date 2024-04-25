@@ -17,6 +17,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cotrollers.AfficheReponse">
     <stylesheets>
@@ -46,7 +47,7 @@
                                 <Insets left="30.0" right="30.0" />
                             </VBox.margin>
                             <children>
-                                <TextField prefHeight="40.0" prefWidth="235.0" promptText="Type here to search" styleClass="transparent">
+                                <TextField prefHeight="40.0" prefWidth="235.0" promptText="Type here to search" styleClass="transparent" text="Recherche">
                                     <HBox.margin>
                                         <Insets left="20.0" />
                                     </HBox.margin>
@@ -54,7 +55,7 @@
                                         <Font name="Cambria" size="18.0" />
                                     </font>
                                 </TextField>
-                                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" text="Search" textFill="WHITE" />
+                                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" text="Rechercher" textFill="WHITE" />
                             </children>
                             <styleClass>
                                 <String fx:value="search-box" />
@@ -67,26 +68,31 @@
                                 <Insets left="50.0" right="50.0" />
                             </VBox.margin>
                             <children>
+                                <ImageView fx:id="fruitImg" fitHeight="107.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@appointment.jpg" />
+                                    </image>
+                           <VBox.margin>
+                              <Insets bottom="50.0" right="100.0" />
+                           </VBox.margin>
+                                </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="VITAWELL APPOINTMENTS">
+                           <font>
+                              <Font name="Impact" size="28.0" />
+                           </font>
+                        </Text>
                                 <HBox prefHeight="60.0" prefWidth="335.0">
                                     <VBox.margin>
                                         <Insets left="20.0" top="30.0" />
                                     </VBox.margin>
                                 </HBox>
-                                <ImageView fx:id="fruitImg" fitHeight="170.0" fitWidth="285.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../img/peach.png" />
-                                    </image>
-                                    <VBox.margin>
-                                        <Insets top="20.0" />
-                                    </VBox.margin>
-                                </ImageView>
                                 <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
                                     <VBox.margin>
                                         <Insets top="20.0" />
                                     </VBox.margin>
                                 </HBox>
                                 <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0" />
-                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" text="ADD TO CART" textFill="#828282">
+                                <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" text="Ajouter Rendez-vous" textFill="#828282">
                                     <VBox.margin>
                                         <Insets bottom="20.0" top="30.0" />
                                     </VBox.margin>
@@ -117,13 +123,20 @@
                                         <Font name="Cambria Bold" size="18.0" />
                                     </font>
                                 </Label>
-                                <Label prefHeight="29.0" prefWidth="77.0" text="English" textFill="#878787" underline="true">
+                                <Label prefHeight="29.0" prefWidth="77.0" text="Francais" textFill="#878787" underline="true">
                                     <font>
                                         <Font name="Cambria" size="18.0" />
                                     </font>
                                 </Label>
-                                <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
-                                <Label prefHeight="62.0" prefWidth="100.0" text="My Account" textFill="#878787">
+                                <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <ImageView fitHeight="43.0" fitWidth="59.0" layoutX="452.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@profile.png" />
+                                 </image>
+                              </ImageView>
+                           </children></Pane>
+                                <Label prefHeight="62.0" prefWidth="100.0" text="Profil" textFill="#878787">
                                     <font>
                                         <Font name="Cambria" size="18.0" />
                                     </font>
@@ -142,14 +155,9 @@
                                     <children>
                                         <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
                                             <children>
-                                                <Label prefHeight="29.0" prefWidth="190.0" text="Free delivery" textFill="#878787">
+                                                <Label prefHeight="29.0" prefWidth="190.0" textFill="#878787">
                                                     <font>
                                                         <Font name="Cambria Bold" size="18.0" />
-                                                    </font>
-                                                </Label>
-                                                <Label prefHeight="16.0" prefWidth="190.0" text="over $20 order" textFill="#878787">
-                                                    <font>
-                                                        <Font name="Cambria" size="15.0" />
                                                     </font>
                                                 </Label>
                                             </children>
@@ -166,12 +174,12 @@
                                     <children>
                                         <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0">
                                             <children>
-                                                <Label prefHeight="29.0" prefWidth="190.0" text="Shopping online" textFill="#878787">
+                                                <Label prefHeight="29.0" prefWidth="190.0" textFill="#878787">
                                                     <font>
                                                         <Font name="Cambria Bold" size="18.0" />
                                                     </font>
                                                 </Label>
-                                                <Label prefHeight="20.0" prefWidth="207.0" text="get your shopping in same day" textFill="#878787">
+                                                <Label prefHeight="20.0" prefWidth="207.0" textFill="#878787">
                                                     <font>
                                                         <Font name="Cambria" size="15.0" />
                                                     </font>

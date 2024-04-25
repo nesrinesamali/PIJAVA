@@ -24,18 +24,23 @@
             <Image url="@00000000000.jpg" />
          </image>
       </ImageView>
-      <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="600.0">
+      <VBox alignment="TOP_CENTER" prefHeight="415.0" prefWidth="603.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ToolBar prefHeight="36.0" prefWidth="870.0" />
+                  <ToolBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="36.0" prefWidth="688.0" style="-fx-background-color: #001F3F;">
+                     <opaqueInsets>
+                        <Insets top="10.0" />
+                     </opaqueInsets></ToolBar>
                </children>
             </HBox>
             <HBox prefHeight="146.0" prefWidth="606.0">
                <children>
-                  <Text fill="#332e2e" lineSpacing="5.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" text="Réserver votre rendez-vous" textAlignment="CENTER" wrappingWidth="331.552734375">
+                  <Text fill="#ecdc9f" lineSpacing="5.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0"  text="Réserver votre rendez-vous" textAlignment="CENTER" wrappingWidth="449.9527587890625">
+
+                     <TextField fx:id="pictureTF" prefHeight="26.0" prefWidth="178.0" styleClass="textFieldGreen" />
                      <font>
-                        <Font name="Cambria Math" size="33.0" />
+                        <Font name="Impact" size="40.0" />
                      </font>
                      <HBox.margin>
                         <Insets bottom="20.0" left="140.0" right="20.0" top="5.0" />
@@ -91,12 +96,12 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="10.0" prefHeight="162.0" prefWidth="553.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" mnemonicParsing="false" onAction="#AjoutRendezvous" prefHeight="32.0" prefWidth="130.0" style="-fx-background-color: #00008B;" styleClass="#00008B" text="Réserver" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS">
+                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" mnemonicParsing="false" onAction="#AjoutRendezvous" prefHeight="32.0" prefWidth="130.0" style="-fx-background-color: #87CEEB; -fx-background-radius: 100;" styleClass="#00008B" text="Réserver" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS">
                      <HBox.margin>
                         <Insets bottom="20.0" left="300.0" right="20.0" top="40.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#show" prefHeight="35.0" prefWidth="130.0" text="Afficher ">
+                  <Button mnemonicParsing="false" onAction="#show" prefHeight="35.0" prefWidth="130.0" style="-fx-background-radius: 100; -fx-background-color: #FFA500;" text="Afficher ">
                      <HBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="40.0" />
                      </HBox.margin>

@@ -1,4 +1,5 @@
 package Controller;
+
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -16,22 +17,20 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import models.CentreDon;
 import models.Dons;
-
 import services.ServiceCentre;
 import services.ServiceDon;
 
+import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
-
-
-import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
-public class AjouterDonFXML implements Initializable {
+public class AjouterDonFront implements Initializable
+{
 
     @FXML
     private TextField CinFld;
@@ -231,25 +230,9 @@ public class AjouterDonFXML implements Initializable {
         dateproFLd.setValue(null);
         datederFLd.setValue(null);
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        typeFLd.setItems(FXCollections.observableArrayList("Sang","Plasma","Organnes"));
-        // Initialisation de dateproFLd
-        dateproFLd = new DatePicker();
-        // Attribuer des valeurs aux autres ComboBoxes
-        GenreFLd.setItems(FXCollections.observableArrayList("Homme", "Femme"));
-        groupeFLd.setItems(FXCollections.observableArrayList("O+", "O-", "A+", "A-", "AB+", "AB-", "B+", "B-"));
-        etatFLd.setItems(FXCollections.observableArrayList("Celibataire", "Marié"));
-        // Vous pouvez également définir une date par défaut ici si nécessaire
-        // Par exemple :
-        LocalDate defaultDate = LocalDate.now();
-        dateproFLd.setValue(defaultDate);
-        LocalDate defaultDate2 = LocalDate.now().plusDays(7); // 7 jours après aujourd'hui
-        datederFLd.setValue(defaultDate2);
-        // Charger les informations sur les centres de don
-        loadCentreDonData();
-
 
     }
 
@@ -503,5 +486,6 @@ public class AjouterDonFXML implements Initializable {
     public void setTextField(int id, String cin, String genre, String dateDernierDon, String dateProchainDon, String typeDon, String groupeSanguin, String etatmarital) {
     }
 
-
+    public void setDon(Dons don) {
+    }
 }

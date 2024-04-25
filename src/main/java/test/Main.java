@@ -18,7 +18,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("/AfficherDon.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/okok.fxml"));
             Scene scene = new Scene(parent);
             // scene.setFill(Color.TRANSPARENT);
             primaryStage.setScene(scene);

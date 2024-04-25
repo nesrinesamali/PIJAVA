@@ -141,81 +141,12 @@ public class DonController implements Initializable {
     }
 
     private void loadDate() {
-        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        cinCol.setCellValueFactory(new PropertyValueFactory<>("cin"));
-        genreCol.setCellValueFactory(new PropertyValueFactory<>("genre"));
-        dateproCol.setCellValueFactory(new PropertyValueFactory<>("datePro"));
-        datederCol.setCellValueFactory(new PropertyValueFactory<>("dateDer"));
-        groupesangCol.setCellValueFactory(new PropertyValueFactory<>("groupeSanguin"));
-        typedonCol.setCellValueFactory(new PropertyValueFactory<>("typeDeDon"));
-        centreDonCol.setCellValueFactory(new PropertyValueFactory<>("id_centre"));
-        etatmarCol.setCellValueFactory(new PropertyValueFactory<>("etatMarital"));
 
+    }
 
+    public void SetDon(Dons don) {
+    }
 
-        Callback<TableColumn<Dons, String>, TableCell<Dons, String>> cellFoctory = (TableColumn<Dons, String> param) -> {
-            final TableCell<Dons, String> cell = new TableCell<Dons, String>() {
-                @Override
-                public void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty);
-                    if (empty) {
-                        setGraphic(null);
-                        setText(null);
-                    } else {
-                        FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
-                        FontAwesomeIconView editIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
-                        FontAwesomeIconView infoIcon = new FontAwesomeIconView(FontAwesomeIcon.INFO_CIRCLE);
-
-
-                        deleteIcon.setStyle("-fx-cursor: hand ; -glyph-size:28px; -fx-fill:#ff1744;");
-                        editIcon.setStyle("-fx-cursor: hand ; -glyph-size:28px; -fx-fill:#00E676;");
-                        deleteIcon.setOnMouseClicked((MouseEvent event) -> {
-                            try {
-                                Dons dons = DonTable.getSelectionModel().getSelectedItem();
-                                sap.deleteOne(dons);
-                                RefreshTable();
-                            } catch (SQLException ex) {
-                                Logger.getLogger(DonController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                        });
-                        editIcon.setOnMouseClicked((MouseEvent event) -> {
-                            Dons don = DonTable.getSelectionModel().getSelectedItem();
-                            if (don != null) {
-                                try {
-                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierDon.fxml"));
-                                    Parent parent = loader.load();
-                                    ModifierDonFXML modifierDonController = loader.getController();
-
-                                    // Appeler setDonData avec les données du don sélectionné
-                                    modifierDonController.setDonData(don); // Ici, on passe le don sélectionné à setDonData
-
-                                    Scene scene = new Scene(parent);
-                                    Stage stage = new Stage();
-                                    stage.setScene(scene);
-                                    stage.initStyle(StageStyle.UTILITY);
-                                    stage.show();
-                                } catch (IOException ex) {
-                                    Logger.getLogger(Controller.DonController.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-                            } else {
-                                // Gérer le cas où aucun don n'est sélectionné
-                                // Vous pouvez afficher une alerte ou un message pour informer l'utilisateur de sélectionner un don
-                            }
-                        });
-
-
-                        HBox managebtn = new HBox(editIcon, deleteIcon);
-                        managebtn.setStyle("-fx-alignment:center");
-                        HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
-                        HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
-                        setGraphic(managebtn);
-                        setText(null);
-                    }
-                }
-            };
-            return cell;
-        };
-        actionCol.setCellFactory(cellFoctory);
-        DonTable.setItems(DonList);
+    public void setDon(Dons don) {
     }
 }

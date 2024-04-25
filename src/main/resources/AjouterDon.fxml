@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="881.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AjouterDonFXML">
+    <children>
+        <AnchorPane fx:id="main_form" prefHeight="709.0" prefWidth="840.0">
+            <children>
+                <AnchorPane fx:id="login_form" layoutX="-11.0" layoutY="-7.0" prefHeight="580.0" prefWidth="792.0" styleClass="white-bg" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="-11.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-7.0">
+                    <children>
+
+                        <Label layoutX="292.0" layoutY="22.0" text="ADD a Dons" textFill="#188ba7">
+                            <font>
+                                <Font name="Bauhaus 93" size="35.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="30.0" top="-60.0" />
+                            </HBox.margin>
+                        </Label>
+
+                        <HBox alignment="CENTER" layoutX="143.0" layoutY="476.0" prefHeight="56.0" prefWidth="0.0" />
+                        <TextField fx:id="CinFld" layoutX="218.0" layoutY="78.0" prefHeight="26.0" prefWidth="391.0" promptText="Entrez votre numéro d'identification nationale." styleClass="textfield-1" stylesheets="@page.css" />
+                        <ComboBox fx:id="GenreFLd" layoutX="219.0" layoutY="241.0" prefHeight="26.0" prefWidth="391.0" promptText="&quot;Sélectionnez votre genre&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                        <ComboBox fx:id="etatFLd" layoutX="219.0" layoutY="532.0" prefHeight="26.0" prefWidth="391.0" promptText="&quot;Choisissez votre état matrimonial&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                        <DatePicker fx:id="datederFLd" layoutX="219.0" layoutY="132.0" prefHeight="26.0" prefWidth="391.0" promptText="Sélectionnez la date de votre dernier don." styleClass="datepicker-1" stylesheets="@page.css" />
+                        <DatePicker fx:id="dateproFLd" layoutX="219.0" layoutY="184.0" prefHeight="26.0" prefWidth="391.0" promptText="Sélectionnez la date de votre prochain don." styleClass="datepicker-1" stylesheets="@page.css" />
+                        <ComboBox fx:id="typeFLd" layoutX="218.0" layoutY="387.0" prefHeight="26.0" prefWidth="391.0" promptText="&quot;Choisissez le type de don que vous souhaitez effectuer.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                        <ComboBox fx:id="groupeFLd" layoutX="219.0" layoutY="316.0" prefHeight="26.0" prefWidth="391.0" promptText=" &quot;Sélectionnez votre groupe sanguin.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                        <ComboBox fx:id="centreDonComboBox" layoutX="218.0" layoutY="457.0" prefHeight="26.0" prefWidth="391.0" promptText=" &quot;Sélectionnez un centre.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                        <Button layoutX="217.0" layoutY="605.0" mnemonicParsing="false" onMouseClicked="#save" prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@page.css" text="save" />
+                          <Button layoutX="435.0" layoutY="605.0" mnemonicParsing="false" onMouseClicked="#reset" prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@page.css" text="Reset" />
+
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+    </children>
+</StackPane>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="621.0" prefWidth="1201.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DonController">
+    <children>
+        <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
+            <children>
+                <BorderPane layoutX="-2.0" layoutY="64.0" prefHeight="622.0" prefWidth="1135.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
+                    <top>
+                        <AnchorPane prefHeight="40.0" prefWidth="1121.0" stylesheets="style.css" BorderPane.alignment="CENTER">
+                            <children>
+                                <AnchorPane layoutX="-58.0" layoutY="-86.0" prefHeight="40.0" prefWidth="214.0" styleClass="bg-color-1" stylesheets="style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label layoutX="21.0" layoutY="11.0" text="Hospital Management System" textFill="WHITE">
+                                            <font>
+                                                <Font size="13.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </AnchorPane>
+                                <Circle fx:id="top_profile" fill="DODGERBLUE" layoutX="1012.0" layoutY="22.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.rightAnchor="75.0" />
+                                <Label layoutX="1036.0" layoutY="13.0" text="Active" AnchorPane.rightAnchor="31.0" />
+                                <Circle fill="#24c756" layoutX="1081.0" layoutY="22.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.rightAnchor="14.0" />
+                                <Label layoutX="687.0" layoutY="12.0" text="Welcome," AnchorPane.rightAnchor="360.0" />
+                                <Label fx:id="top_username" layoutX="747.0" layoutY="11.0" prefHeight="17.0" prefWidth="138.0" text="MarcoMan" AnchorPane.rightAnchor="215.0">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="date_time" alignment="CENTER_RIGHT" layoutX="470.0" layoutY="12.0" prefHeight="17.0" prefWidth="187.0" text="MM:DD:YYYY" AnchorPane.rightAnchor="443.0" />
+                                <Label fx:id="current_form" layoutX="233.0" layoutY="11.0" prefHeight="17.0" prefWidth="325.0" styleClass="header-1" stylesheets="style.css" text="Dashboard Form" AnchorPane.leftAnchor="233.0" AnchorPane.topAnchor="11.0">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                                <Button fx:id="logout_btn" layoutX="879.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" styleClass="btn-1" stylesheets="page.css" text="Logout" AnchorPane.rightAnchor="142.0" AnchorPane.topAnchor="10.0" />
+                            </children>
+                            <styleClass>
+                                <String fx:value="white-bg" />
+                                <String fx:value="border-top" />
+                            </styleClass>
+                        </AnchorPane>
+                    </top>
+                    <left>
+                        <AnchorPane prefHeight="560.0" prefWidth="214.0" styleClass="bg-color-1" stylesheets="style.css" BorderPane.alignment="CENTER">
+                            <children>
+                                <Label layoutX="23.0" layoutY="85.0" text="Admin ID:" textFill="WHITE" />
+                                <Label fx:id="nav_adminID" layoutX="83.0" layoutY="84.0" prefHeight="17.0" prefWidth="117.0" text="1" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="21.0" layoutY="110.0" text="Username:" textFill="WHITE" />
+                                <Label fx:id="nav_username" layoutX="83.0" layoutY="109.0" prefHeight="17.0" prefWidth="117.0" text="marcoman" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <Line endX="88.0" layoutX="113.0" layoutY="152.0" startX="-100.0" stroke="WHITE" />
+                                <Label layoutX="13.0" layoutY="162.0" text="Feature" textFill="WHITE" />
+                                <Button fx:id="dashboard_btn" layoutX="7.0" layoutY="187.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="style.css" text="Dashboard">
+                                    <graphic>
+
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="getAddCentre" layoutX="7.0" layoutY="237.0" mnemonicParsing="false" onMouseClicked="#goToCentreFXML" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="style.css" text="Center">
+                                    <graphic>
+
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="patients_btn" layoutX="7.0" layoutY="285.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="style.css" text="Donation">
+                                    <graphic>
+
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="appointments_btn" layoutX="7.0" layoutY="335.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="style.css" text="Appointments">
+                                    <graphic>
+
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="payment_btn" layoutX="7.0" layoutY="387.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="style.css" text="Payment">
+                                    <graphic>
+
+                                    </graphic>
+                                </Button>
+                                <Label layoutX="13.0" layoutY="435.0" text="Profile" textFill="WHITE" />
+                                <Button fx:id="profile_btn" layoutX="7.0" layoutY="460.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="style.css" text="Profile Setting">
+                                    <graphic>
+
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </AnchorPane>
+                    </left>
+                    <center>
+
+                        <AnchorPane prefHeight="554.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+
+                            <children>
+                            <TableView fx:id="DonTable" layoutX="31.0" layoutY="160.0" prefHeight="367.0" prefWidth="946.0" styleClass="table-view" stylesheets="style.css">
+                                <columns>
+                                    <TableColumn fx:id="idCol" maxWidth="70.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center;" text="ID" />
+                                    <TableColumn fx:id="cinCol" maxWidth="124.0000057220459" prefWidth="112.80002403259277" style="-fx-alignment: center;" text="Cin" />
+                                    <TableColumn fx:id="genreCol" maxWidth="106.4000244140625" prefWidth="76.79998779296875" style="-fx-alignment: center;" text="Genre" />
+                                    <TableColumn fx:id="datederCol" maxWidth="171.199951171875" prefWidth="142.4000244140625" style="-fx-alignment: center;" text="Date de dernier don" />
+                                    <TableColumn fx:id="dateproCol" maxWidth="168.80001831054688" prefWidth="132.79998779296875" style="-fx-alignment: center;" text="date de prochain don" />
+                                    <TableColumn fx:id="groupesangCol" maxWidth="121.79995727539062" prefWidth="116.79995727539062" style="-fx-alignment: center;" text="Groupe sanguin" />
+                                    <!--<TableColumn fx:id="editCol11" maxWidth="124.0" prefWidth="78.39990234375" style="-fx-alignment: center;" text="Type de don" />-->
+                                    <TableColumn fx:id="etatmarCol" maxWidth="133.59995117187498" prefWidth="76.79998779296875" style="-fx-alignment: center;" text="Etat Marital" />
+                                    <TableColumn fx:id="typedonCol" maxWidth="114.39999389648438" prefWidth="93.60000610351562" style="-fx-alignment: center;" text="type de don" />
+                                    <TableColumn fx:id="centreDonCol" maxWidth="114.39999389648438" prefWidth="93.60000610351562" style="-fx-alignment: center;" text="Centre" />
+                                    <TableColumn fx:id="actionCol" maxWidth="114.39999389648438" prefWidth="93.60000610351562" style="-fx-alignment: center;" text="Actions" />
+                                </columns>
+                            </TableView>
+                            <Pane layoutY="59.0" prefHeight="3.0" prefWidth="200.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                            <Text layoutX="22.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Center of donation Details" wrappingWidth="445.13671875">
+                                <font>
+                                    <Font name="Bauhaus 93" size="32.0" />
+                                </font>
+                            </Text>
+                            <HBox alignment="CENTER" layoutX="602.0" layoutY="-1.0" prefHeight="36.0" prefWidth="37.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                            <HBox alignment="CENTER_LEFT" layoutX="326.0" layoutY="72.0" prefHeight="76.0" prefWidth="200.0">
+                            <children>
+                                <FontAwesomeIconView fill="#2196f3" glyphName="USER_PLUS" onMouseClicked="#getAddView" size="45" styleClass="btn" text="">
+                                    <HBox.margin>
+                                        <Insets right="10.0" />
+                                    </HBox.margin>
+                                </FontAwesomeIconView>
+                                <FontAwesomeIconView fill="#00e676" glyphName="REFRESH" layoutX="10.0" layoutY="65.0" onMouseClicked="#getRefrashable" size="45" styleClass="btn" text="">
+                                    <HBox.margin>
+                                        <Insets right="10.0" />
+                                    </HBox.margin>
+                                </FontAwesomeIconView>
+                                <FontAwesomeIconView fill="#455a64" glyphName="PRINT" layoutX="62.0" layoutY="65.0" size="45" styleClass="btn" />
+                            </children>
+                            </HBox>
+                            </children>
+                        </AnchorPane>
+
+
+                    </center>
+                </BorderPane>
+            </children>
+        </AnchorPane>
+    </children>
+</StackPane>

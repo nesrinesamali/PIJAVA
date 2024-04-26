@@ -85,130 +85,6 @@ public class AjouterDonFront implements Initializable
     private Object selectedType;
 
 
-    //controle de saisie
-    private boolean validateCin(String cin) {
-        String cinRegex = "\\d{8}"; // Expression régulière pour 8 chiffres exactement
-        if (Pattern.matches(cinRegex, cin)) {
-            cinErrorLabel.setText(""); // Effacez le message d'erreur si la saisie est valide
-            return true;
-        } else {
-            cinErrorLabel.setText("CIN must contain exactly 8 digits"); // Affichez un message d'erreur si la saisie est invalide
-            return false;
-        }
-    }
-
-
-
-    // Méthode de validation pour le ComboBox GenreFLd
-    private boolean validateGenre() {
-        String selectedGenre = GenreFLd.getValue();
-
-        if (selectedGenre != null && !selectedGenre.isEmpty()) {
-            genreErrorLabel.setText(""); // Effacez le message d'erreur si un genre est sélectionné
-            return true;
-        } else {
-            genreErrorLabel.setText("Please select gender"); // Affichez un message d'erreur si aucun genre n'est sélectionné
-            return false;
-        }
-    }
-    private boolean validateEtat() {
-        if (etatFLd.getSelectionModel().getSelectedIndex() != -1) {
-            etatErrorLabel.setText(""); // Effacez le message d'erreur si une sélection a été faite
-            return true;
-        } else {
-            etatErrorLabel.setText("Please select a marital status"); // Affichez un message d'erreur si aucune sélection n'a été faite
-            return false;
-        }
-    }
-    // Méthode de validation pour le ComboBox groupeFLd
-    private boolean validateGroupe() {
-        if (groupeFLd.getSelectionModel().getSelectedIndex() != -1) {
-            groupeErrorLabel.setText(""); // Effacez le message d'erreur si une sélection a été faite
-            return true;
-        } else {
-            groupeErrorLabel.setText("Please select a blood group"); // Affichez un message d'erreur si aucune sélection n'a été faite
-            return false;
-        }
-    }
-
-    // Méthode de validation pour le ComboBox typeFLd
-    private boolean validateType() {
-        if (typeFLd.getSelectionModel().getSelectedIndex() != -1) {
-            typeErrorLabel.setText(""); // Effacez le message d'erreur si une sélection a été faite
-            return true;
-        } else {
-            typeErrorLabel.setText("Please select a donation type"); // Affichez un message d'erreur si aucune sélection n'a été faite
-            return false;
-        }
-    }
-
-    // Méthode de validation pour le ComboBox centreDonComboBox
-    private boolean validateCentreDon() {
-        if (centreDonComboBox.getSelectionModel().getSelectedItem() != null) {
-            centreDonErrorLabel.setText(""); // Effacez le message d'erreur si une sélection a été faite
-            return true;
-        } else {
-            centreDonErrorLabel.setText("Please select a donation center"); // Affichez un message d'erreur si aucune sélection n'a été faite
-            return false;
-        }
-    }
-
-// Ajoutez des gestionnaires d'événements pour déclencher la validation
-
-    @FXML
-    private void validateGroupeInput() {
-        if (!validateGroupe()) {
-            groupeErrorLabel.setText("Please select a Etat.");
-        } else {
-            groupeErrorLabel.setText(""); // Effacez le message d'erreur si un genre est sélectionné
-        }
-    }
-
-    @FXML
-    private void validateTypeInput() {
-        if (!validateType()) {
-            typeErrorLabel.setText("Please select a Etat.");
-        } else {
-            typeErrorLabel.setText(""); // Effacez le message d'erreur si un genre est sélectionné
-        }
-    }
-
-    @FXML
-    private void validateCentreDonInput() {
-        if (!validateCentreDon()) {
-            centreDonErrorLabel.setText("Please select a Etat.");
-        } else {
-            centreDonErrorLabel.setText(""); // Effacez le message d'erreur si un genre est sélectionné
-        }
-    }
-
-
-
-    // Ajoutez un gestionnaire d'événements pour déclencher la validation
-    @FXML
-    private void validateGenreInput() {
-        if (!validateGenre()) {
-            genreErrorLabel.setText("Please select a gender.");
-        } else {
-            genreErrorLabel.setText(""); // Effacez le message d'erreur si un genre est sélectionné
-        }
-    }
-
-    @FXML
-    private void validateEtatInput() {
-        if (!validateGenre()) {
-            etatErrorLabel.setText("Please select a Etat.");
-        } else {
-            etatErrorLabel.setText(""); // Effacez le message d'erreur si un genre est sélectionné
-        }
-    }
-
-    @FXML
-    private void validateCinInput() {
-        String cin = CinFld.getText();
-        validateCin(cin);
-    }
-    @FXML
     private void close(MouseEvent event) {
         FontAwesomeIconView closeIcon = (FontAwesomeIconView) event.getSource();
         Stage stage = (Stage) closeIcon.getScene().getWindow();
@@ -251,12 +127,12 @@ public class AjouterDonFront implements Initializable
     private void save(MouseEvent event) {
 
 // Pour CinFld
-        Label errorLabel = new Label("Veuillez entrer votre numéro d'identification nationale.");
+        Label errorLabel = new Label("Veuillez entrer 8 chiffres pour le numéro d'identification nationale.");
         errorLabel.setTextFill(Color.RED);
         errorLabel.setId("errorLabel"); // Définir un ID unique pour l'étiquette
 
 // Pour CinFld
-        if (CinFld.getText().isEmpty()) {
+        if (CinFld.getText().isEmpty() || CinFld.getText().length() != 8) {
             CinFld.setStyle("-fx-border-color: red ; -fx-border-width: 2px;");
             // Placer l'étiquette en dessous du champ
             errorLabel.setLayoutX(CinFld.getLayoutX());
@@ -271,6 +147,7 @@ public class AjouterDonFront implements Initializable
                 ((Pane)CinFld.getParent()).getChildren().remove(errorLabelToRemove);
             }
         }
+
 
 // Pour GenreFLd
         Label genreErrorLabel = new Label("Veuillez sélectionner votre genre.");

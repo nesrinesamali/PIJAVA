@@ -222,5 +222,8 @@ public class ModifierDonFXML implements Initializable{
     public static void setTextField(int id, String cin, String genre, String dateDernierDon, String dateProchainDon, String typeDon, String groupeSanguin, String etatmarital) {
         // Méthode setTextField() inchangée
     }
+
+    public void setCentreData(Dons centreDon) {
     }
+}
 

@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AjouterCentre">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AjouterCentre">
     <children>
         <AnchorPane fx:id="main_form" prefHeight="709.0" prefWidth="840.0">
             <children>
-                <AnchorPane fx:id="login_form" layoutX="-2.0" prefHeight="570.0" prefWidth="767.0" styleClass="white-bg" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+                <AnchorPane fx:id="login_form" layoutX="-2.0" prefHeight="706.0" prefWidth="630.0" styleClass="white-bg" AnchorPane.bottomAnchor="-136.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
                     <children>
 
                         <Label layoutX="241.0" layoutY="42.0" text="ADD a center" textFill="#188ba7">
@@ -21,15 +21,15 @@
                             </HBox.margin>
                         </Label>
                         <HBox alignment="CENTER" layoutX="143.0" layoutY="476.0" prefHeight="56.0" prefWidth="0.0" />
-                        <TextField fx:id="nomFLd" layoutX="211.0" layoutY="131.0" prefHeight="30.0" prefWidth="407.0" promptText="&quot;Entrez votre nom de centre.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                        <ComboBox fx:id="govFLd" layoutX="214.0" layoutY="266.0" prefHeight="37.0" prefWidth="407.0" promptText="&quot;Sélectionnez votre gouvernorat&quot;" styleClass="combobox-1" stylesheets="@page.css" />
-                        <DatePicker fx:id="houvFLd" layoutX="214.0" layoutY="221.0" prefHeight="30.0" prefWidth="407.0" promptText="&quot;Choisissez votre heure d'ouverture&quot;" styleClass="datepicker-1" stylesheets="@page.css" />
-                        <DatePicker fx:id="hfermFLd" layoutX="215.0" layoutY="178.0" prefHeight="26.0" prefWidth="407.0" promptText="&quot;Choisissez votre heure d'fermeture&quot;" styleClass="datepicker-1" stylesheets="@page.css" />
-                        <TextField fx:id="emailFLd" layoutX="214.0" layoutY="316.0" prefHeight="29.0" prefWidth="407.0" promptText="&quot;Entrez votre email.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                        <TextField fx:id="numFLd" layoutX="215.0" layoutY="361.0" prefHeight="30.0" prefWidth="407.0" promptText=" &quot;Entrez votre numero.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                        <TextField fx:id="lieuFLd" layoutX="215.0" layoutY="401.0" prefHeight="29.0" prefWidth="407.0" promptText=" &quot;Entrez votre localisation.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                        <Button layoutX="259.0" layoutY="479.0" mnemonicParsing="false" onMouseClicked="#save" prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@page.css" text="save" />
-                        <Button layoutX="475.0" layoutY="479.0" mnemonicParsing="false" onMouseClicked="#reset" prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@page.css" text="Reset" />
+                        <TextField fx:id="nomFLd" layoutX="191.0" layoutY="143.0" prefHeight="30.0" prefWidth="407.0" promptText="&quot;Entrez votre nom de centre.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                        <ComboBox fx:id="govFLd" layoutX="191.0" layoutY="336.0" prefHeight="37.0" prefWidth="407.0" promptText="&quot;Sélectionnez votre gouvernorat&quot;" styleClass="combobox-1" stylesheets="@page.css" />
+                        <DatePicker fx:id="houvFLd" layoutX="191.0" layoutY="272.0" prefHeight="30.0" prefWidth="407.0" promptText="&quot;Choisissez votre heure d'ouverture&quot;" styleClass="datepicker-1" stylesheets="@page.css" />
+                        <DatePicker fx:id="hfermFLd" layoutX="191.0" layoutY="211.0" prefHeight="26.0" prefWidth="407.0" promptText="&quot;Choisissez votre heure d'fermeture&quot;" styleClass="datepicker-1" stylesheets="@page.css" />
+                        <TextField fx:id="emailFLd" layoutX="191.0" layoutY="407.0" prefHeight="29.0" prefWidth="407.0" promptText="&quot;Entrez votre email.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                        <TextField fx:id="numFLd" layoutX="191.0" layoutY="476.0" prefHeight="30.0" prefWidth="407.0" promptText=" &quot;Entrez votre numero.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                        <TextField fx:id="lieuFLd" layoutX="191.0" layoutY="543.0" prefHeight="29.0" prefWidth="407.0" promptText=" &quot;Entrez votre localisation.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                        <Button layoutX="215.0" layoutY="612.0" mnemonicParsing="false" onMouseClicked="#save" prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@page.css" text="save" />
+                        <Button layoutX="395.0" layoutY="612.0" mnemonicParsing="false" onMouseClicked="#reset" prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@page.css" text="Reset" />
                     </children>
                 </AnchorPane>
             </children>

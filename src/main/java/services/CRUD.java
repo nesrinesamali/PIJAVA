@@ -14,5 +14,5 @@ public interface CRUD<T> {
     void deleteOne(int id) throws SQLException; // Change parameter to int
       List<T> selectAll() throws SQLException;
 
-    void deleteOne(Dons don) throws SQLException;
+    boolean deleteOne(Dons don) throws SQLException;
 }

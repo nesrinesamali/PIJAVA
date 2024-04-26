@@ -3,15 +3,10 @@ package services;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import javafx.collections.ObservableList;
 import models.CentreDon;
 import models.Dons;
 import utils.MyDatabase;
-
-import javax.security.auth.Refreshable;
 
 public class ServiceDon implements CRUD<Dons> {
     private final Connection connection;
@@ -88,12 +83,13 @@ public class ServiceDon implements CRUD<Dons> {
 
 
     @Override
-    public void deleteOne(Dons don) throws SQLException {
+    public boolean deleteOne(Dons don) throws SQLException {
         String req = "DELETE FROM `Dons` WHERE `id`=?";
         PreparedStatement ps = connection.prepareStatement(req);
         ps.setInt(1, don.getId()); // Assuming you have an id field in your Donation class
         ps.executeUpdate();
         System.out.println("Donation Deleted !");
+        return false;
     }
     @Override
     public List<Dons> selectAll() throws SQLException {

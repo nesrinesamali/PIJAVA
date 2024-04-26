@@ -57,13 +57,14 @@ public class ServiceCentre implements CRUD<CentreDon> {
     }
 
 
-    public void deleteOne(CentreDon centreDon) throws SQLException {
+    public boolean deleteOne(CentreDon centreDon) throws SQLException {
         String req = "DELETE FROM `Centre_don` WHERE `id`=?";
         PreparedStatement ps = connection.prepareStatement(req);
         ps.setInt(1, centreDon.getId()); // Assuming you have an id field in your Donation class
         ps.executeUpdate();
         System.out.println("Centre Deleted !");
 
+        return false;
     }
 
 
@@ -95,8 +96,9 @@ public class ServiceCentre implements CRUD<CentreDon> {
     }
 
     @Override
-    public void deleteOne(Dons don) throws SQLException {
+    public boolean deleteOne(Dons don) throws SQLException {
 
+        return false;
     }
     public List<Dons> selectAllDonsWithCentreDetails() throws SQLException {
         List<Dons> donsList = new ArrayList<>();

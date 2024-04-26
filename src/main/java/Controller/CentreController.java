@@ -76,7 +76,7 @@ public class CentreController implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-    private void RefreshTable() {
+    void RefreshTable() {
         try {
             CentreList.clear();
             List<CentreDon> dons = cap.selectAll();
@@ -147,18 +147,30 @@ public class CentreController implements Initializable {
                         FontAwesomeIconView editIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
                         FontAwesomeIconView infoIcon = new FontAwesomeIconView(FontAwesomeIcon.INFO_CIRCLE);
 
-
                         deleteIcon.setStyle("-fx-cursor: hand; -glyph-size: 28px; -fx-fill: red;");
                         editIcon.setStyle("-fx-cursor: hand ; -glyph-size:28px; -fx-fill:#00E676;");
+
                         deleteIcon.setOnMouseClicked((MouseEvent event) -> {
-                            try {
-                                CentreDon centreDon = CentreTable.getSelectionModel().getSelectedItem();
-                                cap.deleteOne(centreDon);
-                                RefreshTable();
-                            } catch (SQLException ex) {
-                                Logger.getLogger(CentreController.class.getName()).log(Level.SEVERE, null, ex);
+                            CentreDon centreDon = CentreTable.getSelectionModel().getSelectedItem();
+                            if (centreDon != null) {
+                                try {
+                                    if (cap.deleteOne(centreDon)) {
+                                        RefreshTable();
+                                    } else {
+                                        // Gérer le cas où la suppression a échoué
+                                        // Vous pouvez afficher une alerte ou un message pour informer l'utilisateur que la suppression a échoué
+                                    }
+                                } catch (SQLException ex) {
+                                    Logger.getLogger(CentreController.class.getName()).log(Level.SEVERE, null, ex);
+                                    // Gérer l'erreur de suppression ici
+                                    // Vous pouvez afficher une alerte ou un message pour informer l'utilisateur de l'échec de la suppression
+                                }
+                            } else {
+                                // Gérer le cas où aucun centre n'est sélectionné
+                                // Vous pouvez afficher une alerte ou un message pour informer l'utilisateur de sélectionner un centre
                             }
                         });
+
                         editIcon.setOnMouseClicked((MouseEvent event) -> {
                             CentreDon centreDon = CentreTable.getSelectionModel().getSelectedItem();
 
@@ -186,7 +198,7 @@ public class CentreController implements Initializable {
                             }
                         });
 
-                        HBox managebtn = new HBox(editIcon, deleteIcon);
+                        HBox managebtn = new HBox(deleteIcon, editIcon);
                         managebtn.setStyle("-fx-alignment:center");
                         HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
                         HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));

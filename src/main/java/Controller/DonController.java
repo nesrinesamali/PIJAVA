@@ -3,6 +3,7 @@ package Controller;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.beans.property.SimpleStringProperty;
+import models.CentreDon;
 import models.Dons;
 
 import java.io.IOException;
@@ -87,6 +88,103 @@ public class DonController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         loadDate();
 
+        getRefrashable();
+        System.out.println("vbn,;");
+
+    }
+
+
+     private void loadDate() {
+        // Configurer les cellules des colonnes pour afficher les données appropriées
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        cinCol.setCellValueFactory(new PropertyValueFactory<>("cin"));
+        genreCol.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        dateproCol.setCellValueFactory(new PropertyValueFactory<>("datePro"));
+        datederCol.setCellValueFactory(new PropertyValueFactory<>("dateDer"));
+        groupesangCol.setCellValueFactory(new PropertyValueFactory<>("groupeSanguin"));
+        typedonCol.setCellValueFactory(new PropertyValueFactory<>("typeDeDon"));
+        etatmarCol.setCellValueFactory(new PropertyValueFactory<>("etatMarital"));
+         centreDonCol.setCellValueFactory(new PropertyValueFactory<>("centreDon"));
+
+
+         getRefrashable();
+        Callback<TableColumn<Dons, String>, TableCell<Dons, String>> cellFoctory = (TableColumn<Dons, String> param) -> {
+            final TableCell<Dons, String> cell = new TableCell<Dons, String>() {
+                @Override
+                public void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setGraphic(null);
+                        setText(null);
+                    } else {
+                        FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
+                        FontAwesomeIconView editIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
+                        FontAwesomeIconView infoIcon = new FontAwesomeIconView(FontAwesomeIcon.INFO_CIRCLE);
+
+                        deleteIcon.setStyle("-fx-cursor: hand; -glyph-size: 28px; -fx-fill: red;");
+                        editIcon.setStyle("-fx-cursor: hand ; -glyph-size:28px; -fx-fill:#00E676;");
+
+                        deleteIcon.setOnMouseClicked((MouseEvent event) -> {
+                            Dons dons = DonTable.getSelectionModel().getSelectedItem();
+                            if (dons != null) {
+                                try {
+                                    if (sap.deleteOne(dons)) {
+                                        RefreshTable();
+                                    } else {
+                                        // Gérer le cas où la suppression a échoué
+                                        // Vous pouvez afficher une alerte ou un message pour informer l'utilisateur que la suppression a échoué
+                                    }
+                                } catch (SQLException ex) {
+                                    Logger.getLogger(DonController.class.getName()).log(Level.SEVERE, null, ex);
+                                    // Gérer l'erreur de suppression ici
+                                    // Vous pouvez afficher une alerte ou un message pour informer l'utilisateur de l'échec de la suppression
+                                }
+                            } else {
+                                // Gérer le cas où aucun centre n'est sélectionné
+                                // Vous pouvez afficher une alerte ou un message pour informer l'utilisateur de sélectionner un centre
+                            }
+                        });
+
+                        editIcon.setOnMouseClicked((MouseEvent event) -> {
+                            Dons dons = DonTable.getSelectionModel().getSelectedItem();
+
+                            if (dons != null) {
+                                try {
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierDon.fxml"));
+                                    Parent parent = loader.load();
+                                    ModifierDonFXML modifierDonFXML = loader.getController();
+                                    modifierDonFXML.setParentFXMLLoader(DonController.this);
+
+                                    // Appeler setDonData avec les données du don sélectionné
+                                    modifierDonFXML.setDonData(dons); // Passer les données du centre sélectionné à setCentreData
+
+                                    Scene scene = new Scene(parent);
+                                    Stage stage = new Stage();
+                                    stage.setScene(scene);
+                                    stage.initStyle(StageStyle.UTILITY);
+                                    stage.show();
+                                } catch (IOException ex) {
+                                    Logger.getLogger(DonController.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            } else {
+                                // Gérer le cas où aucun centre n'est sélectionné
+                                // Vous pouvez afficher une alerte ou un message pour informer l'utilisateur de sélectionner un centre
+                            }
+                        });
+
+                        HBox managebtn = new HBox(deleteIcon, editIcon);
+                        managebtn.setStyle("-fx-alignment:center");
+                        HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
+                        HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
+                        setGraphic(managebtn);
+                        setText(null);
+                    }
+                }
+            };
+            return cell;
+        };
+        actionCol.setCellFactory(cellFoctory);
+        DonTable.setItems(DonList);
     }
 
     @FXML
@@ -118,11 +216,13 @@ public class DonController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.initStyle(StageStyle.UTILITY);
-            stage.show();
+            stage.showAndWait(); // Attendre que la fenêtre soit fermée avant de rafraîchir les données
+            ajoutercentre.getRefrashable(); // Appeler la méthode pour rafraîchir les données après la fermeture de la fenêtre d'ajout
         } catch (IOException ex) {
             Logger.getLogger(AjouterDonFXML.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 
 
     public void getRefrashable(){
@@ -136,12 +236,9 @@ public class DonController implements Initializable {
         }
     }
 
+
     @FXML
     private void print(MouseEvent event) {
-    }
-
-    private void loadDate() {
-
     }
 
     public void SetDon(Dons don) {

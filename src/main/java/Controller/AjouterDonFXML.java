@@ -504,4 +504,6 @@ public class AjouterDonFXML implements Initializable {
     }
 
 
+    public void getRefrashable() {
+    }
 }

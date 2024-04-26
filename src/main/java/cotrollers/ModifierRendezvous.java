@@ -89,6 +89,12 @@ public class ModifierRendezvous implements Initializable {
             System.out.println(rd);
             e.getMessage();
         }
+
+
+
+
+
+
     }
 
 }

@@ -26,6 +26,7 @@
     <children>
         <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
+                
                 <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" BorderPane.alignment="CENTER">
                     <children>
                         <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
@@ -68,23 +69,25 @@
                                 <Insets left="50.0" right="50.0" />
                             </VBox.margin>
                             <children>
-                                <ImageView fx:id="fruitImg" fitHeight="107.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@appointment.jpg" />
-                                    </image>
-                           <VBox.margin>
-                              <Insets bottom="50.0" right="100.0" />
-                           </VBox.margin>
-                                </ImageView>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="VITAWELL APPOINTMENTS">
-                           <font>
-                              <Font name="Impact" size="28.0" />
-                           </font>
-                        </Text>
-                                <HBox prefHeight="60.0" prefWidth="335.0">
+                                <HBox prefHeight="332.0" prefWidth="295.0">
                                     <VBox.margin>
                                         <Insets left="20.0" top="30.0" />
                                     </VBox.margin>
+                           <opaqueInsets>
+                              <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+                           </opaqueInsets>
+                           <children>
+                              <ImageView fitHeight="53.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@list.png" />
+                                 </image>
+                              </ImageView>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion Rendez-vous" wrappingWidth="213.53199005126953">
+                                 <font>
+                                    <Font name="Courier New" size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
                                 </HBox>
                                 <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
                                     <VBox.margin>
@@ -128,18 +131,18 @@
                                         <Font name="Cambria" size="18.0" />
                                     </font>
                                 </Label>
-                                <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <ImageView fitHeight="43.0" fitWidth="59.0" layoutX="452.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@profile.png" />
-                                 </image>
-                              </ImageView>
-                           </children></Pane>
+                                <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
                                 <Label prefHeight="62.0" prefWidth="100.0" text="Profil" textFill="#878787">
                                     <font>
                                         <Font name="Cambria" size="18.0" />
                                     </font>
+                           <graphic>
+                              <ImageView fitHeight="43.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@profile.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                                 </Label>
                                 <ImageView fitHeight="50.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -206,13 +209,13 @@
                                         <Insets top="10.0" />
                                     </HBox.margin>
                                     <content>
-                                        <TableView fx:id="tv" prefHeight="464.0" prefWidth="639.0">
+                                        <TableView fx:id="tv" prefHeight="464.0" prefWidth="633.0">
                                             <columns>
-                                                <TableColumn fx:id="nompatient" prefWidth="103.19995504617691" text="Nom Patient" />
-                                                <TableColumn fx:id="nommedecin" minWidth="0.0" prefWidth="112.79991149902344" text="Nom Medecin" />
-                                                <TableColumn fx:id="date" minWidth="0.0" prefWidth="116.79998779296875" text="Date" />
-                                                <TableColumn fx:id="heure" minWidth="0.0" prefWidth="136.79986572265625" text="Heure" />
-                                                <TableColumn fx:id="Etat" prefWidth="84.7999267578125" text="Etat" />
+                                                <TableColumn fx:id="nompatient" prefWidth="123.9999390244484" text="Nom Patient" />
+                                                <TableColumn fx:id="nommedecin" minWidth="0.0" prefWidth="124.00004577636719" text="Nom Medecin" />
+                                                <TableColumn fx:id="date" minWidth="0.0" prefWidth="121.5999755859375" text="Date" />
+                                                <TableColumn fx:id="heure" minWidth="0.0" prefWidth="120.00006103515625" text="Heure" />
+                                                <TableColumn fx:id="Etat" prefWidth="144.0" text="Etat" />
                                             </columns>
                                         </TableView>
                                     </content>

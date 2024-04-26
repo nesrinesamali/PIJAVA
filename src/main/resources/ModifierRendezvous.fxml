@@ -42,7 +42,7 @@
                 </HBox>
                 <HBox prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <TextField fx:id="nompatient" alignment="TOP_LEFT" blendMode="SRC_ATOP" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="250.0" promptText="Nom Patient ">
+                        <TextField fx:id="nompatient" alignment="TOP_LEFT" blendMode="SRC_ATOP" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="250.0" promptText="Nom Patient " style="-fx-background-radius: 100;">
                             <opaqueInsets>
                                 <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
                             </opaqueInsets>
@@ -56,7 +56,7 @@
                 </HBox>
                 <HBox prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <TextField fx:id="nommedecin" prefHeight="30.0" prefWidth="254.0" promptText="Nom Médecin">
+                        <TextField fx:id="nommedecin" prefHeight="30.0" prefWidth="254.0" promptText="Nom Médecin" style="-fx-background-radius: 100;">
                             <font>
                                 <Font name="Andalus" size="13.0" />
                             </font>
@@ -67,7 +67,7 @@
                 </HBox>
                 <HBox layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <DatePicker fx:id="date" prefHeight="26.0" prefWidth="253.0" promptText="Veuillez choisir une date">
+                        <DatePicker fx:id="date" prefHeight="26.0" prefWidth="253.0" promptText="Veuillez choisir une date" style="-fx-background-radius: 100;">
                             <HBox.margin>
                                 <Insets left="200.0" />
                             </HBox.margin>
@@ -76,7 +76,7 @@
                 </HBox>
                 <HBox layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <TextField fx:id="heure" prefHeight="26.0" prefWidth="257.0" promptText="Veuillez entrer une heure">
+                        <TextField fx:id="heure" prefHeight="26.0" prefWidth="257.0" promptText="Veuillez entrer une heure" style="-fx-background-radius: 100;">
                             <HBox.margin>
                                 <Insets left="200.0" />
                             </HBox.margin></TextField>

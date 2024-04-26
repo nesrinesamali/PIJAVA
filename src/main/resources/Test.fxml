@@ -68,24 +68,17 @@
                                 <Insets left="50.0" right="50.0" />
                             </VBox.margin>
                             <children>
-                                <ImageView fx:id="fruitImg" fitHeight="71.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-radius: 100;">
-                                    <image>
-                                        <Image url="@/appointment.jpg" />
-
-                                    </image>
-                           <VBox.margin>
-                              <Insets bottom="80.0" right="200.0" />
-                           </VBox.margin>
-                                </ImageView>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="VITAWELL APPOINTMENTS">
-                           <font>
-                              <Font name="Impact" size="27.0" />
-                           </font>
-                        </Text>
                                 <HBox prefHeight="60.0" prefWidth="335.0">
                                     <VBox.margin>
                                         <Insets left="20.0" top="30.0" />
                                     </VBox.margin>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="VITAWELL APPOINTMENTS">
+                                 <font>
+                                    <Font name="Impact" size="27.0" />
+                                 </font>
+                              </Text>
+                           </children>
                                 </HBox>
                                 <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
                                     <VBox.margin>
@@ -199,20 +192,20 @@
                                 <Insets left="20.0" right="20.0" top="10.0" />
                             </VBox.margin>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                        <HBox alignment="CENTER" prefHeight="485.0" prefWidth="734.0" VBox.vgrow="ALWAYS">
                             <children>
-                                <ScrollPane fx:id="scroll" prefHeight="570.0" prefWidth="785.0" styleClass="transparent">
+                                <ScrollPane fx:id="scroll" prefHeight="623.0" prefWidth="562.0" styleClass="transparent">
                                     <HBox.margin>
                                         <Insets top="10.0" />
                                     </HBox.margin>
                            <content>
-                              <TableView fx:id="tv" prefHeight="454.0" prefWidth="903.0">
+                              <TableView fx:id="tv" prefHeight="478.0" prefWidth="563.0">
                                 <columns>
-                                  <TableColumn fx:id="nompatient" prefWidth="150.39996725320816" text="Nom Patient" />
-                                  <TableColumn fx:id="nommedecin" minWidth="0.0" prefWidth="150.40000915527344" text="Nom Medecin" />
-                                    <TableColumn fx:id="date" minWidth="0.0" prefWidth="168.79998779296875" text="Date" />
-                                    <TableColumn fx:id="heure" minWidth="0.0" prefWidth="136.80010986328125" text="Heure" />
-                                   <TableColumn fx:id="action" prefWidth="177.60001220703123" text="Action" />
+                                  <TableColumn fx:id="nompatient" prefWidth="131.19999080896378" text="Nom Patient" />
+                                  <TableColumn fx:id="nommedecin" minWidth="0.0" prefWidth="140.80001831054688" text="Nom Medecin" />
+                                    <TableColumn fx:id="date" minWidth="0.0" prefWidth="96.00006103515625" text="Date" />
+                                    <TableColumn fx:id="heure" minWidth="0.0" prefWidth="110.39990234375" text="Heure" />
+                                    <TableColumn fx:id="action" minWidth="0.0" prefWidth="85.5999755859375" text="Action" />
                                 </columns>
                               </TableView>
                            </content>

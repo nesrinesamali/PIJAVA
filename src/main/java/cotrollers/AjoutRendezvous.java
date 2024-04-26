@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import models.Rendezvous;
 import models.User;
 import services.RendezvousService;
@@ -91,7 +88,7 @@ public class AjoutRendezvous implements Initializable {
 
         if (!matcher.matches()) {
             // Afficher un message d'erreur si le format de l'heure est invalide
-            heureErrorLabel.setText("Veuillez entrer une heure valide au format HH:mm.");
+            heureErrorLabel.setText("Entrer une heure valide ");
             return;
         }
 
@@ -120,6 +117,22 @@ public class AjoutRendezvous implements Initializable {
                 return; // Arrêter l'ajout du rendez-vous
             }
         }
+        // Charger le fichier CSS
+        String css = getClass().getResource("/controllers/alert-styles.css").toExternalForm();
+
+// Créer une nouvelle alerte
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur de saisie");
+        alert.setHeaderText("Impossible d'ajouter le rendez-vous");
+        alert.setContentText("Il doit y avoir une séparation d'une heure entre les rendez-vous pour la même date.");
+
+// Appliquer les styles CSS à l'alerte
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(css);
+
+// Afficher l'alerte
+        alert.showAndWait();
+
 
         // Si la validation réussit, créer le nouvel objet Rendezvous et l'ajouter
         // au service pour la création dans la base de données

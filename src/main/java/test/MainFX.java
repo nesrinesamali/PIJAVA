@@ -15,7 +15,7 @@ public class MainFX extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {     //AjoutRendezvous
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficheReponse.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjoutRendezvous.fxml"));
 
             Parent root = loader.load();
        Scene scene= new Scene(root);

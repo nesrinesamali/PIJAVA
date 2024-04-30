@@ -1,25 +1,22 @@
 package cotrollers;
-import com.sun.javafx.logging.PlatformLogger;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import javafx.beans.binding.Bindings;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import models.Rendezvous;
-import models.Reponse;
-import javafx.scene.Parent;
-
 import services.RendezvousService;
 
 import java.io.IOException;
@@ -62,6 +59,15 @@ public class AfficheReponse implements Initializable {
     @FXML
     private TableView<Rendezvous> tv;
 
+    @FXML
+    private Button searchButton;
+
+    @FXML
+    private TextField searchField;
+
+    @FXML
+    private Pagination pagination;
+
     RendezvousService rs = new RendezvousService();
     private ObservableList<Rendezvous> observableList = FXCollections.observableArrayList();
 
@@ -76,9 +82,7 @@ public class AfficheReponse implements Initializable {
             date.setCellValueFactory(new PropertyValueFactory<>("date"));
             heure.setCellValueFactory(new PropertyValueFactory<>("heure"));
 
-
-
-// Suppose que le type de cellData.getValue().getEtat() est un booléen
+            // Suppose que le type de cellData.getValue().getEtat() est un booléen
             Etat.setCellValueFactory(cellData -> {
                 boolean etatValue = cellData.getValue().getEtat();
                 String etatString = etatValue ? "Traitée" : "Non traitée";
@@ -133,22 +137,41 @@ public class AfficheReponse implements Initializable {
 
                         Rendezvous rendezvous = getTableView().getItems().get(getIndex());
 
-                            acceptButton.setVisible(true);
-                            //refuseButton.setVisible(true);
+                        acceptButton.setVisible(true);
+                        //refuseButton.setVisible(true);
 
-                        }
                     }
+                }
 
             });
 
             tv.getColumns().add(actionsColumn);
 
+            // Gestion de l'événement de clic sur le bouton de recherche
+            searchButton.setOnAction(event -> search());
+
+            // Configurer la pagination
+            pagination.setPageFactory(this::createPage);
+
         } catch (SQLException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setContentText("Error when retrieving data from database");
-            alert.showAndWait();
+            showErrorAlert("Error when retrieving data from database");
         }
+    }
+
+    private void search() {
+        String searchText = searchField.getText().toLowerCase();
+
+        // Filtrer la liste des rendez-vous en fonction du texte de recherche
+        ObservableList<Rendezvous> filteredList = observableList.filtered(rendezvous ->
+                rendezvous.getNompatient().toLowerCase().contains(searchText) ||
+                        rendezvous.getNommedecin().toLowerCase().contains(searchText) ||
+                        rendezvous.getDate().toString().contains(searchText) ||
+                        rendezvous.getHeure().toLowerCase().contains(searchText) ||
+                        (rendezvous.getEtat() ? "Traitée" : "Non traitée").toLowerCase().contains(searchText)
+        );
+
+        // Mettre à jour le TableView avec la liste filtrée
+        tv.setItems(filteredList);
     }
 
     void RefreshTable() {
@@ -160,5 +183,21 @@ public class AfficheReponse implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private void showErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    // Créer une page pour la pagination
+    private Node createPage(int pageIndex) {
+        int itemsPerPage = 2;
+        int fromIndex = pageIndex * itemsPerPage;
+        int toIndex = Math.min(fromIndex + itemsPerPage, observableList.size());
+        tv.setItems(FXCollections.observableList(observableList.subList(fromIndex, toIndex)));
+        return new BorderPane(tv);
     }
 }

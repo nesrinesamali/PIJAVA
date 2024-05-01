@@ -1,4 +1,4 @@
-package Controller;
+/*package Controller;
 
 
 import javafx.fxml.FXML;
@@ -23,7 +23,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.TilePane;
 import services.ServiceDon;
 
-public class DonFront {
+public class DonFront  {
     @FXML
     private TilePane cardsContainer;
     @FXML
@@ -38,22 +38,23 @@ public class DonFront {
     }
 
     private void setupAddDonLink() {
-        addDonLink.setOnAction(e -> showDonForm(null)); // Passing null for a new donation
+        addDonLink.setOnMouseClicked(e -> showDonForm(null));
+        // Passing null for a new donation
     }
 
     private void showDonForm(Dons don) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjoutDonFront.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/okok.fxml"));
+
             StackPane form = loader.load();
-            AjouterDonFXML controller = loader.getController(); // Change to AjouterDonFXML
+            AjouterDonFront controller = loader.getController(); // Change to AjouterDonFXML
            /* if (don != null) {
                 controller.setDon(don); // If updating an existing donation
-            }*/
+            }
             Stage stage = new Stage();
             stage.setScene(new Scene(form));
             stage.setTitle(don == null ? "Ajouter un Nouveau Don" : "Modifier le Don");
             stage.showAndWait(); // Use showAndWait to refresh list after adding or updating
-
             reloadDons(); // Reload the list after closing the form
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -107,12 +108,12 @@ public class DonFront {
     }
 
 
-    private void showDonDetails(Dons don) {
+    private void showDonDetails(Dons dons) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ShowDon.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Details.fxml"));
             Parent detailsRoot = loader.load();
-            DonController controller = loader.getController();
-            controller.setDon(don);
+            Details controller = loader.getController();
+            controller.setDon(dons);
 
             // Use the scene of an existing control that's already part of the current scene
             Scene currentScene = cardsContainer.getScene();
@@ -127,8 +128,9 @@ public class DonFront {
     }
 
     private void reloadDons() {
-        // Clear and reload the donations
-        cardsContainer.getChildren().clear();
-        loadDons();
+
     }
-}
+
+    public void setDon(Dons don) {
+    }
+}*/

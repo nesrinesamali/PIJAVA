@@ -109,8 +109,26 @@ public class AjouterDonFront implements Initializable
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        typeFLd.setItems(FXCollections.observableArrayList("Sang","Plasma","Organnes"));
+        // Initialisation de dateproFLd
+        dateproFLd = new DatePicker();
+        // Attribuer des valeurs aux autres ComboBoxes
+        GenreFLd.setItems(FXCollections.observableArrayList("Homme", "Femme"));
+        groupeFLd.setItems(FXCollections.observableArrayList("O+", "O-", "A+", "A-", "AB+", "AB-", "B+", "B-"));
+        etatFLd.setItems(FXCollections.observableArrayList("Celibataire", "Marié"));
+        // Vous pouvez également définir une date par défaut ici si nécessaire
+        // Par exemple :
+        LocalDate defaultDate = LocalDate.now();
+        dateproFLd.setValue(defaultDate);
+        LocalDate defaultDate2 = LocalDate.now().plusDays(7); // 7 jours après aujourd'hui
+        datederFLd.setValue(defaultDate2);
+        // Charger les informations sur les centres de don
+        loadCentreDonData();
+
 
     }
+
 
 
 
@@ -127,12 +145,12 @@ public class AjouterDonFront implements Initializable
     private void save(MouseEvent event) {
 
 // Pour CinFld
-        Label errorLabel = new Label("Veuillez entrer 8 chiffres pour le numéro d'identification nationale.");
+        Label errorLabel = new Label("Veuillez entrer votre numéro d'identification nationale.");
         errorLabel.setTextFill(Color.RED);
         errorLabel.setId("errorLabel"); // Définir un ID unique pour l'étiquette
 
 // Pour CinFld
-        if (CinFld.getText().isEmpty() || CinFld.getText().length() != 8) {
+        if (CinFld.getText().isEmpty()) {
             CinFld.setStyle("-fx-border-color: red ; -fx-border-width: 2px;");
             // Placer l'étiquette en dessous du champ
             errorLabel.setLayoutX(CinFld.getLayoutX());
@@ -147,7 +165,6 @@ public class AjouterDonFront implements Initializable
                 ((Pane)CinFld.getParent()).getChildren().remove(errorLabelToRemove);
             }
         }
-
 
 // Pour GenreFLd
         Label genreErrorLabel = new Label("Veuillez sélectionner votre genre.");

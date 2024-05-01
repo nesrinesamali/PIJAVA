@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class MyDatabase {
 
 
-    private final String URL = "jdbc:mysql://localhost:3306/pidevsymfonyvita";
+    private final String URL = "jdbc:mysql://localhost:3306/test$";
     private final String USER = "root";
     private final String PASS = "";
     private Connection connection;

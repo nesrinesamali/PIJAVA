@@ -83,7 +83,7 @@ public class ModifierRendezvous implements Initializable {
             // Close the current stage
             stage.close();
             // Appeler la méthode refreshTableView() du contrôleur parent pour rafraîchir le TableView
-            parentFXMLLoader.RefreshTable() ;
+            parentFXMLLoader.refreshTable() ;
         } catch (Exception e) {
             // Gérer les exceptions
             System.out.println(rd);

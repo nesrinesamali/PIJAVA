@@ -51,6 +51,7 @@ public class AjoutReponseController {
         rs.create(response);
         rv.setEtat(true);
         rvs.update(rv);
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Traité !");
         alert.setHeaderText(null);
@@ -60,7 +61,7 @@ public class AjoutReponseController {
 
         // Close the current stage
         stage.close();
-
+        SmsController.sms();
         if (afficheReponseController != null) {
             afficheReponseController.RefreshTable();
         } else {

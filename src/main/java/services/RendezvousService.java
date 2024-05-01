@@ -103,7 +103,7 @@ public class RendezvousService implements IService<Rendezvous>{
             r.setNommedecin(rs.getString("nommedecin"));
             r.setEtat(rs.getBoolean("etat"));
             r.setHeure(rs.getString("heure"));
-
+            System.out.println(r.getEtat());
             rendezvous.add(r);
         }
         return rendezvous;

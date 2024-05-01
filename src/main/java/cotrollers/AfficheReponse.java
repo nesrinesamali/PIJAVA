@@ -3,22 +3,31 @@ package cotrollers;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.Parent;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.fxml.FXMLLoader;
 import models.Rendezvous;
 import services.RendezvousService;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import javafx.scene.control.TextField;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -29,20 +38,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class AfficheReponse implements Initializable {
-    private Button acceptButton;
-    private Button refuseButton;
 
     @FXML
     private TableColumn<Rendezvous, String> Etat;
-
-    @FXML
-    private TableColumn<Rendezvous, Void> actionsColumn;
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private TableColumn<Rendezvous, Date> date;
@@ -116,7 +114,6 @@ public class AfficheReponse implements Initializable {
 
                     });
 
-
                 }
 
                 private Button createButton(String text, String backgroundColor) {
@@ -156,6 +153,11 @@ public class AfficheReponse implements Initializable {
         } catch (SQLException e) {
             showErrorAlert("Error when retrieving data from database");
         }
+    }
+
+    @FXML
+    private void handleGeneratePDFButtonAction(ActionEvent event) {
+        generatePDF();
     }
 
     private void search() {
@@ -199,5 +201,72 @@ public class AfficheReponse implements Initializable {
         int toIndex = Math.min(fromIndex + itemsPerPage, observableList.size());
         tv.setItems(FXCollections.observableList(observableList.subList(fromIndex, toIndex)));
         return new BorderPane(tv);
+    }
+
+    // Méthode pour générer un document PDF
+    private void generatePDF() {
+        try {
+            // Créer un nouveau document PDF
+            PDDocument document = new PDDocument();
+            PDPage page = new PDPage();
+            document.addPage(page);
+
+            // Ajouter du contenu au document
+            try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
+                contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
+                contentStream.beginText();
+                contentStream.newLineAtOffset(100, 700);
+
+                // Ajouter le titre de la liste des rendez-vous
+                contentStream.showText("Liste des rendez-vous :");
+                contentStream.newLine();
+                contentStream.newLine();
+
+                // Itérer sur chaque rendez-vous et ajouter ses détails au contenu
+                for (Rendezvous rendezvous : tv.getItems()) {
+                    contentStream.showText("Nom patient: " + rendezvous.getNompatient());
+                    contentStream.newLine();
+                    contentStream.showText("Nom médecin: " + rendezvous.getNommedecin());
+                    contentStream.newLine();
+                    contentStream.showText("Date: " + rendezvous.getDate());
+                    contentStream.newLine();
+                    contentStream.showText("Heure: " + rendezvous.getHeure());
+                    contentStream.newLine();
+                    contentStream.showText("État: " + (rendezvous.getEtat() ? "Traitée" : "Non traitée"));
+                    contentStream.newLine();
+                    contentStream.newLine();
+                }
+
+                contentStream.endText();
+            }
+
+            // Enregistrer le document sur le disque
+            File outputFile = new File("output.pdf");
+            document.save(outputFile);
+            document.close();
+
+            // Ouvrir le fichier PDF avec l'application par défaut
+            try {
+                Desktop.getDesktop().open(outputFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Afficher un message de réussite
+            showAlert(Alert.AlertType.INFORMATION, "PDF généré avec succès", "Le document PDF a été généré avec succès.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Afficher une alerte en cas d'erreur
+            showAlert(Alert.AlertType.ERROR, "Erreur lors de la génération du PDF", "Une erreur s'est produite lors de la génération du document PDF.");
+        }
+    }
+
+    // Méthode utilitaire pour afficher une alerte
+    private void showAlert(Alert.AlertType alertType, String title, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

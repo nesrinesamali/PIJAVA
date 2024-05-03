@@ -1,37 +1,40 @@
 package test;
 
-import Controller.CentreController;
-import Controller.DonController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
+import java.io.IOException;
 
 public class Main extends Application {
-
 
     @Override
     public void start(Stage primaryStage) {
         try {
+
+
+            // Load the FXML file
             Parent parent = FXMLLoader.load(getClass().getResource("/okok.fxml"));
+
+            // Create the scene and set it on the stage
             Scene scene = new Scene(parent);
-            // scene.setFill(Color.TRANSPARENT);
             primaryStage.setScene(scene);
-            // primaryStage.initStyle(StageStyle.TRANSPARENT);
+
+            // Show the stage
             primaryStage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(CentreController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException e) {
+            // Handle FXML loading errors
+            System.err.println("Error loading FXML file: " + e.getMessage());
+            e.printStackTrace();
+        } catch (Exception e) {
+            // Handle any other exceptions
+            System.err.println("An unexpected error occurred: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         launch(args);
     }

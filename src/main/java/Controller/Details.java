@@ -1,4 +1,4 @@
-package Controller;
+/*package Controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -83,7 +83,7 @@ public class Details {
             }
         }
     }
-*/
+
 
     @FXML
     private void handleBack() {
@@ -120,3 +120,4 @@ public class Details {
         });
     }
 }
+*/

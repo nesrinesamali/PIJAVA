@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="bord" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="838.0" prefWidth="1320.0" style="-fx-background-color: #f8f5f5;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FrontController">
+<AnchorPane id="AnchorPane" fx:id="bord" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="838.0" prefWidth="1320.0" style="-fx-background-color: #f8f5f5;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="Controller.FrontController">
     <children>
         <AnchorPane layoutX="-38.0" layoutY="14.0" prefHeight="616.0" prefWidth="1006.0" style="-fx-background-color: #f8f5f5; -fx-background-radius: 15;">
             <children>
@@ -36,7 +49,7 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <VBox fx:id="vbox2" layoutX="37.0" layoutY="-14.0" prefHeight="800.0" prefWidth="74.0" style="-fx-background-color: #131022;" AnchorPane.bottomAnchor="-170.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="-14.0">
+                <VBox fx:id="vbox2" layoutX="37.0" layoutY="-14.0" prefHeight="838.0" prefWidth="74.0" style="-fx-background-color: #131022;" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="-14.0">
 
                     <children>
                         <Pane prefHeight="170.0" prefWidth="74.0" />
@@ -248,9 +261,9 @@
 
                         </children>
                     </VBox>
-                    <AnchorPane fx:id="main_form" prefHeight="755.0" prefWidth="1244.0" visible="true">
+                    <AnchorPane fx:id="main_form" prefHeight="755.0" prefWidth="1244.0" visible="false">
                         <children>
-                            <AnchorPane fx:id="login_form" layoutX="-8.8" layoutY="-7.0" prefHeight="762.0" prefWidth="1259.0" styleClass="white-bg" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-9.0" AnchorPane.rightAnchor="-50.0" AnchorPane.topAnchor="-7.0">
+                            <AnchorPane fx:id="login_form" layoutX="-4.0" layoutY="-7.0" prefHeight="762.0" prefWidth="1252.0" styleClass="white-bg" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="-7.0">
                                 <children>
 
                                     <Label layoutX="292.0" layoutY="22.0" text="ADD a Donation" textFill="#188ba7">
@@ -271,9 +284,7 @@
                                     <ComboBox fx:id="typeFLd" layoutX="76.0" layoutY="606.0" prefHeight="38.0" prefWidth="391.0" promptText="&quot;Choisissez le type de don que vous souhaitez effectuer.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
                                     <ComboBox fx:id="groupeFLd" layoutX="77.0" layoutY="386.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez votre groupe sanguin.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
                                     <ComboBox fx:id="centreDonComboBox" layoutX="76.0" layoutY="531.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez un centre.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                                    <Button layoutX="273.0" layoutY="702.0" mnemonicParsing="false" onMouseClicked="#save" prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@page.css" text="save" />
-                                    <Button layoutX="484.0" layoutY="702.0" mnemonicParsing="false"  prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@page.css" text="Reset" />
-                                    <ImageView fitHeight="458.0" fitWidth="405.0" layoutX="524.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="465.0" fitWidth="512.0" layoutX="709.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                                         <image>
                                             <Image url="@assets/indigo-hungry-vampire-drinking-donated-blood.png" />
                                         </image>
@@ -322,11 +333,21 @@
                                             <Image url="@assets/icons8-syringe-with-a-drop-of-blood-32.png" />
                                         </image>
                                     </ImageView>
-                                    <ImageView fitHeight="47.0" fitWidth="56.0" layoutX="869.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="47.0" fitWidth="56.0" layoutX="1198.0" layoutY="8.0" onMouseClicked="#handleBack" pickOnBounds="true" preserveRatio="true">
                                         <image>
                                             <Image url="@assets/icons8-back-64.png" />
                                         </image>
                                     </ImageView>
+                           <ImageView fitHeight="124.0" fitWidth="134.0" layoutX="589.0" layoutY="507.0" onMouseClicked="#save" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@assets/icons8-plus-math-50.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="102.0" fitWidth="111.0" layoutX="775.0" layoutY="507.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@assets/icons8-clean-50.png" />
+                              </image>
+                           </ImageView>
 
                                 </children>
                             </AnchorPane>
@@ -556,16 +577,15 @@
                     </HBox>
 
                 </AnchorPane>
-                <ImageView fitHeight="86.0" fitWidth="238.0" layoutX="111.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="147.0" fitWidth="149.0" layoutX="114.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@/assets/tfarhida.png" />
+                        <Image url="@assets/social-doctor-doing-a-health-check-up.gif" />
                     </image>
                 </ImageView>
             </children>
         </AnchorPane>
-      <HBox fx:id="hh" layoutX="89.0" layoutY="129.0" prefHeight="631.0" prefWidth="1099.0" visible="false">
-
-          <VBox alignment="CENTER" prefHeight="381.0" prefWidth="1100.0" spacing="10" stylesheets="DonView.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+      <HBox fx:id="hh" layoutX="89.0" layoutY="129.0" prefHeight="631.0" prefWidth="1099.0" visible="true">
+          <VBox alignment="CENTER" prefHeight="700.0" prefWidth="1100.0" spacing="10" stylesheets="DonView.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
               <children>
                   <!-- Ajout d'un titre -->
                   <Label styleClass="Titre" text="Explorez les dons" />
@@ -573,17 +593,170 @@
                   <Hyperlink fx:id="addDonLink" styleClass="hyperlink" text="Ajouter Don" />
                   <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" styleClass="scroll-pane">
                       <content>
-                          <TilePane fx:id="cardsContainer" hgap="10" prefColumns="4" prefHeight="581.0" prefWidth="1098.0" styleClass="tile-pane" vgap="10">
+                          <TilePane fx:id="cardsContainer" hgap="10" prefColumns="4" prefHeight="620.0" prefWidth="1141.0" styleClass="tile-pane" vgap="10">
                               <padding>
                                   <Insets bottom="10" left="10" right="10" top="10" />
                               </padding>
                               <!-- Les cartes seront ajoutées ici dynamiquement -->
+                              <HBox spacing="10" />
                           </TilePane>
                       </content>
                   </ScrollPane>
               </children>
           </VBox>
       </HBox>
-    </children>
+        <AnchorPane fx:id="vbox" layoutX="74.0" layoutY="76.0" prefHeight="762.0" prefWidth="1372.0" visible="false">
+            <children>
+                <Label fx:id="dernier" layoutX="80.0" layoutY="257.0" prefHeight="35.0" prefWidth="504.0" styleClass="label" text="𝗗𝗮𝘁𝗲 𝗗𝗲 𝗗𝗲𝗿𝗻𝗶𝗲𝗿 𝗗𝗼𝗻𝗮𝘁𝗶𝗼𝗻:">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="cinn" layoutX="80.0" layoutY="163.0" prefHeight="44.0" prefWidth="504.0" styleClass="label" text="𝙑𝙤𝙩𝙧𝙚 𝘾𝙄𝙉:">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label> <!-- Titre centré -->
+                <Label fx:id="genre" layoutX="80.0" layoutY="207.0" prefHeight="44.0" prefWidth="504.0" styleClass="label" text="𝙂𝙚𝙣𝙧𝙚:">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <HBox alignment="TOP_LEFT" />
+                <ImageView fitHeight="498.0" fitWidth="450.0" layoutX="587.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/techny-patient-card-and-tests.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="52.0" fitWidth="74.0" layoutX="1178.0" layoutY="30.0" onMouseClicked="#handleBack" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/icons8-return-32.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="prochaine" layoutX="80.0" layoutY="307.0" prefHeight="35.0" prefWidth="504.0" styleClass="label" text="𝗗𝗮𝘁𝗲 𝗗𝗲 𝗣𝗿𝗼𝗰𝗵𝗮𝗶𝗻𝗲𝗗𝗼𝗻𝗮𝘁𝗶𝗼𝗻:">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="groupe" layoutX="80.0" layoutY="352.0" prefHeight="35.0" prefWidth="504.0" styleClass="label" text="𝗚𝗿𝗼𝘂𝗽𝗲 𝗦𝗮𝗻𝗴𝘂𝗶𝗻:">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="etat" layoutX="80.0" layoutY="401.0" prefHeight="35.0" prefWidth="504.0" styleClass="label" text="𝗘𝘁𝗮𝘁 𝗠𝗮𝗿𝗶𝘁𝗮𝗹:">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="typedon" layoutX="80.0" layoutY="458.0" prefHeight="35.0" prefWidth="504.0" styleClass="label" text="𝗧𝘆𝗽𝗲 𝗗𝗲 𝗗𝗼𝗻:">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="centre" layoutX="80.0" layoutY="507.0" prefHeight="35.0" prefWidth="504.0" styleClass="label" text="𝗖𝗲𝗻𝘁𝗿𝗲 𝗗𝗲 𝗗𝗼𝗻:">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <ImageView fx:id="updateButton" fitHeight="77.0" fitWidth="108.0" layoutX="716.0" layoutY="550.0" onMouseClicked="#handleUpdateButtonClick" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/icons8-pen-64.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="deleteDon" fitHeight="77.0" fitWidth="108.0" layoutX="833.0" layoutY="543.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/icons8-delete-64.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+          <AnchorPane fx:id="modif" layoutX="75.2" layoutY="82.4" prefHeight="762.0" prefWidth="1252.0" styleClass="white-bg" visible="false" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="82.0" >
+              <children>
 
+                  <Label layoutX="292.0" layoutY="22.0" text="update a Donation" textFill="#188ba7">
+                      <font>
+                          <Font name="Bauhaus 93" size="35.0" />
+                      </font>
+                      <HBox.margin>
+                          <Insets left="30.0" top="-60.0" />
+                      </HBox.margin>
+                  </Label>
+
+                  <HBox alignment="CENTER" layoutX="143.0" layoutY="476.0" prefHeight="56.0" prefWidth="0.0" />
+                  <TextField fx:id="CIN" layoutX="77.0" layoutY="84.0" prefHeight="37.0" prefWidth="391.0" promptText="Entrez votre numéro d'identification nationale." styleClass="textfield-1" stylesheets="@page.css" />
+                  <ComboBox fx:id="GENRE" layoutX="76.0" layoutY="311.0" prefHeight="40.0" prefWidth="391.0" promptText="&quot;Sélectionnez votre genre&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                  <ComboBox fx:id="ETAT" layoutX="76.0" layoutY="456.0" prefHeight="40.0" prefWidth="391.0" promptText="&quot;Choisissez votre état matrimonial&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                  <DatePicker fx:id="DATEDER" layoutX="77.0" layoutY="160.0" prefHeight="38.0" prefWidth="391.0" promptText="Sélectionnez la date de votre dernier don." styleClass="datepicker-1" stylesheets="@page.css" />
+                  <DatePicker fx:id="DATEPRO" layoutX="77.0" layoutY="231.0" prefHeight="40.0" prefWidth="391.0" promptText="Sélectionnez la date de votre prochain don." styleClass="datepicker-1" stylesheets="@page.css" />
+                  <ComboBox fx:id="TYPEDON" layoutX="76.0" layoutY="606.0" prefHeight="38.0" prefWidth="391.0" promptText="&quot;Choisissez le type de don que vous souhaitez effectuer.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                  <ComboBox fx:id="GROUPE" layoutX="77.0" layoutY="386.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez votre groupe sanguin.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                  <ComboBox fx:id="CENTRE" layoutX="76.0" layoutY="531.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez un centre.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                  <ImageView fitHeight="458.0" fitWidth="405.0" layoutX="524.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@assets/indigo-hungry-vampire-drinking-donated-blood.png" />
+                      </image>
+                  </ImageView>
+                  <ImageView fitHeight="29.0" fitWidth="39.0" layoutX="159.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="29.0" fitWidth="39.0" layoutX="159.0" layoutY="391.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="37.0" fitWidth="39.0" layoutX="172.0" layoutY="457.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="37.0" fitWidth="39.0" layoutX="172.0" layoutY="532.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="47.0" fitWidth="56.0" layoutX="18.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@assets/icons8-identification-documents-80.png" />
+                      </image>
+                  </ImageView>
+                  <ImageView fitHeight="47.0" fitWidth="56.0" layoutX="19.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@assets/icons8-date-50 (1).png" />
+                      </image>
+                  </ImageView>
+                  <ImageView fitHeight="47.0" fitWidth="56.0" layoutX="19.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@assets/icons8-date-50 (1).png" />
+                      </image>
+                  </ImageView>
+                  <ImageView fitHeight="47.0" fitWidth="56.0" layoutX="18.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@assets/icons8-sex-80.png" />
+                      </image>
+                  </ImageView>
+                  <ImageView fitHeight="47.0" fitWidth="56.0" layoutX="19.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@assets/icons8-rh--80.png" />
+                      </image>
+                  </ImageView>
+                  <ImageView fitHeight="47.0" fitWidth="56.0" layoutX="19.0" layoutY="453.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@assets/icons8-diamond-ring-64.png" />
+                      </image>
+                  </ImageView>
+                  <ImageView fitHeight="47.0" fitWidth="56.0" layoutX="19.0" layoutY="527.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@assets/icons8-city-50.png" />
+                      </image>
+                  </ImageView>
+                  <ImageView fitHeight="47.0" fitWidth="56.0" layoutX="18.0" layoutY="602.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@assets/icons8-syringe-with-a-drop-of-blood-32.png" />
+                      </image>
+                  </ImageView>
+                  <ImageView fitHeight="47.0" fitWidth="56.0" layoutX="869.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@assets/icons8-back-64.png" />
+                      </image>
+                  </ImageView>
+                  <ImageView fitHeight="102.0" fitWidth="119.0" layoutX="558.0" layoutY="445.0" onMouseClicked="#update" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@assets/icons8-form-68.png" />
+                      </image>
+                  </ImageView>
+                  <ImageView fitHeight="102.0" fitWidth="119.0" layoutX="676.0" layoutY="449.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@assets/icons8-clean-50.png" />
+                      </image>
+                  </ImageView>
+
+              </children>
+          </AnchorPane>
+    </children>
 </AnchorPane>

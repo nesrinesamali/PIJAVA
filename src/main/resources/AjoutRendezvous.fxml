@@ -5,112 +5,68 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="385.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cotrollers.AjoutRendezvous">
+<AnchorPane prefHeight="541.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cotrollers.AjoutRendezvous">
    <stylesheets>
 
    </stylesheets>
    <children>
-      <ImageView fitHeight="389.0" fitWidth="176.0" layoutX="-24.0" layoutY="35.2" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="1.0" AnchorPane.topAnchor="35.0">
+      <Label fx:id="nompatientErrorLabel" textFill="red" />
+      <TextField fx:id="nompatient" alignment="TOP_LEFT" blendMode="SRC_ATOP" layoutX="87.0" layoutY="115.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="254.0" promptText="Nom Patient " style="-fx-background-radius: 100;" styleClass="-fx-background-radius">
+         <opaqueInsets>
+            <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+         </opaqueInsets>
+         <font>
+            <Font name="Cambria Math" size="14.0" />
+         </font>
+      </TextField>
+      <Button layoutX="382.0" layoutY="467.0" mnemonicParsing="false" onAction="#show" prefHeight="35.0" prefWidth="130.0" style="-fx-background-radius: 100; -fx-background-color: #FFA500;" text="Afficher " />
+      <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="246.0" layoutY="469.0" mnemonicParsing="false" onAction="#AjoutRendezvous" prefHeight="32.0" prefWidth="130.0" style="-fx-background-color: #87CEEB; -fx-background-radius: 100;" styleClass="#00008B" text="Réserver" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" />
+      <TextField fx:id="nommedecin" layoutX="85.0" layoutY="189.0" prefHeight="42.0" prefWidth="254.0" promptText="Nom Médecin" style="-fx-background-radius: 100;">
+         <font>
+            <Font name="Andalus" size="13.0" />
+         </font>
+      </TextField>
+      <DatePicker fx:id="date" layoutX="85.0" layoutY="278.0" prefHeight="42.0" prefWidth="254.0" promptText="Veuillez choisir une date" />
+      <TextField fx:id="heure" layoutX="87.0" layoutY="364.0" prefHeight="42.0" prefWidth="254.0" promptText="Veuillez entrer une heure" style="-fx-background-radius: 100;" />
+      <ImageView fitHeight="65.0" fitWidth="60.0" layoutX="14.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@00000000000.jpg" />
+            <Image url="@/icons8-name-100.png" />
          </image>
       </ImageView>
-      <VBox alignment="TOP_CENTER" prefHeight="415.0" prefWidth="603.0">
-         <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <ToolBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="36.0" prefWidth="688.0" style="-fx-background-color: #001F3F;">
-                     <opaqueInsets>
-                        <Insets top="10.0" />
-                     </opaqueInsets></ToolBar>
-               </children>
-            </HBox>
-            <HBox prefHeight="146.0" prefWidth="606.0">
-               <children>
-                  <Text fill="#ecdc9f" lineSpacing="5.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" text="Réserver votre rendez-vous" textAlignment="CENTER" wrappingWidth="449.9527587890625">
-
-                     <TextField fx:id="pictureTF" prefHeight="26.0" prefWidth="178.0" styleClass="textFieldGreen" />
-                     <font>
-                        <Font name="Impact" size="40.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets bottom="20.0" left="140.0" right="20.0" top="5.0" />
-                     </HBox.margin>
-                  </Text>
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <TextField fx:id="nompatient" alignment="TOP_LEFT" blendMode="SRC_ATOP" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="250.0" promptText="Nom Patient " style="-fx-background-radius: 100;" styleClass="-fx-background-radius">
-                     <opaqueInsets>
-                        <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
-                     </opaqueInsets>
-                     <font>
-                        <Font name="Cambria Math" size="14.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="200.0" />
-                     </HBox.margin></TextField>
-                  <Label fx:id="nompatientErrorLabel" textFill="red" />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <TextField fx:id="nommedecin" prefHeight="30.0" prefWidth="254.0" promptText="Nom Médecin" style="-fx-background-radius: 100;">
-                     <font>
-                        <Font name="Andalus" size="13.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="200.0" />
-                     </HBox.margin></TextField>
-                  <Label fx:id="nommedecinErrorLabel" textFill="red" />
-               </children>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <DatePicker fx:id="date" prefHeight="26.0" prefWidth="253.0" promptText="Veuillez choisir une date">
-                     <HBox.margin>
-                        <Insets left="200.0" />
-                     </HBox.margin>
-                  </DatePicker>
-                  <Label fx:id="dateErrorLabel" textFill="red" />
-               </children>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <TextField fx:id="heure" prefHeight="26.0" prefWidth="257.0" promptText="Veuillez entrer une heure" style="-fx-background-radius: 100;">
-                     <HBox.margin>
-                        <Insets left="200.0" />
-                     </HBox.margin></TextField>
-                  <Label fx:id="heureErrorLabel" textFill="red" />
-               </children>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="10.0" prefHeight="162.0" prefWidth="553.0">
-               <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" mnemonicParsing="false" onAction="#AjoutRendezvous" prefHeight="32.0" prefWidth="130.0" style="-fx-background-color: #87CEEB; -fx-background-radius: 100;" styleClass="#00008B" text="Réserver" textAlignment="CENTER" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS">
-                     <HBox.margin>
-                        <Insets bottom="20.0" left="300.0" right="20.0" top="40.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#show" prefHeight="35.0" prefWidth="130.0" style="-fx-background-radius: 100; -fx-background-color: #FFA500;" text="Afficher ">
-                     <HBox.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="40.0" />
-                     </HBox.margin>
-                  </Button>
-               </children></HBox>
-
-         </children>
-      </VBox>
-      <HBox alignment="TOP_CENTER" layoutX="1.0" layoutY="281.0" prefHeight="58.0" prefWidth="602.0" />
+      <ImageView fitHeight="51.0" fitWidth="60.0" layoutX="19.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/icons8-medical-doctor-50.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="51.0" layoutX="19.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/icons8-date-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="51.0" fitWidth="60.0" layoutX="19.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/icons8-02_00-50.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="389.0" fitWidth="331.0" layoutX="377.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/beam-online-medical-consultation.gif" />
+         </image>
+      </ImageView>
+      <Text fill="#5689ff" layoutX="32.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="𝓡é𝓼𝓮𝓻𝓿𝓮𝓻 𝓿𝓸𝓽𝓻𝓮 𝓡𝓮𝓷𝓭𝓮𝔃-𝓿𝓸𝓾𝓼" wrappingWidth="459.8629150390625">
+         <font>
+            <Font name="Impact" size="24.0" />
+         </font></Text>
+      <Label fx:id="nompatientErrorLabel" layoutX="90.0" layoutY="155.0" prefHeight="18.0" prefWidth="214.0" />
+      <Label fx:id="nommedecinErrorLabel" layoutX="90.0" layoutY="244.0" prefHeight="18.0" prefWidth="214.0" />
+      <Label fx:id="dateErrorLabel" layoutX="90.0" layoutY="331.0" prefHeight="18.0" prefWidth="214.0" />
+      <Label fx:id="heureErrorLabel" layoutX="96.0" layoutY="421.0" prefHeight="18.0" prefWidth="214.0" />
 
    </children>
 </AnchorPane>

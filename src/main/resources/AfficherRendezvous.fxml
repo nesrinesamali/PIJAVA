@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane prefHeight="450.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="">
+<ScrollPane prefHeight="450.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cotrollers.AfficherRendezvous">
     <content>
         <AnchorPane prefHeight="443.0" prefWidth="990.0">
             <children>
@@ -20,7 +20,7 @@
                         <TableColumn fx:id="date" prefWidth="98.4000244140625" text="Date" />
                         <TableColumn fx:id="heure" minWidth="0.0" prefWidth="92.80007934570312" text="Heure " />
                   <TableColumn fx:id="action" prefWidth="140.00006103515625" text="action" />
-                  <TableColumn prefWidth="113.5999755859375" text="Etat" />
+                  <TableColumn fx:id="etat" prefWidth="113.5999755859375" text="Etat" />
 
                     </columns>
                 </TableView>

@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -117,21 +118,33 @@ public class AjoutRendezvous implements Initializable {
                 return; // Arrêter l'ajout du rendez-vous
             }
         }
-        // Charger le fichier CSS
-        String css = getClass().getResource("/controllers/alert-styles.css").toExternalForm();
 
-// Créer une nouvelle alerte
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Erreur de saisie");
-        alert.setHeaderText("Impossible d'ajouter le rendez-vous");
-        alert.setContentText("Il doit y avoir une séparation d'une heure entre les rendez-vous pour la même date.");
+
 
 // Appliquer les styles CSS à l'alerte
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(css);
+        // Charger le fichier CSS
+        String cssPath = "/alert-styles.css";
+        URL cssResource = getClass().getResource(cssPath);
+        if (cssResource != null) {
+            String css = cssResource.toExternalForm();
+// Créer une nouvelle alerte
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur de saisie");
+            alert.setHeaderText("Impossible d'ajouter le rendez-vous");
+            alert.setContentText("Il doit y avoir une séparation d'une heure entre les rendez-vous pour la même date.");
+            DialogPane dialogPane = alert.getDialogPane();
+            dialogPane.getStylesheets().add(cssPath);
+            alert.showAndWait();
+            // Continue with loading the CSS file and configuring the Alert
+            // ...
+        } else {
+            // Handle case where the CSS resource is not found
+            System.err.println("CSS resource not found: " + cssPath);
+        }
+
 
 // Afficher l'alerte
-        alert.showAndWait();
+
 
 
         // Si la validation réussit, créer le nouvel objet Rendezvous et l'ajouter
@@ -192,6 +205,7 @@ public class AjoutRendezvous implements Initializable {
             alert.showAndWait();
         }
     }
+
     @FXML
     private TextField pictureTF;
 

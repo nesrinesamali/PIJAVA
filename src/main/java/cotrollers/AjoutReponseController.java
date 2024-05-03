@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import models.Rendezvous;
 import models.Reponse;
+import services.EmailSenderApp;
 import services.RendezvousService;
 import services.ReponseService;
 
@@ -67,6 +68,7 @@ public class AjoutReponseController {
         } else {
             System.out.println("AfficheReponseController reference is not set.");
         }
+        EmailSenderApp.sendEmail("samali.nesryne@esprit.tn","réponse envoyé", response.getDescription());
 
     }
 

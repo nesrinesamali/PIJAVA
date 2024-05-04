@@ -81,7 +81,7 @@ public class AfficherRendezvous implements Initializable {
                         date.setCellValueFactory(new PropertyValueFactory<>("date"));
                         heure.setCellValueFactory(new PropertyValueFactory<>("heure"));
                         etat.setCellValueFactory(new PropertyValueFactory<>("etat"));
-
+                        action.setPrefWidth(300);
                         // Add action buttons column
                         TableColumn<Rendezvous, Void> actionsColumn = new TableColumn<>("Actions");
                         actionsColumn.setCellFactory(param -> new TableCell<>() {
@@ -89,7 +89,7 @@ public class AfficherRendezvous implements Initializable {
                                 private final FontAwesomeIconView updateButton = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
                                 private final FontAwesomeIconView payIcon = new FontAwesomeIconView(FontAwesomeIcon.MONEY);
                                 private final FontAwesomeIconView showIcon = new FontAwesomeIconView(FontAwesomeIcon.EYE);
-                                private final Button pdfButton = new Button("PDF");
+                                private final FontAwesomeIconView pdfButton = new FontAwesomeIconView(FontAwesomeIcon.FILE_PDF_ALT);
 
                                 {
                                         deleteButton.setOnMouseClicked(event -> {
@@ -149,7 +149,7 @@ public class AfficherRendezvous implements Initializable {
                                                 showRendezvousDetails(rendezvous);
                                         });
 
-                                        pdfButton.setOnAction(event -> {
+                                        pdfButton.setOnMouseClicked(event -> {
                                                 try {
                                                         generatePDF();
                                                 } catch (IOException | DocumentException e) {
@@ -169,10 +169,13 @@ public class AfficherRendezvous implements Initializable {
                                                 setGraphic(buttons);
 
                                                 // Styling
-                                                updateButton.setStyle("-fx-cursor: hand ; -glyph-size:28px; -fx-fill:#ff1744;");
-                                                deleteButton.setStyle("-fx-cursor: hand ; -glyph-size:28px; -fx-fill:#00E676;");
-                                                payIcon.setStyle("-fx-cursor: hand ; -glyph-size:28px; -fx-fill:#2196F3;");
-                                                showIcon.setStyle("-fx-cursor: hand ; -glyph-size:28px; -fx-fill:#9C27B0;");
+                                                updateButton.setStyle("-fx-cursor: hand ; -glyph-size:20px; -fx-fill:#ff1744;");
+                                                deleteButton.setStyle("-fx-cursor: hand ; -glyph-size:20px; -fx-fill:#00E676;");
+                                                payIcon.setStyle("-fx-cursor: hand ; -glyph-size:20px; -fx-fill:#2196F3;");
+                                                showIcon.setStyle("-fx-cursor: hand ; -glyph-size:20px; -fx-fill:#9C27B0;");
+                                                pdfButton.setStyle("-fx-cursor: hand ; -glyph-size:20px; -fx-fill:#9C27B0;");
+                                               // Définir la largeur de la colonne à 120 pixels (ajustez selon vos besoins)
+
                                         }
                                 }
                         });

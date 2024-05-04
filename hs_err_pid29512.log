@@ -1,0 +1,243 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 132120576 bytes for G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_windows.cpp:3825), pid=29512, tid=20632
+#
+# JRE version:  (17.0.9+8) (build )
+# Java VM: OpenJDK 64-Bit Server VM (17.0.9+8-b1166.2, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: --module-path=C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-base\21.0.2\javafx-base-21.0.2-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-base\21.0.2\javafx-base-21.0.2.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-controls\21.0.2\javafx-controls-21.0.2-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-controls\21.0.2\javafx-controls-21.0.2.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-fxml\21.0.2\javafx-fxml-21.0.2-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-fxml\21.0.2\javafx-fxml-21.0.2.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-graphics\21.0.2\javafx-graphics-21.0.2-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-graphics\21.0.2\javafx-graphics-21.0.2.jar --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics test.MainFX
+
+Host: Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz, 8 cores, 7G,  Windows 10 , 64 bit Build 19041 (10.0.19041.3636)
+Time: Sat May  4 00:42:06 2024 Paris, Madrid (heure duild 19041 (10.0.19041.3636) elapsed time: 0.009084 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000019f391408a0):  JavaThread "Unknown thread" [_thread_in_vm, id=20632, stack(0x0000004932600000,0x0000004932700000)]
+
+Stack: [0x0000004932600000,0x0000004932700000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x688349]  os::platform_print_native_stack+0xd9  (os_windows_x86.cpp:235)
+V  [jvm.dll+0x841bfa]  VMError::report+0xc6a  (vmError.cpp:855)
+V  [jvm.dll+0x84383e]  VMError::report_and_die+0x78e  (vmError.cpp:1749)
+V  [jvm.dll+0x843ea3]  VMError::report_and_die+0x43  (vmError.cpp:1535)
+V  [jvm.dll+0x24bdef]  report_vm_out_of_memory+0x8f  (debug.cpp:321)
+V  [jvm.dll+0x6850f9]  os::pd_commit_memory_or_exit+0xc9  (os_windows.cpp:3833)
+V  [jvm.dll+0x67988a]  os::commit_memory_or_exit+0x2a  (os.cpp:1739)
+V  [jvm.dll+0x30cbfb]  G1PageBasedVirtualSpace::commit+0x19b  (g1PageBasedVirtualSpace.cpp:204)
+V  [jvm.dll+0x3140a6]  G1RegionsLargerThanCommitSizeMapper::commit_regions+0x96  (g1RegionToSpaceMapper.cpp:100)
+V  [jvm.dll+0x363ede]  HeapRegionManager::expand_any+0xee  (heapRegionManager.cpp:363)
+V  [jvm.dll+0x36410f]  HeapRegionManager::expand_by+0x7f  (heapRegionManager.cpp:380)
+V  [jvm.dll+0x2e29c8]  G1CollectedHeap::expand+0xb8  (g1CollectedHeap.cpp:1298)
+V  [jvm.dll+0x2e3934]  G1CollectedHeap::initialize+0x664  (g1CollectedHeap.cpp:1719)
+V  [jvm.dll+0x812771]  universe_init+0xb1  (universe.cpp:736)
+V  [jvm.dll+0x371d41]  init_globals+0x31  (init.cpp:124)
+V  [jvm.dll+0x7f12bc]  Threads::create_vm+0x60c  (thread.cpp:2909)
+V  [jvm.dll+0x3f59cf]  JNI_CreateJavaVM_inner+0x8f  (jni.cpp:3635)
+V  [jvm.dll+0x3f7601]  JNI_CreateJavaVM+0x11  (jni.cpp:3727)
+C  [jli.dll+0x528f]  JavaMain+0x113  (java.c:413)
+C  [ucrtbase.dll+0x21bb2]
+C  [KERNEL32.DLL+0x17344]
+C  [ntdll.dll+0x526b1]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ff8c5d3df18, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x0000019f3919af50 GCTaskThread "GC Thread#0" [stack: 0x0000004932700000,0x0000004932800000] [id=13328]
+  0x0000019f391aba70 ConcurrentGCThread "G1 Main Marker" [stack: 0x0000004932800000,0x0000004932900000] [id=30116]
+  0x0000019f391acc30 ConcurrentGCThread "G1 Conc#0" [stack: 0x0000004932900000,0x0000004932a00000] [id=19432]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ff8c54f3597]
+
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x0000019f3913b4f0] Heap_lock - owner thread: 0x0000019f391408a0
+
+Heap address: 0x0000000082800000, size: 2008 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 1.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+<Empty>
+
+Heap:
+ garbage-first heap   total 0K, used 0K [0x0000000082800000, 0x0000000100000000)
+  region size 1024K, 0 young (0K), 0 survivors (0K)
+ Metaspace       used 0K, committed 0K, reserved 0K
+  class space    used 0K, committed 0K, reserved 0K
+
+Heap Regions: E=young(eden), S=young(survivor), O=old, HS=humongous(starts), HC=humongous(continues), CS=collection set, F=free, OA=open archive, CA=closed archive, TAMS=top-at-mark-start (previous, next)
+
+Card table byte_map: [0x0000019f4c020000,0x0000019f4c410000] _byte_map_base: 0x0000019f4bc0c000
+
+Marking Bits (Prev, Next): (CMBitMap*) 0x0000019f3919b570, (CMBitMap*) 0x0000019f3919b5b0
+ Prev Bits: [0x0000019f4c800000, 0x0000019f4e760000)
+ Next Bits: [0x0000019f4e760000, 0x0000019f506c0000)
+
+GC Heap History (0 events):
+No events
+
+Dll operation events (1 events):
+Event: 0.005 Loaded shared library C:\Users\Lenovo\.jdks\jbr-17.0.9\bin\java.dll
+
+Deoptimization events (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff7a1fd0000 - 0x00007ff7a1fda000 	C:\Users\Lenovo\.jdks\jbr-17.0.9\bin\java.exe
+0x00007ff933ab0000 - 0x00007ff933ca8000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ff924df0000 - 0x00007ff924e09000 	C:\Program Files\Avast Software\Avast\aswhook.dll
+0x00007ff933730000 - 0x00007ff9337ed000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ff9315a0000 - 0x00007ff931896000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ff931160000 - 0x00007ff931260000 	C:\Windows\System32\ucrtbase.dll
+0x00007ff926ba0000 - 0x00007ff926bbb000 	C:\Users\Lenovo\.jdks\jbr-17.0.9\bin\VCRUNTIME140.dll
+0x00007ff92b690000 - 0x00007ff92b6a7000 	C:\Users\Lenovo\.jdks\jbr-17.0.9\bin\jli.dll
+0x00007ff932400000 - 0x00007ff93259f000 	C:\Windows\System32\USER32.dll
+0x00007ff9313b0000 - 0x00007ff9313d2000 	C:\Windows\System32\win32u.dll
+0x00007ff90efe0000 - 0x00007ff90f27a000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.3636_none_60b6a03d71f818d5\COMCTL32.dll
+0x00007ff932ef0000 - 0x00007ff932f1b000 	C:\Windows\System32\GDI32.dll
+0x00007ff932f20000 - 0x00007ff932fbe000 	C:\Windows\System32\msvcrt.dll
+0x00007ff931260000 - 0x00007ff931377000 	C:\Windows\System32\gdi32full.dll
+0x00007ff931450000 - 0x00007ff9314ed000 	C:\Windows\System32\msvcp_win.dll
+0x00007ff931ea0000 - 0x00007ff931ed2000 	C:\Windows\System32\IMM32.DLL
+0x00007ff92e4e0000 - 0x00007ff92e4ec000 	C:\Users\Lenovo\.jdks\jbr-17.0.9\bin\vcruntime140_1.dll
+0x00007ff914bb0000 - 0x00007ff914c3d000 	C:\Users\Lenovo\.jdks\jbr-17.0.9\bin\msvcp140.dll
+0x00007ff8c5200000 - 0x00007ff8c5e82000 	C:\Users\Lenovo\.jdks\jbr-17.0.9\bin\server\jvm.dll
+0x00007ff932650000 - 0x00007ff932700000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ff932df0000 - 0x00007ff932e90000 	C:\Windows\System32\sechost.dll
+0x00007ff9327d0000 - 0x00007ff9328f3000 	C:\Windows\System32\RPCRT4.dll
+0x00007ff931380000 - 0x00007ff9313a7000 	C:\Windows\System32\bcrypt.dll
+0x00007ff913ce0000 - 0x00007ff913d07000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ff92a9a0000 - 0x00007ff92a9aa000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ff91d060000 - 0x00007ff91d069000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ff9306f0000 - 0x00007ff93073b000 	C:\Windows\SYSTEM32\POWRPROF.dll
+0x00007ff932d80000 - 0x00007ff932deb000 	C:\Windows\System32\WS2_32.dll
+0x00007ff930560000 - 0x00007ff930572000 	C:\Windows\SYSTEM32\UMPDC.dll
+0x00007ff92f980000 - 0x00007ff92f992000 	C:\Windows\SYSTEM32\kernel.appcore.dll
+0x00007ff929b00000 - 0x00007ff929b0a000 	C:\Users\Lenovo\.jdks\jbr-17.0.9\bin\jimage.dll
+0x00007ff92eef0000 - 0x00007ff92f0d4000 	C:\Windows\SYSTEM32\DBGHELP.DLL
+0x00007ff927d10000 - 0x00007ff927d44000 	C:\Windows\SYSTEM32\dbgcore.DLL
+0x00007ff9318a0000 - 0x00007ff931922000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007ff918b50000 - 0x00007ff918b75000 	C:\Users\Lenovo\.jdks\jbr-17.0.9\bin\java.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Users\Lenovo\.jdks\jbr-17.0.9\bin;C:\Windows\SYSTEM32;C:\Program Files\Avast Software\Avast;C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.3636_none_60b6a03d71f818d5;C:\Users\Lenovo\.jdks\jbr-17.0.9\bin\server
+
+VM Arguments:
+jvm_args: --module-path=C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-base\21.0.2\javafx-base-21.0.2-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-base\21.0.2\javafx-base-21.0.2.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-controls\21.0.2\javafx-controls-21.0.2-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-controls\21.0.2\javafx-controls-21.0.2.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-fxml\21.0.2\javafx-fxml-21.0.2-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-fxml\21.0.2\javafx-fxml-21.0.2.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-graphics\21.0.2\javafx-graphics-21.0.2-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-graphics\21.0.2\javafx-graphics-21.0.2.jar --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics 
+java_command: test.MainFX
+java_class_path (initial): C:\Users\Lenovo\Desktop\java\PIJAVA\target\classes;C:\Users\Lenovo\.m2\repository\com\beust\jcommander\1.78\jcommander-1.78.jar;C:\Users\Lenovo\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\Lenovo\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.12.5\jackson-annotations-2.12.5.jar;C:\Users\Lenovo\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.12.5\jackson-core-2.12.5.jar;C:\Users\Lenovo\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.12.5\jackson-databind-2.12.5.jar;C:\Users\Lenovo\.m2\repository\com\fasterxml\jackson\dataformat\jackson-dataformat-xml\2.12.5\jackson-dataformat-xml-2.12.5.jar;C:\Users\Lenovo\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.12.5\jackson-datatype-jsr310-2.12.5.jar;C:\Users\Lenovo\.m2\repository\com\fasterxml\jackson\module\jackson-module-jaxb-annotations\2.12.5\jackson-module-jaxb-annotations-2.12.5.jar;C:\Users\Lenovo\.m2\repository\com\fasterxml\woodstox\woodstox-core\6.2.4\woodstox-core-6.2.4.jar;C:\Users\Lenovo\.m2\repository\com\github\jai-imageio\jai-imageio-core\1.4.0\jai-imageio-core-1.4.0.jar;C:\Users\Lenovo\.m2\repository\com\google\code\gson\gson\2.10.1\gson-2.10.1.jar;C:\Users\Lenovo\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\Lenovo\.m2\repository\com\google\zxing\core\3.4.1\core-3.4.1.jar;C:\Users\Lenovo\.m2\repository\com\google\zxing\javase\3.4.1\javase-3.4.1.jar;C:\Users\Lenovo\.m2\repository\com\itextpdf\itextpdf\5.5.13\itextpdf-5.5.13.jar;C:\Users\Lenovo\.m2\repository\com\mysql\mysql-connector-j\8.2.0\mysql-connector-j-8.2.0.jar;C:\Users\Lenovo\.m2\repository\com\stripe\stripe-java\24.18.0-beta.1\stripe-java-24.18.0-beta.1.jar;C:\Users\Lenovo\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.1\istack-commons-runtime-4.1.1.jar;C:\Users\Lenovo\.m2\repository\com\sun\mail\javax.mail\1.6.2\javax.mail-1.6.2.jar;C:\Users\Lenovo\.m2\repository\com\twilio\
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 132120576                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 2105540608                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5839372                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122909434                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122909434                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 2105540608                             {manageable} {ergonomic}
+     bool UseCompressedClassPointers               = true                           {product lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=C:\oraclexe\app\oracle\product\10.2.0\server\bin;C:\Program Files (x86)\VMware\VMware Player\bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\xampp\php;C:\Program Files\Git\cmd;C:\composer;C:\Users\Lenovo\AppData\Local\Programs\Python\Launcher\;C:\Users\Lenovo\scoop\shims;C:\Users\Lenovo\AppData\Local\Microsoft\WindowsApps;C:\Microsoft VS Code\bin;C:\Users\Lenovo\AppData\Roaming\Composer\vendor\bin;C:\Flex Windows\gcc\bin;C:\Flex Windows\Lex\bin;C:\Flex Windows\bison\bin
+USERNAME=Lenovo
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 142 Stepping 12, GenuineIntel
+TMP=C:\Users\Lenovo\AppData\Local\Temp
+TEMP=C:\Users\Lenovo\AppData\Local\Temp
+
+
+
+Periodic native trim disabled
+
+JNI global refs:
+JNI global refs: 0, weak refs: 0
+
+JNI global refs memory usage: 0, weak refs: 0
+
+OOME stack traces (most recent first):
+Classloader memory used:
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 10 , 64 bit Build 19041 (10.0.19041.3636)
+OS uptime: 2 days 8:04 hours
+
+CPU: total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 142 stepping 12 microcode 0xde, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, fma, vzeroupper, clflush, clflushopt
+Processor Information for all 8 processors :
+  Max Mhz: 2112, Current Mhz: 1609, Mhz Limit: 1605
+
+Memory: 4k page, system-wide physical 8027M (678M free)
+TotalPageFile size 32603M (AvailPageFile size 115M)
+current process WorkingSet (physical memory assigned to process): 37M, peak: 37M
+current process commit charge ("private bytes"): 86M, peak: 186M
+
+vm_info: OpenJDK 64-Bit Server VM (17.0.9+8-b1166.2) for windows-amd64 JRE (17.0.9+8-b1166.2), built on 2024-01-13 by "builduser" with MS VC++ 16.10 / 16.11 (VS2019)
+
+END.

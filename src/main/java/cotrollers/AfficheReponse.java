@@ -143,9 +143,12 @@ public class AfficheReponse implements Initializable {
             });
 
             tv.getColumns().add(actionsColumn);
+            searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+                filterData(newValue);
+            });
 
             // Gestion de l'événement de clic sur le bouton de recherche
-            searchButton.setOnAction(event -> search());
+            //searchButton.setOnAction(event -> search());
 
             // Configurer la pagination
             pagination.setPageFactory(this::createPage);
@@ -160,21 +163,39 @@ public class AfficheReponse implements Initializable {
         generatePDF();
     }
 
-    private void search() {
-        String searchText = searchField.getText().toLowerCase();
-
-        // Filtrer la liste des rendez-vous en fonction du texte de recherche
-        ObservableList<Rendezvous> filteredList = observableList.filtered(rendezvous ->
-                rendezvous.getNompatient().toLowerCase().contains(searchText) ||
-                        rendezvous.getNommedecin().toLowerCase().contains(searchText) ||
-                        rendezvous.getDate().toString().contains(searchText) ||
-                        rendezvous.getHeure().toLowerCase().contains(searchText) ||
-                        (rendezvous.getEtat() ? "Traitée" : "Non traitée").toLowerCase().contains(searchText)
-        );
-
-        // Mettre à jour le TableView avec la liste filtrée
-        tv.setItems(filteredList);
+//    private void search() {
+//        String searchText = searchField.getText().toLowerCase();
+//
+//        // Filtrer la liste des rendez-vous en fonction du texte de recherche
+//        ObservableList<Rendezvous> filteredList = observableList.filtered(rendezvous ->
+//                rendezvous.getNompatient().toLowerCase().contains(searchText) ||
+//                        rendezvous.getNommedecin().toLowerCase().contains(searchText) ||
+//                        rendezvous.getDate().toString().contains(searchText) ||
+//                        rendezvous.getHeure().toLowerCase().contains(searchText) ||
+//                        (rendezvous.getEtat() ? "Traitée" : "Non traitée").toLowerCase().contains(searchText)
+//        );
+//
+//        // Mettre à jour le TableView avec la liste filtrée
+//        tv.setItems(filteredList);
+//    }
+private void filterData(String keyword) {
+    if (keyword == null || keyword.isEmpty()) {
+        tv.setItems(observableList); // Afficher toutes les données si le champ de recherche est vide
+    } else {
+        ObservableList<Rendezvous> filteredList = FXCollections.observableArrayList();
+        for (Rendezvous rendezvous : observableList) {
+            // Filtrer les rendez-vous en fonction du nom du patient, du nom du médecin, de la date, de l'heure ou de l'état
+            if (rendezvous.getNompatient().toLowerCase().contains(keyword.toLowerCase()) ||
+                    rendezvous.getNommedecin().toLowerCase().contains(keyword.toLowerCase()) ||
+                    rendezvous.getDate().toString().contains(keyword) ||
+                    rendezvous.getHeure().toLowerCase().contains(keyword.toLowerCase()) ||
+                    (rendezvous.getEtat() ? "Traitée" : "Non traitée").toLowerCase().contains(keyword.toLowerCase())) {
+                filteredList.add(rendezvous);
+            }
+        }
+        tv.setItems(filteredList); // Afficher les données filtrées dans la TableView
     }
+}
 
     void RefreshTable() {
         try {

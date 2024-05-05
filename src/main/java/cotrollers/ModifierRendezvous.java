@@ -76,9 +76,10 @@ public class ModifierRendezvous implements Initializable {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Modifié !");
             alert.setHeaderText(null);
-            alert.setContentText("Rendez-vous modifié !");
+            alert.setContentText("Voulez-vous Vraiment modifier votre rendez-vous !");
             alert.showAndWait();
             Stage stage = (Stage) nompatient.getScene().getWindow();
+
 
             // Close the current stage
             stage.close();

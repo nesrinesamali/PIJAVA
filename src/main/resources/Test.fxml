@@ -33,7 +33,7 @@
                                 <Label prefHeight="49.0" prefWidth="128.0" text="Liste " textFill="#878787">
                                     <font>
                                         <Font name="Cambria Bold" size="40.0" />
-                                    </font>
+                                  </font>
                                 </Label>
                                 <Label text="Rendez-vous" textFill="#878787">
                                     <font>
@@ -194,12 +194,12 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="485.0" prefWidth="734.0" VBox.vgrow="ALWAYS">
                             <children>
-                                <ScrollPane fx:id="scroll" prefHeight="623.0" prefWidth="709.0" styleClass="transparent">
+                                <ScrollPane fx:id="scroll" prefHeight="620.0" prefWidth="804.0" styleClass="transparent">
                                     <HBox.margin>
                                         <Insets top="10.0" />
                                     </HBox.margin>
                            <content>
-                              <TableView fx:id="tv" prefHeight="478.0" prefWidth="708.0">
+                              <TableView fx:id="tv" prefHeight="570.0" prefWidth="802.0">
                                 <columns>
                                   <TableColumn fx:id="nompatient" prefWidth="131.19999080896378" text="Nom Patient" />
                                   <TableColumn fx:id="nommedecin" minWidth="0.0" prefWidth="140.80001831054688" text="Nom Medecin" />
@@ -207,7 +207,7 @@
                                     <TableColumn fx:id="heure" minWidth="0.0" prefWidth="110.39990234375" text="Heure" />
                                     <TableColumn fx:id="etat" prefWidth="113.5999755859375" text="Etat" />
 
-                                    <TableColumn fx:id="action" minWidth="0.0" prefWidth="112.0" text="Action" />
+                                    <TableColumn fx:id="action" minWidth="0.0" prefWidth="207.99997558593748" text="Action" />
                                 </columns>
                               </TableView>
                            </content>

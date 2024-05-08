@@ -21,7 +21,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="bord" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="838.0" prefWidth="1320.0" style="-fx-background-color: #f8f5f5;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/" fx:controller="Controller.FrontController">
+<AnchorPane id="AnchorPane" fx:id="bord" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="838.0" prefWidth="1320.0" style="-fx-background-color: #f8f5f5;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FrontController">
     <children>
         <AnchorPane layoutX="-38.0" layoutY="14.0" prefHeight="616.0" prefWidth="1006.0" style="-fx-background-color: #f8f5f5; -fx-background-radius: 15;">
             <children>
@@ -591,6 +591,8 @@
                   <Label styleClass="Titre" text="Explorez les dons" />
                   <!-- Ajout d'un lien pour ajouter un don -->
                   <Hyperlink fx:id="addDonLink" styleClass="hyperlink" text="Ajouter Don" />
+                  <!-- Zone de recherche -->
+                  <TextField fx:id="rechercheField" promptText="Rechercher..." />
                   <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" styleClass="scroll-pane">
                       <content>
                           <TilePane fx:id="cardsContainer" hgap="10" prefColumns="4" prefHeight="620.0" prefWidth="1141.0" styleClass="tile-pane" vgap="10">
@@ -625,7 +627,7 @@
                 </children>
             </VBox>
         </HBox>
-        <AnchorPane fx:id="vbox" layoutX="74.0" layoutY="76.0" prefHeight="762.0" prefWidth="1372.0" visible="false">
+        <AnchorPane fx:id="vbox" layoutX="74.0" layoutY="76.0" prefHeight="762.0" prefWidth="1372.0" visible="true">
             <children>
                 <Label fx:id="dernier" layoutX="80.0" layoutY="257.0" prefHeight="35.0" prefWidth="504.0" styleClass="label" text="𝗗𝗮𝘁𝗲 𝗗𝗲 𝗗𝗲𝗿𝗻𝗶𝗲𝗿 𝗗𝗼𝗻𝗮𝘁𝗶𝗼𝗻:">
                     <font>
@@ -683,14 +685,21 @@
                         <Image url="@assets/icons8-pen-64.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="deleteDon" fitHeight="77.0" fitWidth="108.0" layoutX="833.0" layoutY="543.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="deleteButton" fitHeight="77.0" fitWidth="108.0" layoutX="833.0" layoutY="543.0" onMouseClicked="#deleteDonation" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@assets/icons8-delete-64.png" />
+                        <Image url="@assets/icons8-delete-64.png" /> <!-- Make sure to specify the correct path to your image -->
                     </image>
                 </ImageView>
+                <ImageView fx:id="qrcode" fitHeight="77.0" fitWidth="108.0" layoutX="934.0" layoutY="543.0" onMouseClicked="#redirectToQRCodePage" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/icons8-qr-code-48.png" />
+                    </image>
+                </ImageView>
+
+
             </children>
         </AnchorPane>
-          <AnchorPane fx:id="modif" layoutX="75.2" layoutY="82.4" prefHeight="762.0" prefWidth="1252.0" styleClass="white-bg" visible="false" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="82.0" >
+          <AnchorPane fx:id="modif" layoutX="75.2" layoutY="82.4" prefHeight="762.0" prefWidth="1252.0" styleClass="white-bg" visible="false" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="82.0">
               <children>
 
                   <Label layoutX="292.0" layoutY="22.0" text="update a Donation" textFill="#188ba7">

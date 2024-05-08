@@ -4,7 +4,10 @@ package Controller;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -14,6 +17,7 @@ import services.ServiceCentre;
 import services.ServiceDon;
 
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -81,6 +85,17 @@ public class ModifierDonFXML implements Initializable{
         groupeFLd.setValue(don.getGroupeSanguin());
         typeFLd.setValue(don.getTypeDeDon());
         etatFLd.setValue(don.getEtatMarital());
+    }
+    // Dans votre autre contrôleur
+    @FXML
+    private void refreshDonTable() throws IOException {
+        // Obtenez une référence à votre DonController
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Don.fxml"));
+        Parent parent = loader.load();
+        DonController donController = loader.getController();
+
+        // Appelez la méthode getRefrashable() de votre DonController
+        donController.getRefrashable();
     }
 
     public void setParentFXMLLoader(DonController parentFXMLLoader) {
@@ -190,10 +205,14 @@ public class ModifierDonFXML implements Initializable{
         // Update the donation
         try {
             sap.updateOne(don);
-            System.out.println("Donation updated successfully!");
+            System.out.println("Donation mise à jour avec succès!");
+            // Rafraîchissement des données de la table après la mise à jour réussie
+            refreshDonTable();
+            // Fermer la fenêtre après la mise à jour réussie
+            Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            stage.close();
         } catch (Exception e) {
-            System.out.println(don);
-            e.getMessage();
+            System.out.println("Erreur lors de la mise à jour de la donation: " + e.getMessage());
         }
     }
 

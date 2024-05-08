@@ -8,6 +8,7 @@ import javafx.scene.input.KeyEvent;
 import models.CentreDon;
 import models.Dons;
 
+import java.awt.event.ActionEvent;
 import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
@@ -87,11 +88,33 @@ public class DonController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadDate();
-
         getRefrashable();
         System.out.println("vbn,;");
 
     }
+
+    @FXML
+    private void goToCentreView(MouseEvent event) {
+        // Vous pouvez mettre ici le code pour naviguer vers la vue Centre
+        // Par exemple, si vous avez une autre vue nommée "CentreView.fxml", vous pouvez l'ouvrir ainsi :
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCentre.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Fermer la fenêtre actuelle si nécessaire
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
     @FXML
     private void searchAction(KeyEvent event) {
         String keyword = searchTextField.getText().toLowerCase();
@@ -122,8 +145,6 @@ public class DonController implements Initializable {
         etatmarCol.setCellValueFactory(new PropertyValueFactory<>("etatMarital"));
          centreDonCol.setCellValueFactory(new PropertyValueFactory<>("centreDon"));
 
-
-         getRefrashable();
         Callback<TableColumn<Dons, String>, TableCell<Dons, String>> cellFoctory = (TableColumn<Dons, String> param) -> {
             final TableCell<Dons, String> cell = new TableCell<Dons, String>() {
                 @Override
@@ -297,7 +318,7 @@ public class DonController implements Initializable {
             stage.setScene(scene);
             stage.initStyle(StageStyle.UTILITY);
             stage.showAndWait(); // Attendre que la fenêtre soit fermée avant de rafraîchir les données
-            ajoutercentre.getRefrashable(); // Appeler la méthode pour rafraîchir les données après la fermeture de la fenêtre d'ajout
+            // Appeler la méthode pour rafraîchir les données après la fermeture de la fenêtre d'ajout
         } catch (IOException ex) {
             Logger.getLogger(AjouterDonFXML.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -305,16 +326,16 @@ public class DonController implements Initializable {
 
 
 
-    public void getRefrashable(){
+    public void getRefrashable() {
         try {
-            DonList.clear();
             List<Dons> dons = sap.selectAll();
-            DonList.addAll(dons);
-            DonTable.setItems(DonList);
+            DonList.setAll(dons);
+            DonTable.refresh(); // Rafraîchir la table pour refléter les nouveaux éléments
         } catch (SQLException ex) {
             Logger.getLogger(DonController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 
 
     @FXML

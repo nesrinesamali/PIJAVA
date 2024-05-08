@@ -1,5 +1,6 @@
 package Controller;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -12,6 +13,8 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import java.io.IOException;
 import java.sql.SQLException;
+
+import javafx.stage.Stage;
 import models.CentreDon;
 import models.Dons;
 import services.ServiceCentre;
@@ -23,9 +26,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
 import javafx.scene.image.ImageView;
 
 public class FrontController {
@@ -34,7 +41,7 @@ public class FrontController {
     @FXML
     HBox tt;
     @FXML
-    AnchorPane navapp ;
+    AnchorPane navapp;
     @FXML
     AnchorPane main_form;
     @FXML
@@ -80,9 +87,9 @@ public class FrontController {
     @FXML
     private Dons selectedDon; // Pour stocker les données du don sélectionné
     @FXML
-    private Label dernier,cinn,genre,prochaine,groupe,etat,typedon,centre;
+    private Label dernier, cinn, genre, prochaine, groupe, etat, typedon, centre;
     @FXML
-        AnchorPane modif;
+    AnchorPane modif;
     @FXML
     private TextField CIN;
 
@@ -111,11 +118,38 @@ public class FrontController {
     private Dons don;
     private ServiceCentre serviceCentre = new ServiceCentre();
     private CentreDon centreDon;
+    @FXML
+    private TextField rechercheField;
+    @FXML
+    ImageView deleteButton;
+    @FXML
+    private ImageView qrcode;
+
+    // Méthode pour filtrer les cartes des centres de don en fonction du texte de recherche
+    private void rechercher(String texteRecherche) {
+        // Parcourir toutes les cartes des centres de don dans la VBox
+        for (Node node : cardsContainer.getChildren()) {
+            // Vérifier si le texte de recherche correspond au nom du centre de don
+            if (node instanceof VBox) {
+                VBox carte = (VBox) node;
+                Label nomLabel = (Label) carte.getChildren().get(1); // Supposons que le nom du centre de don soit le deuxième élément dans la VBox
+                String nomCentre = nomLabel.getText().toLowerCase(); // Convertir le texte en minuscules pour une correspondance insensible à la casse
+                if (nomCentre.contains(texteRecherche.toLowerCase())) {
+                    // Afficher la carte si le nom du centre de don contient le texte de recherche
+                    carte.setVisible(true);
+                } else {
+                    // Masquer la carte si le nom du centre de don ne contient pas le texte de recherche
+                    carte.setVisible(false);
+                }
+            }
+        }
+    }
+
 
     @FXML
     public void initialize() {
         // TODO
-        typeFLd.setItems(FXCollections.observableArrayList("Sang","Plasma","Organnes"));
+        typeFLd.setItems(FXCollections.observableArrayList("Sang", "Plasma", "Organnes"));
         // Initialisation de dateproFLd
         // Attribuer des valeurs aux autres ComboBoxes
         GenreFLd.setItems(FXCollections.observableArrayList("Homme", "Femme"));
@@ -127,7 +161,7 @@ public class FrontController {
         datederFLd.setValue(null);
         // Charger les informations sur les centres de don
         // TODO
-        TYPEDON.setItems(FXCollections.observableArrayList("Sang","Plasma","Organnes"));
+        TYPEDON.setItems(FXCollections.observableArrayList("Sang", "Plasma", "Organnes"));
         // Initialisation de dateproFLd
         // Attribuer des valeurs aux autres ComboBoxes
         GENRE.setItems(FXCollections.observableArrayList("Homme", "Femme"));
@@ -143,7 +177,45 @@ public class FrontController {
         loadDons();
         LOAD();
         loadcentre();
+        // Ajouter un écouteur de changement de texte sur le champ de recherche
+        rechercheField.textProperty().addListener((observable, oldValue, newValue) -> {
+            rechercher(newValue.trim()); // Appeler la méthode de recherche avec le nouveau texte
+        });
+        // Définir le gestionnaire d'événements pour le clic de souris sur l'élément qui doit déclencher la suppression
+        deleteButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                // Appeler la méthode de suppression avec le don sélectionné
+                deleteDonation();
+            }
+        });
     }
+
+    @FXML
+    private void redirectToQRCodePage() {
+        try {
+            // Load the FXML file for the QR code page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/qrcode.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller instance
+            QRCodeController qrCodeController = loader.getController();
+
+            // Set the 'don' object if needed
+            qrCodeController.setDon(don); // Assuming 'don' is properly initialized
+
+            // Generate QR code
+            qrCodeController.generateQRCode();
+
+            // Create a new stage for displaying the QR code
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     private void LOAD() {
         try {
             List<CentreDon> centreDons = sapcentre.selectAll();
@@ -152,6 +224,7 @@ public class FrontController {
             Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     private void loadCentreDonData() {
         try {
             List<CentreDon> centreDons = sapcentre.selectAll();
@@ -170,10 +243,10 @@ public class FrontController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/okok.fxml"));
             AnchorPane main_form = loader.load();
-          //  Stage stage = new Stage();
-           // stage.setScene(new Scene(main_form));
-           // stage.setTitle(don == null ? "Ajouter un Nouveau Don" : "Modifier le Don");
-           // stage.showAndWait(); // Use showAndWait to refresh list after adding or updating
+            //  Stage stage = new Stage();
+            // stage.setScene(new Scene(main_form));
+            // stage.setTitle(don == null ? "Ajouter un Nouveau Don" : "Modifier le Don");
+            // stage.showAndWait(); // Use showAndWait to refresh list after adding or updating
             reloadDons(); // Reload the list after closing the form
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -186,12 +259,16 @@ public class FrontController {
     private void loadDons() {
         cardsContainer.getChildren().clear(); // Clear existing cards before loading new ones
         try {
-            for (Dons don : donService.selectAll()) {
-                VBox card = createDonCard(don);
-                cardsContainer.getChildren().add(card);
+            List<Dons> allDons = donService.selectAll(); // Retrieve all donations
+            for (Dons don : allDons) {
+                VBox card = createDonCard(don); // Create a card for each donation
+                cardsContainer.getChildren().add(card); // Add the card to the container
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+            // Handle the exception, e.g., display an error message
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR, "Error loading donations: " + ex.getMessage());
+            errorAlert.showAndWait();
         }
     }
     private void loadcentre() {
@@ -265,8 +342,9 @@ public class FrontController {
             System.err.println("Erreur: L'objet don est null.");
         }
     }
+
     private void showDonDetails(Dons dons) {
-       this.don=dons;
+        this.don = dons;
         setDon();
         hh.setVisible(false);
         this.vbox.setVisible(true);
@@ -288,6 +366,7 @@ public class FrontController {
         genre.setText("Genre: " + (don.getGenre() == null ? "N/A" : don.getGenre()));
         typedon.setText("Type de Don: " + (don.getTypeDeDon() == null ? "N/A" : don.getTypeDeDon()));
     }
+
     @FXML
     private void handleNavigation(ActionEvent event) {
         /*try {
@@ -307,7 +386,8 @@ public class FrontController {
         hh.setManaged(false);
         vbox.setVisible(false);
         modif.setVisible(false);
-    centre.setVisible(false);}
+        centre.setVisible(false);
+    }
 
     @FXML
     private void handledons(MouseEvent event) {
@@ -324,6 +404,7 @@ public class FrontController {
         hh.setVisible(true);
         navapp.setVisible(false);
     }
+
     @FXML
     private void handleUpdateButtonClick() {
      /*try {
@@ -344,26 +425,27 @@ public class FrontController {
 
 
     public void save(MouseEvent mouseEvent) {
-// Pour CinFld
-        Label errorLabel = new Label("Veuillez entrer votre numéro d'identification nationale.");
+//Pour CinFld
+        Label errorLabel = new Label("Veuillez entrer votre numéro d'identification nationale contenant 8 chiffres.");
         errorLabel.setTextFill(Color.RED);
         errorLabel.setId("errorLabel"); // Définir un ID unique pour l'étiquette
 // Pour CinFld
-        if (CinFld.getText().isEmpty()) {
+        if (CinFld.getText().isEmpty() || !Pattern.matches("\\d{8}", CinFld.getText())) { // Vérification de la longueur et du format
             CinFld.setStyle("-fx-border-color: red ; -fx-border-width: 2px;");
             // Placer l'étiquette en dessous du champ
             errorLabel.setLayoutX(CinFld.getLayoutX());
             errorLabel.setLayoutY(CinFld.getLayoutY() + CinFld.getHeight() + 10); // Ajuster selon votre mise en page
             // Ajouter l'étiquette au parent de CinFld
-            ((Pane)CinFld.getParent()).getChildren().add(errorLabel);
+            ((Pane) CinFld.getParent()).getChildren().add(errorLabel);
         } else {
             CinFld.setStyle("-fx-border-color: green ; -fx-border-width: 2px;");
             // Recherche de l'étiquette et suppression si elle existe
-            Node errorLabelToRemove = ((Pane)CinFld.getParent()).lookup("#errorLabel");
+            Node errorLabelToRemove = ((Pane) CinFld.getParent()).lookup("#errorLabel");
             if (errorLabelToRemove != null) {
-                ((Pane)CinFld.getParent()).getChildren().remove(errorLabelToRemove);
+                ((Pane) CinFld.getParent()).getChildren().remove(errorLabelToRemove);
             }
         }
+
 // Pour GenreFLd
         Label genreErrorLabel = new Label("Veuillez sélectionner votre genre.");
         genreErrorLabel.setTextFill(Color.RED);
@@ -375,26 +457,29 @@ public class FrontController {
             genreErrorLabel.setLayoutX(GenreFLd.getLayoutX());
             genreErrorLabel.setLayoutY(GenreFLd.getLayoutY() + GenreFLd.getHeight() + 10); // Ajuster selon votre mise en page
             // Ajouter l'étiquette au parent de GenreFLd
-            ((Pane)GenreFLd.getParent()).getChildren().add(genreErrorLabel);
+            ((Pane) GenreFLd.getParent()).getChildren().add(genreErrorLabel);
         } else {
             GenreFLd.setStyle("-fx-border-color: green ; -fx-border-width: 2px;");
             // Recherche de l'étiquette et suppression si elle existe
-            Node genreErrorLabelToRemove = ((Pane)GenreFLd.getParent()).lookup("#genreErrorLabel");
+            Node genreErrorLabelToRemove = ((Pane) GenreFLd.getParent()).lookup("#genreErrorLabel");
             if (genreErrorLabelToRemove != null) {
-                ((Pane)GenreFLd.getParent()).getChildren().remove(genreErrorLabelToRemove);
+                ((Pane) GenreFLd.getParent()).getChildren().remove(genreErrorLabelToRemove);
             }
         }
 // Pour dateproFLd
-        // Pour dateproFLd
+// Pour dateproFLd
+        Label dateproerrorlabel = new Label("Veuillez sélectionner votre date de prochaine don.");
+        dateproerrorlabel.setTextFill(Color.RED);
+        dateproerrorlabel.setId("dateproerrorlabel"); // Définir un ID unique pour l'étiquette
         if (dateproFLd.getValue() == null) {
             dateproFLd.setStyle("-fx-border-color: red ; -fx-border-width: 2px;");
             // Vérifier si le parent du DatePicker est nul avant de rechercher
             if (dateproFLd.getParent() != null) {
-                Node existingErrorLabel = ((Pane) dateproFLd.getParent()).lookup("#dateproErrorLabel");
+                Node existingErrorLabel = ((Pane) dateproFLd.getParent()).lookup("#dateproerrorlabel"); // Correction du nom de l'ID
                 if (existingErrorLabel == null) {
                     // Placement de l'étiquette en dessous du champ
-                    VBox parent = new VBox(dateproFLd, dateproErrorLabel);
-                    VBox.setMargin(dateproErrorLabel, new Insets(5, 0, 0, 0)); // Espacement en haut
+                    VBox parent = new VBox(dateproFLd, dateproerrorlabel);
+                    VBox.setMargin(dateproerrorlabel, new Insets(5, 0, 0, 0)); // Espacement en haut
                     ((Pane) dateproFLd.getParent()).getChildren().add(parent);
                 }
             }
@@ -402,16 +487,18 @@ public class FrontController {
             dateproFLd.setStyle("-fx-border-color: green ; -fx-border-width: 2px;");
             // Vérifier si le parent du DatePicker est nul avant de rechercher
             if (dateproFLd.getParent() != null) {
-                Node dateproErrorLabelToRemove = ((Pane) dateproFLd.getParent()).lookup("#dateproErrorLabel");
+                Node dateproErrorLabelToRemove = ((Pane) dateproFLd.getParent()).lookup("#dateproerrorlabel"); // Correction du nom de l'ID
                 if (dateproErrorLabelToRemove != null) {
                     ((Pane) dateproFLd.getParent()).getChildren().remove(dateproErrorLabelToRemove);
                 }
             }
         }
+
 // Pour datederFLd
         Label datederErrorLabel = new Label("Veuillez sélectionner la date de votre dernier don.");
         datederErrorLabel.setTextFill(Color.RED);
         datederErrorLabel.setId("datederErrorLabel"); // Définir un ID unique pour l'étiquette
+
 // Pour datederFLd
         if (datederFLd.getValue() == null) {
             datederFLd.setStyle("-fx-border-color: red ; -fx-border-width: 2px;");
@@ -419,19 +506,22 @@ public class FrontController {
             datederErrorLabel.setLayoutX(datederFLd.getLayoutX());
             datederErrorLabel.setLayoutY(datederFLd.getLayoutY() + datederFLd.getHeight() + 10); // Ajuster selon votre mise en page
             // Ajouter l'étiquette au parent de datederFLd
-            ((Pane)datederFLd.getParent()).getChildren().add(datederErrorLabel);
+            ((Pane) datederFLd.getParent()).getChildren().add(datederErrorLabel);
         } else {
             datederFLd.setStyle("-fx-border-color: green ; -fx-border-width: 2px;");
             // Recherche de l'étiquette et suppression si elle existe
-            Node datederErrorLabelToRemove = ((Pane)datederFLd.getParent()).lookup("#datederErrorLabel");
+            Node datederErrorLabelToRemove = ((Pane) datederFLd.getParent()).lookup("#datederErrorLabel");
             if (datederErrorLabelToRemove != null) {
-                ((Pane)datederFLd.getParent()).getChildren().remove(datederErrorLabelToRemove);
+                ((Pane) datederFLd.getParent()).getChildren().remove(datederErrorLabelToRemove);
             }
         }
+
+
 // Pour groupeFLd
         Label groupeErrorLabel = new Label("Veuillez sélectionner votre groupe sanguin.");
         groupeErrorLabel.setTextFill(Color.RED);
         groupeErrorLabel.setId("groupeErrorLabel"); // Définir un ID unique pour l'étiquette
+
 // Pour groupeFLd
         if (groupeFLd.getValue() == null || groupeFLd.getValue().isEmpty()) {
             groupeFLd.setStyle("-fx-border-color: red ; -fx-border-width: 2px;");
@@ -439,19 +529,22 @@ public class FrontController {
             groupeErrorLabel.setLayoutX(groupeFLd.getLayoutX());
             groupeErrorLabel.setLayoutY(groupeFLd.getLayoutY() + groupeFLd.getHeight() + 10); // Ajuster selon votre mise en page
             // Ajouter l'étiquette au parent de groupeFLd
-            ((Pane)groupeFLd.getParent()).getChildren().add(groupeErrorLabel);
+            ((Pane) groupeFLd.getParent()).getChildren().add(groupeErrorLabel);
         } else {
             groupeFLd.setStyle("-fx-border-color: green ; -fx-border-width: 2px;");
             // Recherche de l'étiquette et suppression si elle existe
-            Node groupeErrorLabelToRemove = ((Pane)groupeFLd.getParent()).lookup("#groupeErrorLabel");
+            Node groupeErrorLabelToRemove = ((Pane) groupeFLd.getParent()).lookup("#groupeErrorLabel");
             if (groupeErrorLabelToRemove != null) {
-                ((Pane)groupeFLd.getParent()).getChildren().remove(groupeErrorLabelToRemove);
+                ((Pane) groupeFLd.getParent()).getChildren().remove(groupeErrorLabelToRemove);
             }
         }
+
+
 // Pour typeFLd
         Label typeErrorLabel = new Label("Veuillez choisir le type de don.");
         typeErrorLabel.setTextFill(Color.RED);
         typeErrorLabel.setId("typeErrorLabel"); // Définir un ID unique pour l'étiquette
+
 // Pour typeFLd
         if (typeFLd.getValue() == null || typeFLd.getValue().isEmpty()) {
             typeFLd.setStyle("-fx-border-color: red ; -fx-border-width: 2px;");
@@ -459,19 +552,22 @@ public class FrontController {
             typeErrorLabel.setLayoutX(typeFLd.getLayoutX());
             typeErrorLabel.setLayoutY(typeFLd.getLayoutY() + typeFLd.getHeight() + 10); // Ajuster selon votre mise en page
             // Ajouter l'étiquette au parent de typeFLd
-            ((Pane)typeFLd.getParent()).getChildren().add(typeErrorLabel);
+            ((Pane) typeFLd.getParent()).getChildren().add(typeErrorLabel);
         } else {
             typeFLd.setStyle("-fx-border-color: green ; -fx-border-width: 2px;");
             // Recherche de l'étiquette et suppression si elle existe
-            Node typeErrorLabelToRemove = ((Pane)typeFLd.getParent()).lookup("#typeErrorLabel");
+            Node typeErrorLabelToRemove = ((Pane) typeFLd.getParent()).lookup("#typeErrorLabel");
             if (typeErrorLabelToRemove != null) {
-                ((Pane)typeFLd.getParent()).getChildren().remove(typeErrorLabelToRemove);
+                ((Pane) typeFLd.getParent()).getChildren().remove(typeErrorLabelToRemove);
             }
         }
+
+
 // Pour etatFLd
         Label etatErrorLabel = new Label("Veuillez choisir votre état matrimonial.");
         etatErrorLabel.setTextFill(Color.RED);
         etatErrorLabel.setId("etatErrorLabel"); // Définir un ID unique pour l'étiquette
+
 // Pour etatFLd
         if (etatFLd.getValue() == null || etatFLd.getValue().isEmpty()) {
             etatFLd.setStyle("-fx-border-color: red ; -fx-border-width: 2px;");
@@ -479,19 +575,22 @@ public class FrontController {
             etatErrorLabel.setLayoutX(etatFLd.getLayoutX());
             etatErrorLabel.setLayoutY(etatFLd.getLayoutY() + etatFLd.getHeight() + 10); // Ajuster selon votre mise en page
             // Ajouter l'étiquette au parent de etatFLd
-            ((Pane)etatFLd.getParent()).getChildren().add(etatErrorLabel);
+            ((Pane) etatFLd.getParent()).getChildren().add(etatErrorLabel);
         } else {
             etatFLd.setStyle("-fx-border-color: green ; -fx-border-width: 2px;");
             // Recherche de l'étiquette et suppression si elle existe
-            Node etatErrorLabelToRemove = ((Pane)etatFLd.getParent()).lookup("#etatErrorLabel");
+            Node etatErrorLabelToRemove = ((Pane) etatFLd.getParent()).lookup("#etatErrorLabel");
             if (etatErrorLabelToRemove != null) {
-                ((Pane)etatFLd.getParent()).getChildren().remove(etatErrorLabelToRemove);
+                ((Pane) etatFLd.getParent()).getChildren().remove(etatErrorLabelToRemove);
             }
         }
+
+
 // Pour centreDonComboBox
         Label centreDonErrorLabel = new Label("Veuillez sélectionner un centre.");
         centreDonErrorLabel.setTextFill(Color.RED);
         centreDonErrorLabel.setId("centreDonErrorLabel"); // Définir un ID unique pour l'étiquette
+
 // Pour centreDonComboBox
         if (centreDonComboBox.getValue() == null) {
             centreDonComboBox.setStyle("-fx-border-color: red ; -fx-border-width: 2px;");
@@ -499,13 +598,13 @@ public class FrontController {
             centreDonErrorLabel.setLayoutX(centreDonComboBox.getLayoutX());
             centreDonErrorLabel.setLayoutY(centreDonComboBox.getLayoutY() + centreDonComboBox.getHeight() + 10); // Ajuster selon votre mise en page
             // Ajouter l'étiquette au parent de centreDonComboBox
-            ((Pane)centreDonComboBox.getParent()).getChildren().add(centreDonErrorLabel);
+            ((Pane) centreDonComboBox.getParent()).getChildren().add(centreDonErrorLabel);
         } else {
             centreDonComboBox.setStyle("-fx-border-color: green ; -fx-border-width: 2px;");
             // Recherche de l'étiquette et suppression si elle existe
-            Node centreDonErrorLabelToRemove = ((Pane)centreDonComboBox.getParent()).lookup("#centreDonErrorLabel");
+            Node centreDonErrorLabelToRemove = ((Pane) centreDonComboBox.getParent()).lookup("#centreDonErrorLabel");
             if (centreDonErrorLabelToRemove != null) {
-                ((Pane)centreDonComboBox.getParent()).getChildren().remove(centreDonErrorLabelToRemove);
+                ((Pane) centreDonComboBox.getParent()).getChildren().remove(centreDonErrorLabelToRemove);
             }
         }
         // Si toutes les validations sont réussies, vous pouvez ajouter le don
@@ -539,13 +638,14 @@ public class FrontController {
         don.setCentreDon(selectedCentre);
         try {
             donService.insertOne(don);
+            loadDons();
             System.out.println("Don added successfully!");
         } catch (Exception e) {
             System.out.println("Error adding Don: " + e.getMessage());
         }
     }
 
-        public void MODIFIER(MouseEvent mouseEvent) {
+    public void MODIFIER(MouseEvent mouseEvent) {
         // Pour CinFld
         if (CinFld.getText().length() == 0) {
             CinFld.setStyle("-fx-border-color: red ; -fx-border-width: 2px;");
@@ -609,8 +709,6 @@ public class FrontController {
         }
 
 
-
-
         // Check if any of the required fields are empty
         if (cin.isEmpty() || selectedGenre == null || selectedGroupe == null || selectedType == null || selectedEtat == null || datePro == null || dateDer == null) {
             System.err.println("Please fill in all required fields.");
@@ -638,8 +736,8 @@ public class FrontController {
 
     @FXML
     private void handleBack() {
-            hh.setVisible(true);
-            vbox.setVisible(false);
+        hh.setVisible(true);
+        vbox.setVisible(false);
         main_form.setVisible(false);
     }
 
@@ -716,8 +814,6 @@ public class FrontController {
         }
 
 
-
-
         // Check if any of the required fields are empty
         if (cin.isEmpty() || selectedGenre == null || selectedGroupe == null || selectedType == null || selectedEtat == null || datePro == null || dateDer == null) {
             System.err.println("Please fill in all required fields.");
@@ -744,10 +840,7 @@ public class FrontController {
             e.getMessage();
         }
     }
-   ////////////////////////////////////////
-
-
-
+    ////////////////////////////////////////
 
 
     private VBox createCentreCard(CentreDon centreDon) {
@@ -791,12 +884,36 @@ public class FrontController {
     }
 
     private void showcentreDetails(CentreDon centreDon) {
-        this.centreDon=centreDon;
+        this.centreDon = centreDon;
         setDon();
         tt.setVisible(false);
         this.vbox.setVisible(true);
     }
+
+    public void deleteDonation() {
+        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this donation?");
+        confirmation.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                try {
+                    // Perform the deletion based on some condition or context
+                    // For example, you can delete the selected donation from a list or table
+                    // You might need to adjust this part based on your specific implementation
+                    // For demonstration purposes, let's assume 'don' is the donation to be deleted
+                    donService.deleteOne(don);
+                    // Refresh the view after deletion
+                    loadDons();
+                    // Naviguer vers DonView après la suppression réussie
+                    handleBack(); // Supposant que cette méthode existe pour gérer la navigation
+                } catch (Exception ex) {
+                    Alert errorAlert = new Alert(Alert.AlertType.ERROR, "Error deleting donation: " + ex.getMessage());
+                    errorAlert.show();
+                }
+            }
+        });
+    }
+
 }
+
  /*
     private void Modifier(Dons don) {
         try {

@@ -287,6 +287,23 @@ public class CentreController implements Initializable {
         };
     }
 
+    @FXML
+    private void goToCentreView(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherDon.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
 
+            // Fermer la fenêtre actuelle si nécessaire
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+}
+    public void setParentFXMLLoader(DonController donController) {
+
+    }
 }

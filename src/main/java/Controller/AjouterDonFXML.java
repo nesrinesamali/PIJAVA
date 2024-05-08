@@ -2,9 +2,11 @@ package Controller;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -17,6 +19,7 @@ import models.Dons;
 import services.ServiceCentre;
 import services.ServiceDon;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
@@ -81,7 +84,6 @@ public class AjouterDonFXML implements Initializable {
     ServiceDon sap = new ServiceDon();
     ServiceCentre sapcentre = new ServiceCentre();
     private Object selectedType;
-
 
     //controle de saisie
     private boolean validateCin(String cin) {
@@ -240,8 +242,10 @@ public class AjouterDonFXML implements Initializable {
         etatFLd.setItems(FXCollections.observableArrayList("Celibataire", "Marié"));
         // Vous pouvez également définir une date par défaut ici si nécessaire
         // Par exemple :
-        dateproFLd.setValue(null);
-        datederFLd.setValue(null);
+        LocalDate defaultDate = LocalDate.now();
+        dateproFLd.setValue(defaultDate);
+        LocalDate defaultDate2 = LocalDate.now().plusDays(7); // 7 jours après aujourd'hui
+        datederFLd.setValue(defaultDate2);
         // Charger les informations sur les centres de don
         loadCentreDonData();
 
@@ -261,7 +265,7 @@ public class AjouterDonFXML implements Initializable {
 
     @FXML
     private void save(MouseEvent event) {
-// Pour CinFld
+        //Pour CinFld
         Label errorLabel = new Label("Veuillez entrer votre numéro d'identification nationale contenant 8 chiffres.");
         errorLabel.setTextFill(Color.RED);
         errorLabel.setId("errorLabel"); // Définir un ID unique pour l'étiquette
@@ -331,21 +335,12 @@ public class AjouterDonFXML implements Initializable {
         }
 
 // Pour datederFLd
-        Label datederErrorLabel = new Label("La date de dernier don ne peut pas prendre cette valeur.");
+        Label datederErrorLabel = new Label("Veuillez sélectionner la date de votre dernier don.");
         datederErrorLabel.setTextFill(Color.RED);
         datederErrorLabel.setId("datederErrorLabel"); // Définir un ID unique pour l'étiquette
 
-// Limiter la sélection aux dates antérieures ou égales à aujourd'hui
-        datederFLd.setDayCellFactory(picker -> new DateCell() {
-            @Override
-            public void updateItem(LocalDate date, boolean empty) {
-                super.updateItem(date, empty);
-                setDisable(empty || date.isAfter(LocalDate.now())); // Désactiver les dates futures
-            }
-        });
-
 // Pour datederFLd
-        if (datederFLd.getValue() == null || datederFLd.getValue().isAfter(LocalDate.now())) {
+        if (datederFLd.getValue() == null) {
             datederFLd.setStyle("-fx-border-color: red ; -fx-border-width: 2px;");
             // Placer l'étiquette en dessous du champ
             datederErrorLabel.setLayoutX(datederFLd.getLayoutX());
@@ -360,6 +355,7 @@ public class AjouterDonFXML implements Initializable {
                 ((Pane)datederFLd.getParent()).getChildren().remove(datederErrorLabelToRemove);
             }
         }
+
 
 // Pour groupeFLd
         Label groupeErrorLabel = new Label("Veuillez sélectionner votre groupe sanguin.");
@@ -452,10 +448,6 @@ public class AjouterDonFXML implements Initializable {
             }
         }
 
-
-
-
-
         // Si toutes les validations sont réussies, vous pouvez ajouter le don
         Integer cin = null;
         try {
@@ -493,13 +485,29 @@ public class AjouterDonFXML implements Initializable {
         try {
             sap.insertOne(don);
             System.out.println("Don added successfully!");
+            refreshDonTable();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+
         } catch (Exception e) {
             System.out.println("Error adding Don: " + e.getMessage());
         }
     }
 
+    // Dans votre autre contrôleur
+    @FXML
+    private void refreshDonTable() throws IOException {
+        // Obtenez une référence à votre DonController
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Don.fxml"));
+        Parent parent = loader.load();
+        DonController donController = loader.getController();
+
+        // Appelez la méthode getRefrashable() de votre DonController
+        donController.getRefrashable();
+    }
 
     public void setParentFXMLLoader(DonController donController) {
+        this.parentFXMLLoader=parentFXMLLoader;
     }
 
     public void setTextField(int id, String cin, String genre, String dateDernierDon, String dateProchainDon, String typeDon, String groupeSanguin, String etatmarital) {

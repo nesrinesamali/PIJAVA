@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="909.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ModifierDonFXML">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="909.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ModifierDonFXML">
     <children>
         <AnchorPane fx:id="main_form" prefHeight="674.0" prefWidth="902.0">
             <children>
@@ -38,7 +31,7 @@
                         <ComboBox fx:id="typeFLd" layoutX="76.0" layoutY="606.0" prefHeight="38.0" prefWidth="391.0" promptText="&quot;Choisissez le type de don que vous souhaitez effectuer.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
                         <ComboBox fx:id="groupeFLd" layoutX="77.0" layoutY="386.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez votre groupe sanguin.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
                         <ComboBox fx:id="centreDonComboBox" layoutX="76.0" layoutY="531.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez un centre.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                        <Button layoutX="273.0" layoutY="702.0" mnemonicParsing="false" onMouseClicked="#update" prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@page.css" text="save" />
+                        <Button layoutX="273.0" layoutY="702.0" mnemonicParsing="false" onMouseClicked="#update" prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@page.css" text="update" />
                         <Button layoutX="484.0" layoutY="702.0" mnemonicParsing="false" onMouseClicked="#reset" prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@page.css" text="Reset" />
                         <ImageView fitHeight="458.0" fitWidth="405.0" layoutX="524.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                             <image>

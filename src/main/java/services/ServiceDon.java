@@ -15,7 +15,7 @@ public class ServiceDon implements CRUD<Dons> {
     private final Connection connection;
 
     public ServiceDon() {
-        connection = MyDatabase.getInstance().getConnection();
+        connection = MyDatabase.getInstance().getCon();
     }
 
     public static boolean saveDon(Dons don) {

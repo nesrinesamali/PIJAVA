@@ -12,7 +12,7 @@ public class ServiceCentre implements CRUD<CentreDon> {
     private final Connection connection;
 
     public ServiceCentre() {
-        connection = MyDatabase.getInstance().getConnection();
+        connection = MyDatabase.getInstance().getCon();
     }
 
 

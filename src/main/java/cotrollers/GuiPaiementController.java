@@ -5,10 +5,18 @@ import com.stripe.exception.StripeException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import models.Rendezvous;
+import services.RendezvousService;
+import utils.PaymentAPI;
 
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -38,43 +46,46 @@ public class GuiPaiementController implements Initializable {
         // TODO
     }
 
+    public static Rendezvous rendezvous;
     @FXML
     private void Pay(ActionEvent event) throws StripeException, SQLException {
-       /* scom = new ServiceProductOrder();
-        ProductOrder productOrder;
-        ServiceClient sc = new ServiceClient();
-        Client client;
+        RendezvousService scom = new RendezvousService();
 
         if (isValidInput()) {
             // Replace the following line with your payment logic
             // float f = (float) sb.get(4).getTotalCostTTC() * 32;
             // int k = floatToInt(f);
             // PaymentApi.pay(k);
+            float f = 10000;
+            int k = floatToInt(f);
+            String url=PaymentAPI.pay(k);
 
             // Insert your logic for payment success
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Paiement");
             alert.setContentText("Paiement effectué avec succès");
             alert.showAndWait();
+           Stage stage = new Stage ();
 
+            final WebView webView = new WebView();
+            final WebEngine webEngine = webView.getEngine();
+            webView.getEngine().load(url);
+
+            // create scene
+            //   stage.getIcons().add(new Image("/Images/logo.png"));
+            stage.setTitle("Reçu");
+            Scene scene = new Scene(webView,1000,700, Color.web("#666970"));
+            stage.setScene(scene);
+            // show stage
+            stage.show();
             // Assuming you have a client ID and product ID
-            int clientId = 1; // Replace with actual client ID
-            int productId = 1; // Replace with actual product ID
+          /*  GuiPaiementController.rendezvous.setEtat(true);
+            RendezvousService sr=new RendezvousService();
+            sr.update(GuiPaiementController.rendezvous); */
 
             // Creating a product order
-            productOrder = new ProductOrder();
-            productOrder.setPrice(20.0f); // Replace with actual product price
-            productOrder.setQty(1); // Replace with actual quantity
-            productOrder.setStatus("Paid");
-            productOrder.setProduct_id(productId);
-            productOrder.setTotal_price(productOrder.getPrice() * productOrder.getQty());
-            productOrder.setId_client(clientId);
-
-            // Saving the product order
-            scom.add(productOrder);
-
-        }
-
+          }
+    }
 
     private boolean isValidInput() {
         if (!isValidVisaCardNo(carte.getText())) {
@@ -124,4 +135,4 @@ public class GuiPaiementController implements Initializable {
     public static int floatToInt(float value) {
         return (int) value;
     }
-}*/}}
+}

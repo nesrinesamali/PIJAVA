@@ -290,4 +290,15 @@ private void filterData(String keyword) {
         alert.setContentText(content);
         alert.showAndWait();
     }
+    @FXML
+    void stat(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Stat.fxml"));
+        Parent root = loader.load();
+
+        // Créer une nouvelle fenêtre pour afficher le formulaire d'ajout
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 }

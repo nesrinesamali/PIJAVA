@@ -4,6 +4,7 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +14,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -20,6 +23,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import models.Rendezvous;
+import org.json.JSONObject;
+import services.GPTAPI;
 import services.RendezvousService;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -40,6 +45,8 @@ import java.util.logging.Logger;
 
 public class AfficherRendezvous implements Initializable {
 
+        public TextField inputTextField;
+        public TextArea outputLabel;
         @FXML
         private TableColumn<Rendezvous, ?> action;
 
@@ -72,7 +79,7 @@ public class AfficherRendezvous implements Initializable {
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-                try {
+                /*try {
                         List<Rendezvous> rendezvousList = rs.read();
                         observableList = FXCollections.observableList(rendezvousList);
                         tv.setItems(observableList);
@@ -188,7 +195,7 @@ public class AfficherRendezvous implements Initializable {
                         alert.setTitle("Error");
                         alert.setContentText("Error when retrieving data from database");
                         alert.showAndWait();
-                }
+                }*/
         }
 
         void refreshTable() {
@@ -295,5 +302,21 @@ public class AfficherRendezvous implements Initializable {
                 alert.setHeaderText(null);
                 alert.getDialogPane().setContent(detailsBox);
                 alert.showAndWait();
+        }
+        public String execPromptGpt (String prompt){
+                GPTAPI gptApi = new GPTAPI("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");
+                String model = "gpt-3.5-turbo-instruct";
+                String result = gptApi.queryGPT(prompt, model);
+                JSONObject jsonObject = new JSONObject(result);
+                String textContent = jsonObject.getJSONArray("choices")
+                        .getJSONObject(0)
+                        .getString("text");
+                return textContent;
+        }
+
+        public void GetReponse(ActionEvent actionEvent) {
+                String question= inputTextField.getText();
+                String reponse =execPromptGpt("you are a hulpful assistant in devDinecity which is a helth care application your role is to answer sick user's question and provide them the best solution to feel better.the question is : "+question);
+                outputLabel.setText(reponse);
         }
 }

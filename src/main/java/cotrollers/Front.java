@@ -61,6 +61,9 @@ public class Front  {
     private RendezvousService rendezvousService = new RendezvousService();
     private Rendezvous rendezvous;
     private MenuItemBase detailsButton;
+    @FXML
+    private Button chatbotButton;
+
 
     @FXML
     public void initialize() {
@@ -68,7 +71,9 @@ public class Front  {
         loadrv();
 
     }
-
+    private void refreshTable() {
+        loadrv(); // Recharger les rendez-vous et mettre à jour l'affichage
+    }
     private void setupAddDonLink() {
         addRendezvous.setOnMouseClicked(e -> showAddRendezvousForm());
     }
@@ -83,7 +88,8 @@ public class Front  {
             stage.initStyle(StageStyle.UTILITY);
             stage.showAndWait(); // Attendre que la fenêtre soit fermée avant de rafraîchir l'affichage
             // Rafraîchir l'affichage après la fermeture de la fenêtre d'ajout si nécessaire
-            loadrv();
+            refreshTable();
+            // Appeler la méthode de rafraîchissement
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -235,7 +241,16 @@ public class Front  {
     }
 
 
-    private void makePaymentForRendezvous(Rendezvous rendezvous) {
+    private void makePaymentForRendezvous(Rendezvous rendezvous) throws IOException {
+        System.out.println("test");
+        GuiPaiementController.rendezvous=rendezvous;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GuiPaiememnt.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UTILITY);
+        stage.showAndWait();
     }
 
     ImageView generateQRCode(String qrText) {
@@ -287,7 +302,7 @@ public class Front  {
                 stage.setScene(scene);
                 stage.initStyle(StageStyle.UTILITY);
                 stage.showAndWait(); // Attendre que la fenêtre soit fermée avant de rafraîchir
-
+                refreshTable();
             } catch (IOException ex) {
                 Logger.getLogger(Front.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -322,44 +337,24 @@ public class Front  {
         alert.setHeaderText(null);
         alert.getDialogPane().setContent(detailsBox);
         alert.showAndWait();
-    }}
+    }
 
- /*
-    private void Modifier(Dons don) {
+    @FXML
+    private void chatbot(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierDonFront.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ChatBot.fxml"));
             Parent root = loader.load();
 
-            FrontController controller = loader.getController();
-            controller.setDon(don);
-
             Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Modifier le Don");
-            stage.showAndWait();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
 
-            // Mettez à jour l'affichage ou effectuez d'autres actions après la fermeture de la fenêtre de modification si nécessaire
-        } catch (IOException ex) {
-            ex.printStackTrace();
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
-    */
 
-    /*
-    private void deleteDon(int id) {
-        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this donation?");
-        confirmation.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.OK) {
-                try {
-                    donService.deleteOne(don);
-                    // Navigate back to DonView after successful deletion
-                    handleBack();
-                } catch (Exception ex) {
-                    Alert errorAlert = new Alert(Alert.AlertType.ERROR, "Error deleting donation: " + ex.getMessage());
-                    errorAlert.show();
-                }
-            }
-        });
-    }
 
-     */
+}
+

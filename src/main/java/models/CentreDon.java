@@ -9,13 +9,14 @@ public class CentreDon {
     private Integer num;
     private String gouvernorat; // Ajout de l'attribut gouvernorat
     private String email; // Ajout de l'attribut email
+    private float latitude; // Ajout de l'attribut latitude
+    private float longitude; // Ajout de l'attribut longitude
     //@OneToMany(mappedBy = "centreDon")
     private List<Dons> donsList;
 
-
     public CentreDon() {}
 
-    public CentreDon(Integer id, String nom, String heureferm, String heureouv, String lieu, Integer num ,String gouvernorat,String email) {
+    public CentreDon(Integer id, String nom, String heureferm, String heureouv, String lieu, Integer num ,String gouvernorat,String email,float latitude,float longitude) {
         this.id = id;
         this.nom = nom;
         this.heureferm = heureferm;
@@ -24,8 +25,28 @@ public class CentreDon {
         this.gouvernorat = gouvernorat;
         this.email = email;
         this.num = num;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
+    // Autres méthodes existantes...
+
+    // Getters et Setters pour latitude et longitude
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(float latitude) {
+        this.latitude = latitude;
+    }
+
+    public float getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
+    }
     // Getters
     public Integer getId() {
         return id;

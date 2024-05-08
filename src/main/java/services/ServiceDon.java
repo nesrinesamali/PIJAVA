@@ -2,8 +2,11 @@ package services;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javafx.scene.chart.XYChart;
 import models.CentreDon;
 import models.Dons;
 import utils.MyDatabase;
@@ -124,5 +127,39 @@ public class ServiceDon implements CRUD<Dons> {
         }
 
         return donsList;
+    }
+    public Map<String, Integer> countDonsByGroupeSanguin() throws SQLException {
+        Map<String, Integer> countMap = new HashMap<>();
+        String query = "SELECT groupe_sanguin, COUNT(*) AS count FROM Dons GROUP BY groupe_sanguin";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                String groupeSanguin = resultSet.getString("groupe_sanguin");
+                int count = resultSet.getInt("count");
+                countMap.put(groupeSanguin, count);
+            }
+        }
+
+        return countMap;
+    }
+    public List<XYChart.Data<String, Integer>> getBarChartData() throws SQLException {
+        List<XYChart.Data<String, Integer>> barChartData = new ArrayList<>();
+
+        String query = "SELECT groupe_sanguin, COUNT(*) AS count FROM Dons GROUP BY groupe_sanguin";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                String groupeSanguin = resultSet.getString("groupe_sanguin");
+                int count = resultSet.getInt("count");
+                // Créer un nouvel objet XYChart.Data avec les données du groupe sanguin et le nombre de dons
+                XYChart.Data<String, Integer> data = new XYChart.Data<>(groupeSanguin, count);
+                // Ajouter les données à la liste
+                barChartData.add(data);
+            }
+        }
+
+        return barChartData;
     }
 }

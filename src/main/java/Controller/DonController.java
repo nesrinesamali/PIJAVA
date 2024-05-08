@@ -3,10 +3,12 @@ package Controller;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import models.CentreDon;
 import models.Dons;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -22,15 +24,13 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
+import org.apache.pdfbox.pdmodel.PDDocument;
 import services.ServiceDon;
 
 
@@ -65,8 +65,8 @@ public class DonController implements Initializable {
     TableColumn<Dons, String> etatmarCol;
     @FXML
     TableColumn<Dons, String> centreDonCol;
-
-
+    @FXML
+    TextField searchTextField;
     ObservableList<Dons> DonList = FXCollections.observableArrayList();
     ServiceDon sap = new ServiceDon();
 
@@ -91,6 +91,22 @@ public class DonController implements Initializable {
         getRefrashable();
         System.out.println("vbn,;");
 
+    }
+    @FXML
+    private void searchAction(KeyEvent event) {
+        String keyword = searchTextField.getText().toLowerCase();
+        List<Dons> filteredList = DonList.stream()
+                .filter(don ->
+                        don.getCin().toLowerCase().contains(keyword) ||
+                                don.getGenre().toLowerCase().contains(keyword) ||
+                                don.getDatePro().toLowerCase().contains(keyword) ||
+                                don.getDateDer().toLowerCase().contains(keyword) ||
+                                don.getGroupeSanguin().toLowerCase().contains(keyword) ||
+                                don.getTypeDeDon().toLowerCase().contains(keyword) ||
+                                don.getEtatMarital().toLowerCase().contains(keyword)
+                )
+                .toList();
+        DonTable.setItems(FXCollections.observableArrayList(filteredList));
     }
 
 
@@ -201,6 +217,70 @@ public class DonController implements Initializable {
             DonTable.setItems(DonList);
         } catch (SQLException ex) {
             Logger.getLogger(DonController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    @FXML
+    private void handlePieChartButtonClick(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/StatDon.fxml"));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(Statdon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    @FXML
+    private void Excel() {
+        Writer writer = null;
+        try {
+            List<Dons> list = sap.selectAll(); // Récupérez tous les objets Dons depuis la base de données
+
+            // Chemin du fichier CSV
+            File file = new File(System.getProperty("user.home") + "/Desktop/Dons.xlsx");
+
+            writer = new BufferedWriter(new FileWriter(file));
+            for (Dons don : list) {
+                // Format des données au format CSV
+                String text = don.getId() + "," + don.getCin() + "," +
+                        don.getGenre() + "," + don.getDatePro() + "," +
+                        don.getDateDer() + "," + don.getGroupeSanguin() + "," +
+                        don.getTypeDeDon() + "," + don.getEtatMarital() + "\n";
+                writer.write(text);
+            }
+        } catch (IOException | SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (writer != null) {
+                try {
+                    writer.flush();
+                    writer.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            // Afficher une alerte après l'exportation du fichier
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Export Excel");
+            alert.setHeaderText(null);
+            alert.setContentText("Excel exporté avec succès !");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void PrintPdf() {
+        String filePath = "C:/Users/Lenovo/Desktop/output.pdf";
+        String imagePath = "C:/Users/Lenovo/Desktop/java/PIJAVA/src/main/resources/assets/icons8-blood-sample.gif";
+        PDDocument document = new PDDocument(); // Create a new PDDocument instance
+        PDFEXPORTDON.exportTableViewToPDF(DonTable, imagePath, filePath, document);
+        try {
+            document.close(); // Close the document after exporting
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

@@ -143,6 +143,59 @@ public class ServiceCentre implements CRUD<CentreDon> {
 
         return donsList;
     }
+    public List<CentreDon> selectAll1() throws SQLException {
+        List<CentreDon> centreDonsList = new ArrayList<>();
+
+        String req = "SELECT * FROM `Centre_don`"; // Modifier le nom de la table ici
+        Statement st = connection.createStatement();
+
+        ResultSet rs;
+        rs = st.executeQuery(req);
+
+        while (rs.next()){
+            CentreDon centreDon = new CentreDon();
+
+            centreDon.setId(rs.getInt(("id")));
+            centreDon.setNom(rs.getString("nom_centre")); // Modifier le nom de la colonne si nécessaire
+            centreDon.setHeureouv(rs.getString("date_ouverture"));
+            centreDon.setHeureferm(rs.getString("datefermeture"));
+            centreDon.setGouvernorat(rs.getString("gouvernorat"));
+            centreDon.setLieu(rs.getString("adresse"));
+            centreDon.setEmail(rs.getString("email"));
+            centreDon.setNum(rs.getInt("numero"));
+
+            centreDonsList.add(centreDon);
+        }
+        return centreDonsList;
+    }
+
+    public int countCentres() throws SQLException {
+        int count = 0;
+        String req = "SELECT COUNT(*) AS total FROM Centre_don";
+        try (PreparedStatement ps = connection.prepareStatement(req);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                count = rs.getInt("total");
+            }
+        }
+        return count;
+    }
+
+    public int retrieveAnotherStatistic() throws SQLException {
+        int result = 0;
+        // Exemple : récupérer une autre statistique basée sur une condition simple
+        String req = "SELECT COUNT(*) AS total FROM Centre_don WHERE nom_centre = ?";
+
+        try (PreparedStatement ps = connection.prepareStatement(req)) {
+            ps.setString(1, "MonTypeDeDon"); // Remplacez "MonTypeDeDon" par le type de don que vous souhaitez compter
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    result = rs.getInt("total");
+                }
+            }
+        }
+        return result;
+    }
 
 
 }

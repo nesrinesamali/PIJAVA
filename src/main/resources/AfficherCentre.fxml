@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="1135.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CentreController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="709.0" prefWidth="1316.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CentreController">
     <children>
         <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
             <children>
@@ -101,47 +110,69 @@
                     </left>
                     <center>
 
-                            <AnchorPane prefHeight="554.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
 
-                                <children>
-                                    <TableView fx:id="CentreTable" layoutX="11.0" layoutY="210.0" prefHeight="306.0" prefWidth="886.0" styleClass="table-view" stylesheets="style.css">
+
+                        <AnchorPane fx:id="yy" layoutX="14.0" layoutY="13.0"  prefHeight="670.0" prefWidth="1131.0" stylesheets="@/MainFormDesign.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="413.0" AnchorPane.topAnchor="13.0">
+                            <styleClass>
+                                <String fx:value="white-bg" />
+                                <String fx:value="shadow" />
+                                <String fx:value="radius" />
+                            </styleClass>
+                            <children>
+                                <HBox alignment="CENTER" layoutX="569.0" layoutY="208.0" prefHeight="42.0" prefWidth="342.0" spacing="10">
+                           <ImageView fitHeight="48.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@assets/icons8-search-60.png" />
+                              </image>
+                           </ImageView>
+                                    <TextField fx:id="searchTextField" onKeyReleased="#searchAction" prefHeight="42.0" prefWidth="269.0" promptText="Entrez votre recherche ici" />
+                                </HBox>
+                                    <TableView fx:id="CentreTable" layoutX="26.0" layoutY="268.0" prefHeight="392.0" prefWidth="893.0" styleClass="table-view" stylesheets="style.css">
                                         <columns>
                                             <TableColumn fx:id="idCol" maxWidth="70.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center;" text="ID" />
-                                            <TableColumn fx:id="nomCol" maxWidth="124.0000057220459" prefWidth="98.59997367858887" style="-fx-alignment: center;" text="Nom de centre" />
-                                            <TableColumn fx:id="houvCol" maxWidth="134.59998321533203" prefWidth="122.20001983642578" style="-fx-alignment: center;" text="Heure ouverture" />
-                                            <TableColumn fx:id="hfermCol" maxWidth="171.199951171875" prefWidth="114.19998168945312" style="-fx-alignment: center;" text="Heure Fermeture" />
-                                            <TableColumn fx:id="gouvCol" maxWidth="168.80001831054688" prefWidth="125.79998779296875" style="-fx-alignment: center;" text="Gouvernorat" />
-                                            <TableColumn fx:id="lieuCol" maxWidth="135.99996948242188" prefWidth="135.99996948242188" style="-fx-alignment: center;" text="Adresse du centre" />
+                                            <TableColumn fx:id="nomCol" maxWidth="124.0000057220459" prefWidth="101.20001029968262" style="-fx-alignment: center;" text="Nom de centre" />
+                                            <TableColumn fx:id="houvCol" maxWidth="135.40003204345703" prefWidth="108.8000259399414" style="-fx-alignment: center;" text="Heure ouverture" />
+                                            <TableColumn fx:id="hfermCol" maxWidth="171.199951171875" prefWidth="107.40005493164062" style="-fx-alignment: center;" text="Heure Fermeture" />
+                                            <TableColumn fx:id="gouvCol" maxWidth="168.80001831054688" prefWidth="114.5999755859375" style="-fx-alignment: center;" text="Gouvernorat" />
+                                            <TableColumn fx:id="lieuCol" maxWidth="166.99996948242188" prefWidth="151.19998168945312" style="-fx-alignment: center;" text="Adresse du centre" />
                                             <!--<TableColumn fx:id="editCol11" maxWidth="124.0" prefWidth="78.39990234375" style="-fx-alignment: center;" text="Type de don" />-->
-                                            <TableColumn fx:id="emailCol" maxWidth="133.59995117187498" prefWidth="86.4000244140625" style="-fx-alignment: center;" text="Email" />
-                                            <TableColumn fx:id="numCol" maxWidth="132.4000244140625" prefWidth="111.800048828125" style="-fx-alignment: center;" text="Numéro" />
-                                            <TableColumn fx:id="actionCol" maxWidth="128.00003662109373" prefWidth="90.79998779296875" style="-fx-alignment: center;" text="Actions" />
+                                            <TableColumn fx:id="emailCol" maxWidth="133.59995117187498" prefWidth="93.199951171875" style="-fx-alignment: center;" text="Email" />
+                                            <TableColumn fx:id="numCol" maxWidth="132.4000244140625" prefWidth="102.4000244140625" style="-fx-alignment: center;" text="Numéro" />
+                                            <TableColumn fx:id="actionCol" maxWidth="128.00003662109373" prefWidth="111.199951171875" style="-fx-alignment: center;" text="Actions" />
                                         </columns>
                                     </TableView>
-                                    <Text layoutX="26.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Center Details" wrappingWidth="245.13671875">
+                                    <Text layoutX="14.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Center Details" wrappingWidth="245.13671875">
                                         <font>
                                             <Font name="Bauhaus 93" size="32.0" />
                                         </font>
                                     </Text>
                                     <HBox alignment="CENTER" layoutX="602.0" layoutY="-1.0" prefHeight="36.0" prefWidth="37.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                    <HBox alignment="CENTER_LEFT" layoutX="326.0" layoutY="115.0" prefHeight="58.0" prefWidth="154.0">
-                                        <children>
-                                            <FontAwesomeIconView fill="#2196f3" glyphName="USER_PLUS" onMouseClicked="#getAddCentre" size="45" styleClass="btn" text="">
-                                                <HBox.margin>
-                                                    <Insets right="10.0" />
-                                                </HBox.margin>
-                                            </FontAwesomeIconView>
-                                            <FontAwesomeIconView fill="#00e676" glyphName="REFRESH" layoutX="10.0" layoutY="65.0" onMouseClicked="#getRefrashable" size="45" styleClass="btn" text="">
-                                                <HBox.margin>
-                                                    <Insets right="10.0" />
-                                                </HBox.margin>
-                                            </FontAwesomeIconView>
-                                            <FontAwesomeIconView fill="#455a64" glyphName="PRINT" layoutX="62.0" layoutY="65.0" size="45" styleClass="btn" />
-                                        </children>
-                                    </HBox>
-                                </children>
+                        <ImageView fitHeight="57.0" fitWidth="64.0" layoutX="48.0" layoutY="190.0" onMouseClicked="#getAddCentre" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@assets/icons8-data-center-100.png" />
+                           </image></ImageView>
+                        <ImageView fx:id="pieChartButton" fitHeight="64.0" fitWidth="75.0" layoutX="117.0" layoutY="187.0" onMouseClicked="#handlePieChartButtonClick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@assets/icons8-pie-charts-64.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="57.0" fitWidth="64.0" layoutX="186.0" layoutY="190.0" onMouseClicked="#PrintPdf" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@assets/icons8-pdf-64.png" />
+                           </image>
+                        </ImageView>
+                                <Button fx:id="excelButton" onAction="#Excel">
+                                    <graphic>
+                                        <ImageView fitHeight="24" fitWidth="24" preserveRatio="true">
+                                            <Image url="@assets/icons8-excel-48.png" />
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+
+                            </children>
 
                             </AnchorPane>
+
 
 
                     </center>

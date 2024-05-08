@@ -32,9 +32,13 @@ public class FrontController {
     @FXML
     HBox hh;
     @FXML
+    HBox tt;
+    @FXML
     AnchorPane navapp ;
     @FXML
     AnchorPane main_form;
+    @FXML
+    private TilePane cardsContainercentre;
     @FXML
     private TilePane cardsContainer;
     @FXML
@@ -105,6 +109,8 @@ public class FrontController {
     ServiceCentre sapcentre = new ServiceCentre();
     private ServiceDon donService = new ServiceDon();
     private Dons don;
+    private ServiceCentre serviceCentre = new ServiceCentre();
+    private CentreDon centreDon;
 
     @FXML
     public void initialize() {
@@ -136,7 +142,7 @@ public class FrontController {
         setupAddDonLink();
         loadDons();
         LOAD();
-
+        loadcentre();
     }
     private void LOAD() {
         try {
@@ -183,6 +189,17 @@ public class FrontController {
             for (Dons don : donService.selectAll()) {
                 VBox card = createDonCard(don);
                 cardsContainer.getChildren().add(card);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    private void loadcentre() {
+        cardsContainercentre.getChildren().clear(); // Clear existing cards before loading new ones
+        try {
+            for (CentreDon centreDon : serviceCentre.selectAll()) {
+                VBox card = createCentreCard(centreDon);
+                cardsContainercentre.getChildren().add(card);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -289,7 +306,8 @@ public class FrontController {
         hh.setVisible(false);
         hh.setManaged(false);
         vbox.setVisible(false);
-        modif.setVisible(false);   }
+        modif.setVisible(false);
+    centre.setVisible(false);}
 
     @FXML
     private void handledons(MouseEvent event) {
@@ -726,7 +744,58 @@ public class FrontController {
             e.getMessage();
         }
     }
+   ////////////////////////////////////////
 
+
+
+
+
+    private VBox createCentreCard(CentreDon centreDon) {
+        VBox cards = new VBox(5); // Réduire l'espacement entre les éléments
+        cards.getStyleClass().add("card-pane"); // Attribuer une classe de style pour le style CSS
+        cards.setPadding(new Insets(10)); // Réduire la marge autour des éléments
+
+        // ImageView pour l'image du centre de don (à remplacer par le chemin de votre image)
+        ImageView imageView = new ImageView(new Image("C:\\Users\\Lenovo\\Desktop\\java\\PIJAVA\\src\\main\\java\\Controller\\img\\folks-hospital-ward.png"));
+        imageView.setFitWidth(300); // Ajuster la largeur de l'image
+        imageView.setPreserveRatio(true); // Préserver le rapport hauteur/largeur de l'image
+
+        // Étiquette pour le nom du centre de don
+        Label nomLabel = new Label("Nom du centre: " + centreDon.getNom());
+        nomLabel.setStyle("-fx-font-weight: bold; -fx-font-family: Arial;"); // Rendre la police en gras et définir la police de caractères
+
+        // Étiquette pour le gouvernorat du centre de don
+        Label gouvernoratLabel = new Label("Gouvernorat: " + centreDon.getGouvernorat());
+        gouvernoratLabel.setStyle("-fx-font-family: Arial;"); // Définir la police de caractères
+
+        // Étiquette pour l'adresse email du centre de don
+        Label emailLabel = new Label("Email: " + centreDon.getEmail());
+        emailLabel.setStyle("-fx-font-family: Arial;"); // Définir la police de caractères
+
+        // Étiquette pour l'heure d'ouverture du centre de don
+        Label heureOuvertureLabel = new Label("Heure d'ouverture: " + centreDon.getHeureouv());
+        heureOuvertureLabel.setStyle("-fx-font-family: Arial;"); // Définir la police de caractères
+
+        // Étiquette pour l'heure de fermeture du centre de don
+        Label heureFermetureLabel = new Label("Heure de fermeture: " + centreDon.getHeureferm());
+        heureFermetureLabel.setStyle("-fx-font-family: Arial;"); // Définir la police de caractères
+
+        // Bouton pour afficher plus de détails sur le centre de don
+        Button detailsButton = new Button("Détails");
+        detailsButton.setOnAction(e -> showcentreDetails(centreDon)); // Définir l'action pour afficher les détails du centre de don
+
+        // Ajouter tous les composants à VBox
+        cards.getChildren().addAll(imageView, nomLabel, gouvernoratLabel, emailLabel, heureOuvertureLabel, heureFermetureLabel, detailsButton);
+        cards.setAlignment(Pos.CENTER); // Centrer le contenu dans VBox
+        return cards; // Retourner la carte entièrement construite
+    }
+
+    private void showcentreDetails(CentreDon centreDon) {
+        this.centreDon=centreDon;
+        setDon();
+        tt.setVisible(false);
+        this.vbox.setVisible(true);
+    }
 }
  /*
     private void Modifier(Dons don) {

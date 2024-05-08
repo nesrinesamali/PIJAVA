@@ -120,9 +120,9 @@ public class AjouterDonFront implements Initializable
         // Vous pouvez également définir une date par défaut ici si nécessaire
         // Par exemple :
         LocalDate defaultDate = LocalDate.now();
-        dateproFLd.setValue(defaultDate);
+        dateproFLd.setValue(null);
         LocalDate defaultDate2 = LocalDate.now().plusDays(7); // 7 jours après aujourd'hui
-        datederFLd.setValue(defaultDate2);
+        datederFLd.setValue(null);
         // Charger les informations sur les centres de don
         loadCentreDonData();
 
@@ -148,7 +148,6 @@ public class AjouterDonFront implements Initializable
         Label errorLabel = new Label("Veuillez entrer votre numéro d'identification nationale.");
         errorLabel.setTextFill(Color.RED);
         errorLabel.setId("errorLabel"); // Définir un ID unique pour l'étiquette
-
 // Pour CinFld
         if (CinFld.getText().isEmpty()) {
             CinFld.setStyle("-fx-border-color: red ; -fx-border-width: 2px;");
@@ -186,18 +185,20 @@ public class AjouterDonFront implements Initializable
                 ((Pane)GenreFLd.getParent()).getChildren().remove(genreErrorLabelToRemove);
             }
         }
-
 // Pour dateproFLd
-        // Pour dateproFLd
+// Pour dateproFLd
+        Label dateproerrorlabel = new Label("Veuillez sélectionner votre date de prochaine don.");
+        dateproerrorlabel.setTextFill(Color.RED);
+        dateproerrorlabel.setId("dateproerrorlabel"); // Définir un ID unique pour l'étiquette
         if (dateproFLd.getValue() == null) {
             dateproFLd.setStyle("-fx-border-color: red ; -fx-border-width: 2px;");
             // Vérifier si le parent du DatePicker est nul avant de rechercher
             if (dateproFLd.getParent() != null) {
-                Node existingErrorLabel = ((Pane) dateproFLd.getParent()).lookup("#dateproErrorLabel");
+                Node existingErrorLabel = ((Pane) dateproFLd.getParent()).lookup("#dateproerrorlabel"); // Correction du nom de l'ID
                 if (existingErrorLabel == null) {
                     // Placement de l'étiquette en dessous du champ
-                    VBox parent = new VBox(dateproFLd, dateproErrorLabel);
-                    VBox.setMargin(dateproErrorLabel, new Insets(5, 0, 0, 0)); // Espacement en haut
+                    VBox parent = new VBox(dateproFLd, dateproerrorlabel);
+                    VBox.setMargin(dateproerrorlabel, new Insets(5, 0, 0, 0)); // Espacement en haut
                     ((Pane) dateproFLd.getParent()).getChildren().add(parent);
                 }
             }
@@ -205,14 +206,12 @@ public class AjouterDonFront implements Initializable
             dateproFLd.setStyle("-fx-border-color: green ; -fx-border-width: 2px;");
             // Vérifier si le parent du DatePicker est nul avant de rechercher
             if (dateproFLd.getParent() != null) {
-                Node dateproErrorLabelToRemove = ((Pane) dateproFLd.getParent()).lookup("#dateproErrorLabel");
+                Node dateproErrorLabelToRemove = ((Pane) dateproFLd.getParent()).lookup("#dateproerrorlabel"); // Correction du nom de l'ID
                 if (dateproErrorLabelToRemove != null) {
                     ((Pane) dateproFLd.getParent()).getChildren().remove(dateproErrorLabelToRemove);
                 }
             }
         }
-
-
 
 // Pour datederFLd
         Label datederErrorLabel = new Label("Veuillez sélectionner la date de votre dernier don.");

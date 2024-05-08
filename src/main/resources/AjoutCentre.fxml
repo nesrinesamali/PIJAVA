@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AjouterCentre">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="771.0" prefWidth="914.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AjouterCentre">
     <children>
         <AnchorPane fx:id="main_form" prefHeight="709.0" prefWidth="840.0">
             <children>
-                <AnchorPane fx:id="login_form" layoutX="-2.0" prefHeight="706.0" prefWidth="630.0" styleClass="white-bg" AnchorPane.bottomAnchor="-136.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+                <AnchorPane fx:id="login_form" layoutX="-12.8" layoutY="-4.0" prefHeight="735.0" prefWidth="900.0" styleClass="white-bg" AnchorPane.bottomAnchor="-43.0" AnchorPane.leftAnchor="-13.0" AnchorPane.rightAnchor="-47.0" AnchorPane.topAnchor="-4.0">
                     <children>
 
-                        <Label layoutX="241.0" layoutY="42.0" text="ADD a center" textFill="#188ba7">
+                        <Label layoutX="293.0" layoutY="29.0" text="ADD a center" textFill="#188ba7">
                             <font>
                                 <Font name="Bauhaus 93" size="35.0" />
                             </font>
@@ -21,15 +29,61 @@
                             </HBox.margin>
                         </Label>
                         <HBox alignment="CENTER" layoutX="143.0" layoutY="476.0" prefHeight="56.0" prefWidth="0.0" />
-                        <TextField fx:id="nomFLd" layoutX="191.0" layoutY="143.0" prefHeight="30.0" prefWidth="407.0" promptText="&quot;Entrez votre nom de centre.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                        <ComboBox fx:id="govFLd" layoutX="191.0" layoutY="336.0" prefHeight="37.0" prefWidth="407.0" promptText="&quot;Sélectionnez votre gouvernorat&quot;" styleClass="combobox-1" stylesheets="@page.css" />
-                        <DatePicker fx:id="houvFLd" layoutX="191.0" layoutY="272.0" prefHeight="30.0" prefWidth="407.0" promptText="&quot;Choisissez votre heure d'ouverture&quot;" styleClass="datepicker-1" stylesheets="@page.css" />
-                        <DatePicker fx:id="hfermFLd" layoutX="191.0" layoutY="211.0" prefHeight="26.0" prefWidth="407.0" promptText="&quot;Choisissez votre heure d'fermeture&quot;" styleClass="datepicker-1" stylesheets="@page.css" />
-                        <TextField fx:id="emailFLd" layoutX="191.0" layoutY="407.0" prefHeight="29.0" prefWidth="407.0" promptText="&quot;Entrez votre email.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                        <TextField fx:id="numFLd" layoutX="191.0" layoutY="476.0" prefHeight="30.0" prefWidth="407.0" promptText=" &quot;Entrez votre numero.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                        <TextField fx:id="lieuFLd" layoutX="191.0" layoutY="543.0" prefHeight="29.0" prefWidth="407.0" promptText=" &quot;Entrez votre localisation.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                        <Button layoutX="215.0" layoutY="612.0" mnemonicParsing="false" onMouseClicked="#save" prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@page.css" text="save" />
-                        <Button layoutX="395.0" layoutY="612.0" mnemonicParsing="false" onMouseClicked="#reset" prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@page.css" text="Reset" />
+                        <TextField fx:id="nomFLd" layoutX="75.0" layoutY="126.0" prefHeight="40.0" prefWidth="374.0" promptText="&quot;Entrez votre nom de centre.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                        <ComboBox fx:id="govFLd" layoutX="75.0" layoutY="352.0" prefHeight="40.0" prefWidth="374.0" promptText="&quot;Sélectionnez votre gouvernorat&quot;" styleClass="combobox-1" stylesheets="@page.css" />
+                        <TextField fx:id="emailFLd" layoutX="75.0" layoutY="428.0" prefHeight="40.0" prefWidth="374.0" promptText="&quot;Entrez votre email.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                        <TextField fx:id="numFLd" layoutX="75.0" layoutY="512.0" prefHeight="40.0" prefWidth="374.0" promptText=" &quot;Entrez votre numero.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                        <TextField fx:id="lieuFLd" layoutX="75.0" layoutY="595.0" prefHeight="40.0" prefWidth="374.0" promptText=" &quot;Entrez votre localisation.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                        <Button layoutX="552.0" layoutY="512.0" mnemonicParsing="false" onMouseClicked="#save" prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@page.css" text="save" />
+                        <Button layoutX="741.0" layoutY="512.0" mnemonicParsing="false" onMouseClicked="#reset" prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@page.css" text="Reset" />
+                        <Spinner fx:id="houvHourSpinner" layoutX="92.0" layoutY="197.0" prefHeight="40.0" prefWidth="78.0" />
+                        <Label text=":" />
+                        <Spinner fx:id="houvMinuteSpinner" layoutX="215.0" layoutY="197.0" prefHeight="40.0" prefWidth="78.0" />
+
+                        <Spinner fx:id="hfermHourSpinner" layoutX="92.0" layoutY="272.0" prefHeight="40.0" prefWidth="78.0" />
+                        <Label text=":" />
+                        <Spinner fx:id="hfermMinuteSpinner" layoutX="215.0" layoutY="272.0" prefHeight="40.0" prefWidth="78.0" />
+                  <ImageView fitHeight="483.0" fitWidth="390.0" layoutX="467.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/lagom-doctor-and-a-patient-with-a-broken-leg.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="50.0" layoutX="26.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/icons8-data-center-50.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="50.0" layoutX="27.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/icons8-open-64.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="50.0" layoutX="27.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/icons8-close-sign-50.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="50.0" layoutX="26.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/icons8-select-50.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="50.0" layoutX="26.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/icons8-email-80.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="50.0" layoutX="26.0" layoutY="508.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/icons8-ringing-phone-80.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="50.0" layoutX="26.0" layoutY="591.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/icons8-location-100.png" />
+                     </image>
+                  </ImageView>
+
                     </children>
                 </AnchorPane>
             </children>

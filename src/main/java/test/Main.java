@@ -16,7 +16,7 @@ public class Main extends Application {
 
 
             // Load the FXML file
-            Parent parent = FXMLLoader.load(getClass().getResource("/okok.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/AfficherDon.fxml"));
 
             // Create the scene and set it on the stage
             Scene scene = new Scene(parent);

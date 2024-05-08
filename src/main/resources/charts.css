@@ -1,0 +1,64 @@
+/* styles.css */
+
+/* Couleurs personnalisées pour chaque type de groupe sanguin */
+.bar.A {
+    -fx-bar-fill: #3498db; /* Couleur pour le groupe sanguin A */
+}
+
+.bar.B {
+    -fx-bar-fill: #27ae60; /* Couleur pour le groupe sanguin B */
+}
+
+.bar.O {
+    -fx-bar-fill: #e74c3c; /* Couleur pour le groupe sanguin O */
+}
+
+.bar.AB {
+    -fx-bar-fill: #f39c12; /* Couleur pour le groupe sanguin AB */
+}
+
+/* Autres styles restent les mêmes que précédemment */
+.axis-label {
+    -fx-font-size: 14px; /* Taille de la police des étiquettes d'axe */
+    -fx-font-weight: bold; /* Gras pour les étiquettes d'axe */
+    -fx-text-fill: #333333; /* Couleur du texte des étiquettes d'axe */
+}
+
+.bar-chart .axis-label {
+    -fx-text-fill: #333333; /* Couleur du texte des étiquettes d'axe */
+}
+
+.bar {
+    -fx-background-color: #ecf0f1, #bdc3c7; /* Couleur de fond des barres */
+    -fx-background-insets: 0, 2; /* Insets pour le dégradé */
+    -fx-background-radius: 5px; /* Coins arrondis pour les barres */
+}
+
+.bar:hover {
+    -fx-bar-fill: #2980b9; /* Couleur des barres au survol */
+}
+
+.chart-title {
+    -fx-font-size: 20px; /* Taille de la police du titre du graphique */
+    -fx-font-weight: bold; /* Gras pour le titre du graphique */
+    -fx-text-fill: #333333; /* Couleur du texte du titre du graphique */
+}
+
+.chart-legend {
+    -fx-font-size: 14px; /* Taille de la police de la légende */
+    -fx-font-weight: normal; /* Poids normal pour la légende */
+    -fx-text-fill: #333333; /* Couleur du texte de la légende */
+}
+
+.chart-legend-item-symbol {
+    -fx-background-radius: 0; /* Supprimer le rayon de la bordure des symboles de légende */
+    -fx-padding: 2px; /* Espacement autour des symboles de légende */
+}
+
+.chart-legend-item {
+    -fx-padding: 5px; /* Espacement autour des éléments de légende */
+}
+
+.chart-legend-item:hover {
+    -fx-background-color: #ecf0f1; /* Couleur de fond des éléments de légende au survol */
+}

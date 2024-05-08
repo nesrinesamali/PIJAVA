@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -243,10 +240,8 @@ public class AjouterDonFXML implements Initializable {
         etatFLd.setItems(FXCollections.observableArrayList("Celibataire", "Marié"));
         // Vous pouvez également définir une date par défaut ici si nécessaire
         // Par exemple :
-        LocalDate defaultDate = LocalDate.now();
-        dateproFLd.setValue(defaultDate);
-        LocalDate defaultDate2 = LocalDate.now().plusDays(7); // 7 jours après aujourd'hui
-        datederFLd.setValue(defaultDate2);
+        dateproFLd.setValue(null);
+        datederFLd.setValue(null);
         // Charger les informations sur les centres de don
         loadCentreDonData();
 
@@ -266,14 +261,12 @@ public class AjouterDonFXML implements Initializable {
 
     @FXML
     private void save(MouseEvent event) {
-
 // Pour CinFld
-        Label errorLabel = new Label("Veuillez entrer votre numéro d'identification nationale.");
+        Label errorLabel = new Label("Veuillez entrer votre numéro d'identification nationale contenant 8 chiffres.");
         errorLabel.setTextFill(Color.RED);
         errorLabel.setId("errorLabel"); // Définir un ID unique pour l'étiquette
-
 // Pour CinFld
-        if (CinFld.getText().isEmpty()) {
+        if (CinFld.getText().isEmpty() || !Pattern.matches("\\d{8}", CinFld.getText())) { // Vérification de la longueur et du format
             CinFld.setStyle("-fx-border-color: red ; -fx-border-width: 2px;");
             // Placer l'étiquette en dessous du champ
             errorLabel.setLayoutX(CinFld.getLayoutX());
@@ -309,18 +302,20 @@ public class AjouterDonFXML implements Initializable {
                 ((Pane)GenreFLd.getParent()).getChildren().remove(genreErrorLabelToRemove);
             }
         }
-
 // Pour dateproFLd
-        // Pour dateproFLd
+// Pour dateproFLd
+        Label dateproerrorlabel = new Label("Veuillez sélectionner votre date de prochaine don.");
+        dateproerrorlabel.setTextFill(Color.RED);
+        dateproerrorlabel.setId("dateproerrorlabel"); // Définir un ID unique pour l'étiquette
         if (dateproFLd.getValue() == null) {
             dateproFLd.setStyle("-fx-border-color: red ; -fx-border-width: 2px;");
             // Vérifier si le parent du DatePicker est nul avant de rechercher
             if (dateproFLd.getParent() != null) {
-                Node existingErrorLabel = ((Pane) dateproFLd.getParent()).lookup("#dateproErrorLabel");
+                Node existingErrorLabel = ((Pane) dateproFLd.getParent()).lookup("#dateproerrorlabel"); // Correction du nom de l'ID
                 if (existingErrorLabel == null) {
                     // Placement de l'étiquette en dessous du champ
-                    VBox parent = new VBox(dateproFLd, dateproErrorLabel);
-                    VBox.setMargin(dateproErrorLabel, new Insets(5, 0, 0, 0)); // Espacement en haut
+                    VBox parent = new VBox(dateproFLd, dateproerrorlabel);
+                    VBox.setMargin(dateproerrorlabel, new Insets(5, 0, 0, 0)); // Espacement en haut
                     ((Pane) dateproFLd.getParent()).getChildren().add(parent);
                 }
             }
@@ -328,22 +323,29 @@ public class AjouterDonFXML implements Initializable {
             dateproFLd.setStyle("-fx-border-color: green ; -fx-border-width: 2px;");
             // Vérifier si le parent du DatePicker est nul avant de rechercher
             if (dateproFLd.getParent() != null) {
-                Node dateproErrorLabelToRemove = ((Pane) dateproFLd.getParent()).lookup("#dateproErrorLabel");
+                Node dateproErrorLabelToRemove = ((Pane) dateproFLd.getParent()).lookup("#dateproerrorlabel"); // Correction du nom de l'ID
                 if (dateproErrorLabelToRemove != null) {
                     ((Pane) dateproFLd.getParent()).getChildren().remove(dateproErrorLabelToRemove);
                 }
             }
         }
 
-
-
 // Pour datederFLd
-        Label datederErrorLabel = new Label("Veuillez sélectionner la date de votre dernier don.");
+        Label datederErrorLabel = new Label("La date de dernier don ne peut pas prendre cette valeur.");
         datederErrorLabel.setTextFill(Color.RED);
         datederErrorLabel.setId("datederErrorLabel"); // Définir un ID unique pour l'étiquette
 
+// Limiter la sélection aux dates antérieures ou égales à aujourd'hui
+        datederFLd.setDayCellFactory(picker -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                setDisable(empty || date.isAfter(LocalDate.now())); // Désactiver les dates futures
+            }
+        });
+
 // Pour datederFLd
-        if (datederFLd.getValue() == null) {
+        if (datederFLd.getValue() == null || datederFLd.getValue().isAfter(LocalDate.now())) {
             datederFLd.setStyle("-fx-border-color: red ; -fx-border-width: 2px;");
             // Placer l'étiquette en dessous du champ
             datederErrorLabel.setLayoutX(datederFLd.getLayoutX());
@@ -358,7 +360,6 @@ public class AjouterDonFXML implements Initializable {
                 ((Pane)datederFLd.getParent()).getChildren().remove(datederErrorLabelToRemove);
             }
         }
-
 
 // Pour groupeFLd
         Label groupeErrorLabel = new Label("Veuillez sélectionner votre groupe sanguin.");
@@ -450,6 +451,7 @@ public class AjouterDonFXML implements Initializable {
                 ((Pane)centreDonComboBox.getParent()).getChildren().remove(centreDonErrorLabelToRemove);
             }
         }
+
 
 
 

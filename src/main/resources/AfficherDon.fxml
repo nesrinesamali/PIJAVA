@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="621.0" prefWidth="1201.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DonController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="621.0" prefWidth="1201.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DonController">
     <children>
         <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
             <children>
@@ -104,7 +113,9 @@
                         <AnchorPane prefHeight="554.0" prefWidth="877.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
 
                             <children>
-                            <TableView fx:id="DonTable" layoutX="31.0" layoutY="160.0" prefHeight="367.0" prefWidth="946.0" styleClass="table-view" stylesheets="style.css">
+                                <TextField fx:id="searchTextField" layoutX="704.0" layoutY="102.0" onKeyReleased="#searchAction" prefHeight="41.0" prefWidth="202.0" promptText="Search..." />
+
+                                <TableView fx:id="DonTable" layoutX="31.0" layoutY="160.0" prefHeight="367.0" prefWidth="946.0" styleClass="table-view" stylesheets="style.css">
                                 <columns>
                                     <TableColumn fx:id="idCol" maxWidth="70.0" minWidth="0.0" prefWidth="0.0" style="-fx-alignment: center;" text="ID" />
                                     <TableColumn fx:id="cinCol" maxWidth="124.0000057220459" prefWidth="112.80002403259277" style="-fx-alignment: center;" text="Cin" />
@@ -119,28 +130,35 @@
                                     <TableColumn fx:id="actionCol" maxWidth="114.39999389648438" prefWidth="93.60000610351562" style="-fx-alignment: center;" text="Actions" />
                                 </columns>
                             </TableView>
-                            <Pane layoutY="59.0" prefHeight="3.0" prefWidth="200.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                            <Text layoutX="22.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Center of donation Details" wrappingWidth="445.13671875">
-                                <font>
-                                    <Font name="Bauhaus 93" size="32.0" />
-                                </font>
-                            </Text>
-                            <HBox alignment="CENTER" layoutX="602.0" layoutY="-1.0" prefHeight="36.0" prefWidth="37.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                            <HBox alignment="CENTER_LEFT" layoutX="326.0" layoutY="72.0" prefHeight="76.0" prefWidth="200.0">
-                            <children>
-                                <FontAwesomeIconView fill="#2196f3" glyphName="USER_PLUS" onMouseClicked="#getAddView" size="45" styleClass="btn" text="">
-                                    <HBox.margin>
-                                        <Insets right="10.0" />
-                                    </HBox.margin>
-                                </FontAwesomeIconView>
-                                <FontAwesomeIconView fill="#00e676" glyphName="REFRESH" layoutX="10.0" layoutY="65.0" onMouseClicked="#getRefrashable" size="45" styleClass="btn" text="">
-                                    <HBox.margin>
-                                        <Insets right="10.0" />
-                                    </HBox.margin>
-                                </FontAwesomeIconView>
-                                <FontAwesomeIconView fill="#455a64" glyphName="PRINT" layoutX="62.0" layoutY="65.0" size="45" styleClass="btn" />
-                            </children>
-                            </HBox>
+                                <Text layoutX="14.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Center Details" wrappingWidth="245.13671875">
+                                    <font>
+                                        <Font name="Bauhaus 93" size="32.0" />
+                                    </font>
+                                </Text>
+                                <HBox alignment="CENTER" layoutX="602.0" layoutY="-1.0" prefHeight="36.0" prefWidth="37.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                <ImageView fitHeight="57.0" fitWidth="64.0" layoutX="47.0" layoutY="94.0" onMouseClicked="#getAddView" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@assets/icons8-drop-of-blood-100.png" />
+                                    </image></ImageView>
+                                <ImageView fx:id="pieChartButton" fitHeight="64.0" fitWidth="75.0" layoutX="116.0" layoutY="91.0" onMouseClicked="#handlePieChartButtonClick" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@assets/icons8-pie-charts-64.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fitHeight="57.0" fitWidth="64.0" layoutX="196.0" layoutY="95.0" onMouseClicked="#PrintPdf" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@assets/icons8-pdf-64.png" />
+                                    </image>
+                                </ImageView>
+                                <Button fx:id="excelButton" layoutX="268.0" layoutY="94.0" onAction="#Excel" prefHeight="52.0" prefWidth="66.0" />
+                        <ImageView fitHeight="57.0" fitWidth="64.0" layoutX="633.0" layoutY="94.0" onMouseClicked="#PrintPdf" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@assets/icons8-search-60.png" />
+                           </image>
+                        </ImageView>
+                                  <ImageView fitHeight="56.0" fitWidth="60.0" layoutX="273.0" layoutY="92.0" preserveRatio="true">
+                                      <Image url="@assets/icons8-excel-48.png" />
+                                  </ImageView>
                             </children>
                         </AnchorPane>
 

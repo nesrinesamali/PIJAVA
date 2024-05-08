@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import java.net.URL?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Statdon">
+    <stylesheets>
+        <URL value="@charts.css" />
+    </stylesheets>
+    <children>
+        <Text layoutX="151.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistiques des Groupes Sanguins">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <BarChart fx:id="barChart" layoutX="73.0" layoutY="72.0" prefHeight="236.0" prefWidth="446.0">
+            <xAxis>
+                <CategoryAxis side="BOTTOM" fx:id="xAxis" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis side="LEFT" />
+            </yAxis>
+        </BarChart>
+    </children>
+</AnchorPane>

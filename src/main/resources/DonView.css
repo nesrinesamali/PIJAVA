@@ -54,12 +54,7 @@
 }
 
 /* Ajoutez des styles pour le bouton en état initial */
-.button {
-    /* Autres styles du bouton... */
-    opacity: 0; /* Rendre le bouton initialement transparent */
-    visibility: hidden; /* Cacher le bouton initialement */
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Ajouter une transition fluide */
-}
+
 .button {
     /* Autres styles du bouton... */
     -fx-background-color: transparent; /* Fond transparent */

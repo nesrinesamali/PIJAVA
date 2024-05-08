@@ -584,7 +584,7 @@
                 </ImageView>
             </children>
         </AnchorPane>
-      <HBox fx:id="hh" layoutX="89.0" layoutY="129.0" prefHeight="631.0" prefWidth="1099.0" visible="true">
+      <HBox fx:id="hh" layoutX="89.0" layoutY="129.0" prefHeight="631.0" prefWidth="1099.0" visible="false">
           <VBox alignment="CENTER" prefHeight="700.0" prefWidth="1100.0" spacing="10" stylesheets="DonView.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
               <children>
                   <!-- Ajout d'un titre -->
@@ -605,6 +605,26 @@
               </children>
           </VBox>
       </HBox>
+        <HBox fx:id="tt" layoutX="89.0" layoutY="129.0" prefHeight="631.0" prefWidth="1099.0" visible="false">
+            <VBox alignment="CENTER" prefHeight="700.0" prefWidth="1100.0" spacing="10" stylesheets="DonView.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+                <children>
+                    <!-- Ajout d'un titre -->
+                    <Label styleClass="Titre" text="Explorez les Centres" />
+                    <!-- Ajout d'un lien pour ajouter un don -->
+                    <ScrollPane fx:id="scrollPane1" fitToHeight="true" fitToWidth="true" styleClass="scroll-pane">
+                        <content>
+                            <TilePane fx:id="cardsContainercentre" hgap="10" prefColumns="4" prefHeight="620.0" prefWidth="1141.0" styleClass="tile-pane" vgap="10">
+                                <padding>
+                                    <Insets bottom="10" left="10" right="10" top="10" />
+                                </padding>
+                                <!-- Les cartes seront ajoutées ici dynamiquement -->
+                                <HBox spacing="10" />
+                            </TilePane>
+                        </content>
+                    </ScrollPane>
+                </children>
+            </VBox>
+        </HBox>
         <AnchorPane fx:id="vbox" layoutX="74.0" layoutY="76.0" prefHeight="762.0" prefWidth="1372.0" visible="false">
             <children>
                 <Label fx:id="dernier" layoutX="80.0" layoutY="257.0" prefHeight="35.0" prefWidth="504.0" styleClass="label" text="𝗗𝗮𝘁𝗲 𝗗𝗲 𝗗𝗲𝗿𝗻𝗶𝗲𝗿 𝗗𝗼𝗻𝗮𝘁𝗶𝗼𝗻:">

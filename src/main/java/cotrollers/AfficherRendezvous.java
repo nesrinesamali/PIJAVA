@@ -318,5 +318,6 @@ public class AfficherRendezvous implements Initializable {
                 String question= inputTextField.getText();
                 String reponse =execPromptGpt("you are a hulpful assistant in devDinecity which is a helth care application your role is to answer sick user's question and provide them the best solution to feel better.the question is : "+question);
                 outputLabel.setText(reponse);
+
         }
 }

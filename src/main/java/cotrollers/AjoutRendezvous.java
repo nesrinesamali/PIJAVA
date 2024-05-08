@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import models.Rendezvous;
 import models.User;
 import services.RendezvousService;
@@ -171,6 +172,8 @@ public class AjoutRendezvous implements Initializable {
         // Envoyer l'objet au service pour la création dans la base de données
         try {
             rs.create(newRendezvous);
+            Stage stage = (Stage) date.getScene().getWindow();
+            stage.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -189,6 +192,8 @@ public class AjoutRendezvous implements Initializable {
 
         // Afficher un message de succès ou gérer la situation d'une autre manière
         System.out.println("Rendez-vous ajouté avec succès.");
+
+
     }
 
     @FXML

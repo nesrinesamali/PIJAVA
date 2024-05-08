@@ -89,11 +89,14 @@ public class Front  {
             stage.showAndWait(); // Attendre que la fenêtre soit fermée avant de rafraîchir l'affichage
             // Rafraîchir l'affichage après la fermeture de la fenêtre d'ajout si nécessaire
             refreshTable();
-            // Appeler la méthode de rafraîchissement
+            // Cacher la fenêtre d'ajout
+            stage.hide();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
+
+
 
 
     private void loadrv() {

@@ -2,8 +2,12 @@ package controllers;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.sql.SQLException;
 import java.util.Random;
+
+import entities.User;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -67,6 +71,47 @@ public class ForgotPasswordController {
         }
     }
 
+
+    @FXML
+    private TextField phoneTF;
+    public void sendPasswordViaSMS(ActionEvent actionEvent) throws SQLException {
+        String email = emailTF.getText();
+        String phoneNumber = phoneTF.getText();
+
+        // Check if email and phone number are provided
+        if (email.isEmpty() || phoneNumber.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please enter your email and phone number!");
+            alert.show();
+            return;
+        }
+
+        // Call SMSController method to send password via SMS
+        String password = getPasswordForEmail(email);
+        if (password != null) {
+            // Send SMS
+            SMSController.sendSMS(phoneNumber, "Your password: " + password);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Password sent via SMS!");
+            alert.show();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("No user found with this email!");
+            alert.show();
+        }
+    }
+
+    private String getPasswordForEmail(String email) throws SQLException {
+        UserService userService = new UserService();
+        User user = userService.getUserByEmail(email);
+        if (user != null) {
+            return user.getPassword();
+        } else {
+            return null;
+        }
+    }
+
+    // Method to get the phone number for the given email
 
     public static int generateVerificationCode() {
         // Générer un code de vérification aléatoire à 6 chiffres

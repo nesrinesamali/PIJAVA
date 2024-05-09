@@ -16,11 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author don7a
- */
+
 public class verifController implements Initializable {
 
     @FXML

@@ -69,7 +69,8 @@
             <Label fx:id="mdp_oublie" layoutX="83.0" layoutY="458.0" text="mot de passe oublié ?" textFill="#3321d9" />
             <TextField fx:id="nomm" layoutX="67.0" layoutY="114.0" />
             <ChoiceBox fx:id="choicebox" layoutX="101.0" layoutY="319.0" opacity="0.59" prefWidth="150.0" />
-            <Button layoutX="137.0" layoutY="377.0" mnemonicParsing="false" onAction="#chooseFile" text="Choose picture" />
+            <Button layoutX="113.0" layoutY="377.0" mnemonicParsing="false" onAction="#chooseFile" text="Choose picture" />
+            <ImageView fx:id="selectedImageView" fitHeight="56.0" fitWidth="65.0" layoutX="222.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>

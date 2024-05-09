@@ -10,7 +10,39 @@ public class User {
         private String roles;
         private int id;
 
-        public User() {
+        private boolean isBanned;
+
+    public User(String nom, String email, String password, String prenom, String brochure, String roles, int id, boolean isBanned) {
+        this.nom = nom;
+        this.email = email;
+        this.password = password;
+        this.prenom = prenom;
+        this.brochure = brochure;
+        this.roles = roles;
+        this.id = id;
+        this.isBanned = isBanned;
+    }
+
+
+    public User(String nom, String email, String password, String prenom, String brochure, String roles, boolean isBanned) {
+        this.nom = nom;
+        this.email = email;
+        this.password = password;
+        this.prenom = prenom;
+        this.brochure = brochure;
+        this.roles = roles;
+        this.isBanned = isBanned;
+    }
+
+    public boolean isBanned() {
+        return isBanned;
+    }
+
+    public void setBanned(boolean banned) {
+        isBanned = banned;
+    }
+
+    public User() {
         }
 
         public User(String nom, String email, String password, String prenom, String brochure, String roles) {
@@ -78,18 +110,19 @@ public class User {
             this.id = id;
         }
 
-        @Override
-        public String toString() {
-            return "User{" +
-                    "nom='" + nom + '\'' +
-                    ", email='" + email + '\'' +
-                    ", password='" + password + '\'' +
-                    ", prenom='" + prenom + '\'' +
-                    ", brochure='" + brochure + '\'' +
-                    ", roles='" + roles + '\'' +
-                    ", id=" + id +
-                    '}';
-        }
+    @Override
+    public String toString() {
+        return "User{" +
+                "nom='" + nom + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", brochure='" + brochure + '\'' +
+                ", roles='" + roles + '\'' +
+                ", id=" + id +
+                ", isBanned=" + isBanned +
+                '}';
     }
+}
 
 

@@ -182,7 +182,8 @@ public class UserService implements IService {
                 String status = rs.getString("statuteligibilite");
                 String reset_token = rs.getString("token");
                 String roles = rs.getString("roles");
-                User user = new User( id,  nom,  email,  roles,  prenom,  status,  reset_token);
+                String isbanned = rs.getString("status");
+                User user = new User( id,  nom,  email,  roles,  prenom,  status,  reset_token,isbanned);
                 return user;
             } else {
                 // Login failed, return null
@@ -244,6 +245,7 @@ public class UserService implements IService {
             u.setPrenom(rs.getString("prenom"));
             u.setRoles(rs.getString("roles"));
             u.setEmail(rs.getString("email"));
+            u.setStatus(rs.getString("status"));
             users.add(u);
         }
         return users;
@@ -264,5 +266,18 @@ public class UserService implements IService {
             System.out.println(ex.getMessage());
         }
 
+    }
+
+    public void SetStatus (User u) {
+  try {
+      String sql = "UPDATE user SET status = ? WHERE id = ?";
+      PreparedStatement statement = con.prepareStatement(sql);
+      statement.setString(1, u.getStatus());
+      statement.setInt(2, u.getId());
+      int rowsUpdated = statement.executeUpdate();
+      System.out.println("Rows updated: " + rowsUpdated);
+  } catch (SQLException ex) {
+      ex.printStackTrace();
+  }
     }
 }

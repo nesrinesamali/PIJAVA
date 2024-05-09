@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -37,8 +38,14 @@ public class logincontroller {
                 UserService userService = new UserService();
                 User loggedInUser = userService.login(nom, password);
                 if (loggedInUser != null) {
-
-                    if (loggedInUser.getRoles().contains("[\"ADMIN\"]")) {
+                    if (loggedInUser.getStatus().equals("disabled")){
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Your account is disabeled.\nPlease contact the admin");
+                        alert.showAndWait();
+                    }
+                    else if (loggedInUser.getRoles().contains("[\"ADMIN\"]")) {
                         System.out.println("Loading admin interface");
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard.fxml"));
                         Parent root = loader.load();
@@ -94,4 +101,6 @@ public class logincontroller {
             System.err.println(ex.getMessage());
         }
     }
+
+
 }

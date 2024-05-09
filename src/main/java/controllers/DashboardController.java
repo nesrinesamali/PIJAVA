@@ -20,6 +20,8 @@ import java.util.logging.Logger;
 
 public class DashboardController implements Initializable {
 
+    private User user   ;
+
     @FXML
     private TableColumn<?, ?> emailLB;
 
@@ -50,6 +52,7 @@ public class DashboardController implements Initializable {
         roleLB.setCellValueFactory(new PropertyValueFactory<>("roles"));
 
         boolean deleteColumnExists = false;
+        boolean blockColumnExists = false;
         for (TableColumn column : tabUsrs.getColumns()) {
             if (column.getText().equals("Action")) {
                 deleteColumnExists = true;
@@ -103,6 +106,57 @@ public class DashboardController implements Initializable {
 
             tabUsrs.getColumns().add(deleteColumn);
         }
+
+        if (!blockColumnExists) {
+            TableColumn<User, Void> blockColumn = new TableColumn<>("STATUS");
+            blockColumn.setCellFactory(column -> {
+                return new TableCell<User, Void>() {
+                    private final Button blockButton = new Button("Enabled");
+
+                    {
+                        blockButton.setOnAction(event -> {
+                            // Get the User associated with this row
+                            User user = getTableView().getItems().get(getIndex());
+                            System.out.println(user);
+                            System.out.println(user.getStatus());
+                            //System.out.println(user);
+                            // Set the blocked flag on the user object
+                            if (user.getStatus().equals("enabled")) {
+                                user.setStatus("disabled");
+                            } else {
+                                user.setStatus("enabled");
+                            }
+
+                            us.SetStatus(user);
+                            blockButton.setText(user.getStatus());
+
+                        });
+                    }
+
+                    @Override
+                    protected void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            User user = getTableView().getItems().get(getIndex()); // Retrieve the User object associated with this row
+                            if (user != null) {
+                                blockButton.setText(user.getStatus());
+                                setGraphic(blockButton);
+                            } else {
+                                setGraphic(null);
+                            }
+                        }
+                    }
+
+                };
+
+            });
+
+            tabUsrs.getColumns().add(blockColumn);
+        }
+
+
         ObservableList<User> observableList = FXCollections.observableArrayList(list);
         tabUsrs.setItems(observableList);
 

@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -40,6 +42,9 @@ public class registercontroller {
 
     @FXML
     private TextField pren;
+
+    @FXML
+    private ImageView selectedImageView;
 
     @FXML
     void initialize() {
@@ -175,7 +180,16 @@ public class registercontroller {
             String imagePath = selectedFile.toURI().toString();
             System.out.println("Selected file: " + imagePath);
             // Now you can save the imagePath to the database or perform any other operation
+
+            Image image = new Image(imagePath);
+
+            // Set the image to the ImageView
+            selectedImageView.setImage(image);
         }
+
+
+
+
     }
 
 }

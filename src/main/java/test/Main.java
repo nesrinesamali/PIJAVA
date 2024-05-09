@@ -13,10 +13,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-
-
             // Load the FXML file
-            Parent parent = FXMLLoader.load(getClass().getResource("/okok.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/Affiche.fxml"));
 
             // Create the scene and set it on the stage
             Scene scene = new Scene(parent);

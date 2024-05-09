@@ -7,13 +7,22 @@ public class Dons {
     //@ManyToOne
     //@JoinColumn(name = "centre_don_id") // Nom de la colonne dans la table Don faisant référence au CentreDon
     private CentreDon centreDon;
-
+    //@ManyToOne
+    //@JoinColumn(name = "centre_don_id") // Nom de la colonne dans la table Don faisant référence au CentreDon
+    private int User_id;
     public int getId_centre() {
         return id_centre;
     }
 
-    public void setId_centre(int id_centre) {
-        this.id_centre = id_centre;
+    public void setId_centre(int User_id) {
+        this.User_id = User_id;
+    }
+    public int getId_User() {
+        return id_centre;
+    }
+
+    public void setId_User(int User_id) {
+        this.User_id = User_id;
     }
 
     private int id_centre;

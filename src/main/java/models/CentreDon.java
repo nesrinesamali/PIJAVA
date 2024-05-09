@@ -9,9 +9,6 @@ public class CentreDon {
     private Integer num;
     private String gouvernorat; // Ajout de l'attribut gouvernorat
     private String email; // Ajout de l'attribut email
-    private float latitude; // Ajout de l'attribut latitude
-    private float longitude; // Ajout de l'attribut longitude
-    //@OneToMany(mappedBy = "centreDon")
     private List<Dons> donsList;
 
     public CentreDon() {}

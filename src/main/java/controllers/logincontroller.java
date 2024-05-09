@@ -1,5 +1,6 @@
 package controllers;
 
+import Controller.FrontController;
 import entities.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,7 +50,7 @@ public class logincontroller {
                         System.out.println("Loading user profile");
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/profile.fxml"));
                         Parent root = loader.load();
-                            ProfileController controller = loader.getController();
+                        ProfileController controller = loader.getController();
                         controller.setUser(ConnectUser);
                         emailTF.getScene().setRoot(root);
                     }

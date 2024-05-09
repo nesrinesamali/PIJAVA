@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="537.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cotrollers.ModifierRendezvous">
+
+    <children>
+            <Text fill="#d9a250" lineSpacing="5.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier votre rendez-vous" textAlignment="CENTER" wrappingWidth="497.95275115966797">
+                <font>
+                    <Font name="Impact" size="39.0" />
+                </font>
+            </Text>
+            <TextField fx:id="nompatient" alignment="TOP_LEFT" blendMode="SRC_ATOP" layoutX="92.0" layoutY="104.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="342.0" promptText="Nom Patient " style="-fx-background-radius: 100;">
+                <opaqueInsets>
+                    <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+                </opaqueInsets>
+                <font>
+                    <Font name="Andalus" size="12.0" />
+                </font>
+      </TextField>
+            <TextField fx:id="nommedecin" layoutX="96.0" layoutY="187.0" prefHeight="42.0" prefWidth="342.0" promptText="Nom Médecin" style="-fx-background-radius: 100;">
+                <font>
+                    <Font name="Andalus" size="13.0" />
+                </font>
+      </TextField>
+            <DatePicker fx:id="date" layoutX="92.0" layoutY="268.0" prefHeight="42.0" prefWidth="342.0" promptText="Veuillez choisir une date" style="-fx-background-radius: 100;" />
+            <TextField fx:id="heure" layoutX="92.0" layoutY="349.0" prefHeight="48.0" prefWidth="342.0" promptText="Veuillez entrer une heure" style="-fx-background-radius: 100;" />
+          <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="498.0" layoutY="454.0" mnemonicParsing="false" onMouseClicked="#update" prefHeight="37.0" prefWidth="132.0" style="-fx-background-color: #FFA500; -fx-background-radius: 100;" styleClass="#00008B" text="update" textAlignment="RIGHT" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" />
+        <ImageView fitHeight="411.0" fitWidth="410.0" layoutX="456.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="486.0" AnchorPane.topAnchor="0.0">
+            <image>
+                <Image url="@beam-online-medical-consultation.gif" />
+            </image>
+        </ImageView>
+      <ImageView fitHeight="59.0" fitWidth="64.0" layoutX="21.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons8-name-100.png" />
+         </image></ImageView>
+      <ImageView fitHeight="74.0" fitWidth="48.0" layoutX="27.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons8-02_00-50.png" />
+         </image></ImageView>
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="26.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons8-medical-doctor-50.png" />
+         </image></ImageView>
+      <ImageView fitHeight="60.0" fitWidth="48.0" layoutX="26.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons8-date-64.png" />
+         </image></ImageView>
+      <Text fill="#4f51e7" layoutX="12.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="𝓜𝓸𝓭𝓲𝓯𝓲𝓮𝓻 𝓿𝓸𝓽𝓻𝓮 𝓡𝓮𝓷𝓭𝓮𝔃-𝓿𝓸𝓾𝓼" wrappingWidth="418.38751220703125">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+    </children>
+</AnchorPane>

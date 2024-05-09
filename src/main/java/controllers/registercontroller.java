@@ -119,6 +119,7 @@ public class registercontroller {
                 User newuser = new User(name, email, motdp, prenom, profilePic, role);
                 UserService userService = new UserService();
                 userService.ajouter(newuser);
+                System.out.println(newuser);
                 System.out.println("Utilisateur ajouté avec succès !");
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
                 Parent root;

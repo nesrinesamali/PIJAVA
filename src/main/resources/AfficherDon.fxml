@@ -89,7 +89,7 @@
 
                                     </graphic>
                                 </Button>
-                                <Button fx:id="appointments_btn" layoutX="7.0" layoutY="335.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="style.css" text="Appointments">
+                                <Button fx:id="appointments_btn" layoutX="7.0" layoutY="335.0" mnemonicParsing="false" onMouseClicked="#goToreponseView" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="style.css" text="Réponse Rendez-vous">
                                     <graphic>
 
                                     </graphic>

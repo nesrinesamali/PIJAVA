@@ -1,4 +1,5 @@
 package Controller;
+import controllers.ProfileController;
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -849,9 +850,9 @@ public class FrontController {
         cards.setPadding(new Insets(10)); // Réduire la marge autour des éléments
 
         // ImageView pour l'image du centre de don (à remplacer par le chemin de votre image)
-        ImageView imageView = new ImageView(new Image("C:\\Users\\Lenovo\\Desktop\\java\\PIJAVA\\src\\main\\java\\Controller\\img\\folks-hospital-ward.png"));
-        imageView.setFitWidth(300); // Ajuster la largeur de l'image
-        imageView.setPreserveRatio(true); // Préserver le rapport hauteur/largeur de l'image
+       // ImageView imageView = new ImageView(new Image("C:\\Users\\Lenovo\\Desktop\\java\\PIJAVA\\src\\main\\java\\Controller\\img\\folks-hospital-ward.png"));
+       // imageView.setFitWidth(300); // Ajuster la largeur de l'image
+       // imageView.setPreserveRatio(true); // Préserver le rapport hauteur/largeur de l'image
 
         // Étiquette pour le nom du centre de don
         Label nomLabel = new Label("Nom du centre: " + centreDon.getNom());
@@ -878,7 +879,7 @@ public class FrontController {
         detailsButton.setOnAction(e -> showcentreDetails(centreDon)); // Définir l'action pour afficher les détails du centre de don
 
         // Ajouter tous les composants à VBox
-        cards.getChildren().addAll(imageView, nomLabel, gouvernoratLabel, emailLabel, heureOuvertureLabel, heureFermetureLabel, detailsButton);
+        cards.getChildren().addAll(/*imageView*/ nomLabel, gouvernoratLabel, emailLabel, heureOuvertureLabel, heureFermetureLabel, detailsButton);
         cards.setAlignment(Pos.CENTER); // Centrer le contenu dans VBox
         return cards; // Retourner la carte entièrement construite
     }
@@ -910,6 +911,39 @@ public class FrontController {
                 }
             }
         });
+    }
+    @FXML
+    private void goToRendezvousView(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Affiche.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Fermer la fenêtre actuelle si nécessaire
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    @FXML
+    private void goToUserProfile(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/profile.fxml"));
+            Parent root = loader.load();
+
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(root));
+
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.hide();
+
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

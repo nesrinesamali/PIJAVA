@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane prefHeight="450.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cotrollers.AfficherRendezvous">
+    <content>
+        <AnchorPane prefHeight="443.0" prefWidth="990.0">
+            <children>
+
+
+                <TableView fx:id="tv" layoutX="77.0" layoutY="37.0" prefHeight="260.0" prefWidth="698.0" visible="true">
+                    <columns>
+                        <TableColumn fx:id="nompatient" prefWidth="118.39995574951172" text="Nom Patient " />
+                        <TableColumn fx:id="nommedecin" prefWidth="134.40003967285156" text="Nom médecin" />
+                        <TableColumn fx:id="date" prefWidth="98.4000244140625" text="Date" />
+                        <TableColumn fx:id="heure" minWidth="0.0" prefWidth="92.80007934570312" text="Heure " />
+                  <TableColumn fx:id="action" prefWidth="140.00006103515625" text="action" />
+                  <TableColumn fx:id="etat" prefWidth="113.5999755859375" text="Etat" />
+
+                    </columns>
+                </TableView>
+                <Button layoutX="268.0" layoutY="327.0" mnemonicParsing="false" onAction="#SupprimerRendezvous" style="-fx-background-radius: 100;" text="Supprimer">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button layoutX="373.0" layoutY="327.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="83.0" style="-fx-background-radius: 100;" text="Modifier">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </content>
+</ScrollPane>

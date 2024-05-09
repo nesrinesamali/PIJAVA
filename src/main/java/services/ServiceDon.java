@@ -27,7 +27,7 @@ public class ServiceDon implements CRUD<Dons> {
 
     @Override
     public void insertOne(Dons don) throws SQLException {
-        String req = "INSERT INTO `Dons`(`cin`,`genre`,`date_don`, `datedernierdon`, `groupe_sanguin`, `typededon`, `etatmarital`,`centre_don_id`) VALUES (?, ?,?, ?, ?, ?, ?, ?)";
+        String req = "INSERT INTO `Dons`(`cin`,`genre`,`date_don`, `datedernierdon`, `groupe_sanguin`, `typededon`, `etatmarital`,`centre_don_id`,`user_id`) VALUES (?,?,?,?, ?, ?, ?, ?, ?)";
         PreparedStatement ps = connection.prepareStatement(req);
         ps.setString(1, don.getCin());
         ps.setObject(2, don.getGenre());
@@ -36,6 +36,7 @@ public class ServiceDon implements CRUD<Dons> {
         ps.setObject(5, don.getGroupeSanguin());
         ps.setObject(6, don.getTypeDeDon());
         ps.setObject(7, don.getEtatMarital());
+        ps.setObject(8, don.getId_User());
         // Vérifiez si l'objet CentreDon associé à Dons est null
         if (don.getCentreDon() != null) {
             ps.setObject(8, don.getCentreDon().getId());
@@ -57,7 +58,7 @@ public class ServiceDon implements CRUD<Dons> {
 
 
     public void updateOne(Dons don) throws SQLException {
-        String req = "UPDATE `Dons` SET `cin`=?, `genre`=?, `date_don`=?, `datedernierdon`=?, `groupe_sanguin`=?, `typededon`=?, `etatmarital`=?,`centre_don_id`=? WHERE `id`=?";
+        String req = "UPDATE `Dons` SET `cin`=?, `genre`=?, `date_don`=?, `datedernierdon`=?, `groupe_sanguin`=?, `typededon`=?, `etatmarital`=?,`centre_don_id`=? ,`user_id`=? WHERE `id`=?";
         PreparedStatement ps = connection.prepareStatement(req);
         ps.setString(1, don.getCin());
         ps.setString(2, don.getGenre());
@@ -66,7 +67,8 @@ public class ServiceDon implements CRUD<Dons> {
         ps.setString(5, don.getGroupeSanguin());
         ps.setString(6, don.getTypeDeDon());
         ps.setString(7, don.getEtatMarital());
-        ps.setInt(9, don.getId()); // Assuming you have an id field in your don class
+        ps.setInt(9, don.getId());
+        ps.setInt(10, don.getId_User());// Assuming you have an id field in your don class
         if (don.getCentreDon() != null) {
             ps.setObject(8, don.getCentreDon().getId());
         } else {
@@ -116,6 +118,7 @@ public class ServiceDon implements CRUD<Dons> {
             don.setGroupeSanguin(rs.getString("groupe_sanguin"));
             don.setEtatMarital(rs.getString("etatmarital"));
             don.setId_centre(rs.getInt("centre_don_id"));
+            don.setId_User(rs.getInt("user_id"));
             // Récupérez l'ID du centre de don à partir de la colonne 'centreDonCol'
             // Assurez-vous d'utiliser le nom correct de la colonne dans votre ResultSet
 

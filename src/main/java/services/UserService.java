@@ -16,7 +16,7 @@ public class UserService implements IService {
 
     public UserService() {
         con = MyDatabase.getInstance().getCon();
-
+        System.out.println(con);
     }
     public static UserService getInstance() {
         if (instance == null) {
@@ -26,8 +26,8 @@ public class UserService implements IService {
     }
     @Override
     public void ajouter(User user) throws SQLException {
-        String req = "INSERT INTO User (id, nom, email, password, prenom, typemaladie, specialite, groupesanguin, statuteligibilite, token, brochure, roles) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String req = "INSERT INTO User (id, nom, email, password, prenom, typemaladie, specialite, groupesanguin, brochure, role) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pre = con.prepareStatement(req)) {
             pre.setInt(1, user.getId());
             pre.setString(2, user.getNom());
@@ -37,10 +37,8 @@ public class UserService implements IService {
             pre.setString(6, user.getTypemaladie());
             pre.setString(7, user.getSpecialite());
             pre.setString(8, user.getGroupesanguin());
-            pre.setString(9, user.getStatuteligibilite());
-            pre.setString(10, user.getToken());
-            pre.setString(11, user.getBrochure());
-            pre.setString(12, user.getRoles()); // Ajout du rôle
+            pre.setString(9, user.getBrochure());
+            pre.setString(10, user.getRoles());
 
             pre.executeUpdate();
             System.out.println("User added successfully!");
@@ -102,7 +100,7 @@ public class UserService implements IService {
 
     @Override
     public void modifier(User user) throws SQLException {
-        String req = "UPDATE User SET nom = ?, email = ?, password = ?, prenom = ?, typemaladie = ?, specialite = ?, groupesanguin = ?, statuteligibilite = ?, token = ?, brochure = ? WHERE id = ?";
+        String req = "UPDATE User SET nom = ?, email = ?, password = ?, prenom = ?, typemaladie = ?, specialite = ?, groupesanguin = ?, brochure = ? WHERE id = ?";
         try (PreparedStatement pre = con.prepareStatement(req)) {
             pre.setString(1, user.getNom());
             pre.setString(2, user.getEmail());
@@ -111,10 +109,10 @@ public class UserService implements IService {
             pre.setString(5, user.getTypemaladie());
             pre.setString(6, user.getSpecialite());
             pre.setString(7, user.getGroupesanguin());
-            pre.setString(8, user.getStatuteligibilite());
-            pre.setString(9, user.getToken());
-            pre.setString(10, user.getBrochure());
-            pre.setInt(11, user.getId());
+          //  pre.setString(8, user.getStatuteligibilite());
+           // pre.setString(9, user.getToken());
+            pre.setString(8, user.getBrochure());
+            pre.setInt(9, user.getId());
             pre.executeUpdate();
             System.out.println("User updated successfully!");
         } catch (SQLException ex) {
@@ -128,7 +126,8 @@ public class UserService implements IService {
         try (PreparedStatement ste = con.prepareStatement(sql);
              ResultSet rs = ste.executeQuery()) {
             while (rs.next()) {
-                User user = new User(1, 25, "john_doe", "john@example.com", "password123", "avatar.jpg", "ROLE_USER", "token");
+               // User user = new User(1, 25, "john_doe", "john@example.com", "password123", "avatar.jpg", "ROLE_USER", "token");
+                User user = new User();
                 user.setId(rs.getInt("id"));
                 user.setNom(rs.getString("nom"));
                 user.setEmail(rs.getString("email"));
@@ -137,8 +136,8 @@ public class UserService implements IService {
                 user.setTypemaladie(rs.getString("typemaladie"));
                 user.setSpecialite(rs.getString("specialite"));
                 user.setGroupesanguin(rs.getString("groupesanguin"));
-                user.setStatuteligibilite(rs.getString("statuteligibilite"));
-                user.setToken(rs.getString("token"));
+              //  user.setStatuteligibilite(rs.getString("statuteligibilite"));
+              //  user.setToken(rs.getString("token"));
                 user.setBrochure(rs.getString("brochure"));
                 users.add(user);
             }
@@ -179,10 +178,16 @@ public class UserService implements IService {
                 String nom = rs.getString("nom");
                 String email = rs.getString("email");
                 String prenom = rs.getString("prenom");
-                String status = rs.getString("statuteligibilite");
-                String reset_token = rs.getString("token");
-                String roles = rs.getString("roles");
-                User user = new User( id,  nom,  email,  roles,  prenom,  status,  reset_token);
+               // String status = rs.getString("statuteligibilite");
+              //  String reset_token = rs.getString("token");
+                String roles = rs.getString("role");
+               // User user = new User( id,  nom,  email,  roles,  prenom,  status,  reset_token);
+                User user= new User();
+                user.setId_user(id);
+                user.setNom(nom);
+                user.setEmail(email);
+                user.setPrenom(prenom);
+                user.setRoles(roles);
                 return user;
             } else {
                 // Login failed, return null
@@ -204,19 +209,19 @@ public class UserService implements IService {
         if (result.next()) {
             int id = result.getInt("id");
             String email = result.getString("email");
-            String roles = result.getString("roles");
+            String roles = result.getString("role");
             String nom = result.getString("nom");
             String prenom = result.getString("prenom");
             String password = result.getString("password");
             String typemaladie = result.getString("typemaladie");
             String specialite = result.getString("specialite");
             String groupesanguin = result.getString("groupesanguin");
-            String statuteligibilite = result.getString("statuteligibilite");
-            String resetToken = result.getString("token");
+         //   String statuteligibilite = result.getString("statuteligibilite");
+            //   String resetToken = result.getString("token");
             String brochure = result.getString("brochure");
 
 
-             user = new User( id,  nom,  email,  password,  prenom,  typemaladie,  specialite,  groupesanguin,  statuteligibilite,  resetToken,  brochure,  roles);
+             user = new User( id,  nom,  email,  password,  prenom,  typemaladie,  specialite,  groupesanguin,  "",  "",  brochure,  roles);
         }
 
         return user;
@@ -242,7 +247,7 @@ public class UserService implements IService {
             u.setId(rs.getInt("id"));
             u.setNom(rs.getString("nom"));
             u.setPrenom(rs.getString("prenom"));
-            u.setRoles(rs.getString("roles"));
+            u.setRoles(rs.getString("role"));
             u.setEmail(rs.getString("email"));
             users.add(u);
         }

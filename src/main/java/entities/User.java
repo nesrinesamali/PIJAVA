@@ -6,6 +6,21 @@ public class User {
     private int id;
     private String nom, email, roles, password, prenom, typemaladie, specialite, groupesanguin, statuteligibilite, token, brochure;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", email='" + email + '\'' +
+                ", roles='" + roles + '\'' +
+                ", password='" + password + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", typemaladie='" + typemaladie + '\'' +
+                ", specialite='" + specialite + '\'' +
+                ", groupesanguin='" + groupesanguin + '\'' +
+                '}';
+    }
+
     public User(int i, int i1, String johnDoe, String mail, String password123, String image, String roleUser, String token) {
 
     }
@@ -174,21 +189,4 @@ public class User {
         return 0; // Replace with actual implementation
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", email='" + email + '\'' +
-                ", roles='" + roles + '\'' +
-                ", password='" + password + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", typemaladie='" + typemaladie + '\'' +
-                ", specialite='" + specialite + '\'' +
-                ", groupesanguin='" + groupesanguin + '\'' +
-                ", statuteligibilite='" + statuteligibilite + '\'' +
-                ", token='" + token + '\'' +
-                ", brochure='" + brochure + '\'' +
-                '}';
-    }
 }

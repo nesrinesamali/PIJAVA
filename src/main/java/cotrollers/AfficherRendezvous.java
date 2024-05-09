@@ -23,6 +23,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import models.Rendezvous;
+import org.json.JSONException;
 import org.json.JSONObject;
 import services.GPTAPI;
 import services.RendezvousService;
@@ -303,18 +304,30 @@ public class AfficherRendezvous implements Initializable {
                 alert.getDialogPane().setContent(detailsBox);
                 alert.showAndWait();
         }
-        public String execPromptGpt (String prompt){
-                GPTAPI gptApi = new GPTAPI("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");
-                String model = "gpt-3.5-turbo-instruct";
-                String result = gptApi.queryGPT(prompt, model);
-                JSONObject jsonObject = new JSONObject(result);
-                String textContent = jsonObject.getJSONArray("choices")
-                        .getJSONObject(0)
-                        .getString("text");
-                return textContent;
-        }
+    public static String execPromptGpt(String prompt) {
+        GPTAPI gptApi = new GPTAPI("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");
+        String model = "gpt-3.5-turbo-instruct";
+        String result = gptApi.queryGPT(prompt, model);
 
-        public void GetReponse(ActionEvent actionEvent) {
+        // Print the result for debugging
+        System.out.println("Result: " + result);
+
+        // Attempt to parse the JSON response
+        try {
+            JSONObject jsonObject = new JSONObject(result);
+            String textContent = jsonObject.getJSONArray("choices")
+                    .getJSONObject(0)
+                    .getString("text");
+            return textContent;
+        } catch (JSONException e) {
+            // Print the stack trace for further analysis
+            e.printStackTrace();
+            return "Error parsing JSON response";
+        }
+    }
+
+
+    public void GetReponse(ActionEvent actionEvent) {
                 String question= inputTextField.getText();
                 String reponse =execPromptGpt("you are a hulpful assistant in devDinecity which is a helth care application your role is to answer sick user's question and provide them the best solution to feel better.the question is : "+question);
                 outputLabel.setText(reponse);

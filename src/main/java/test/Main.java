@@ -13,15 +13,12 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-
-
             // Load the FXML file
-            Parent parent = FXMLLoader.load(getClass().getResource("/AfficherCentre.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/okok.fxml"));
 
             // Create the scene and set it on the stage
             Scene scene = new Scene(parent);
             primaryStage.setScene(scene);
-
             // Show the stage
             primaryStage.show();
         } catch (IOException e) {

@@ -29,13 +29,13 @@
                             </HBox.margin>
                         </Label>
                         <HBox alignment="CENTER" layoutX="143.0" layoutY="476.0" prefHeight="56.0" prefWidth="0.0" />
-                        <TextField fx:id="nomFLd" layoutX="75.0" layoutY="126.0" prefHeight="40.0" prefWidth="374.0" promptText="&quot;Entrez votre nom de centre.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                        <ComboBox fx:id="govFLd" layoutX="75.0" layoutY="352.0" prefHeight="40.0" prefWidth="374.0" promptText="&quot;Sélectionnez votre gouvernorat&quot;" styleClass="combobox-1" stylesheets="@page.css" />
-                        <TextField fx:id="emailFLd" layoutX="75.0" layoutY="428.0" prefHeight="40.0" prefWidth="374.0" promptText="&quot;Entrez votre email.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                        <TextField fx:id="numFLd" layoutX="75.0" layoutY="512.0" prefHeight="40.0" prefWidth="374.0" promptText=" &quot;Entrez votre numero.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                        <TextField fx:id="lieuFLd" layoutX="75.0" layoutY="595.0" prefHeight="40.0" prefWidth="374.0" promptText=" &quot;Entrez votre localisation.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                        <Button layoutX="552.0" layoutY="512.0" mnemonicParsing="false" onMouseClicked="#save" prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@page.css" text="save" />
-                        <Button layoutX="741.0" layoutY="512.0" mnemonicParsing="false" onMouseClicked="#reset" prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@page.css" text="Reset" />
+                        <TextField fx:id="nomFLd" layoutX="75.0" layoutY="126.0" prefHeight="40.0" prefWidth="374.0" promptText="&quot;Entrez votre nom de centre.&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                        <ComboBox fx:id="govFLd" layoutX="75.0" layoutY="352.0" prefHeight="40.0" prefWidth="374.0" promptText="&quot;Sélectionnez votre gouvernorat&quot;" styleClass="combobox-1" stylesheets="@Filecss/page.css" />
+                        <TextField fx:id="emailFLd" layoutX="75.0" layoutY="428.0" prefHeight="40.0" prefWidth="374.0" promptText="&quot;Entrez votre email.&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                        <TextField fx:id="numFLd" layoutX="75.0" layoutY="512.0" prefHeight="40.0" prefWidth="374.0" promptText=" &quot;Entrez votre numero.&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                        <TextField fx:id="lieuFLd" layoutX="75.0" layoutY="595.0" prefHeight="40.0" prefWidth="374.0" promptText=" &quot;Entrez votre localisation.&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                        <Button layoutX="552.0" layoutY="512.0" mnemonicParsing="false" onMouseClicked="#save" prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@Filecss/page.css" text="save" />
+                        <Button layoutX="741.0" layoutY="512.0" mnemonicParsing="false" onMouseClicked="#reset" prefHeight="40.0" prefWidth="150.0" styleClass="btn-1" stylesheets="@Filecss/page.css" text="Reset" />
                         <Spinner fx:id="houvHourSpinner" layoutX="92.0" layoutY="197.0" prefHeight="40.0" prefWidth="78.0" />
                         <Label text=":" />
                         <Spinner fx:id="houvMinuteSpinner" layoutX="215.0" layoutY="197.0" prefHeight="40.0" prefWidth="78.0" />

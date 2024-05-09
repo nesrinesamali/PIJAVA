@@ -25,7 +25,7 @@
     <children>
         <AnchorPane layoutX="-38.0" layoutY="14.0" prefHeight="616.0" prefWidth="1006.0" style="-fx-background-color: #f8f5f5; -fx-background-radius: 15;">
             <children>
-                <Pane layoutX="961.0" layoutY="-8.0" prefHeight="102.0" prefWidth="352.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@guiadmin.css">
+                <Pane layoutX="961.0" layoutY="-8.0" prefHeight="102.0" prefWidth="352.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@Filecss/guiadmin.css">
                     <children>
                         <ImageView fitHeight="76.0" fitWidth="58.0" layoutX="274.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -53,7 +53,7 @@
 
                     <children>
                         <Pane prefHeight="170.0" prefWidth="74.0" />
-                        <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#handleNavigation" onMouseClicked="#handleNavigation" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@guiadmin.css" text="Naviguer" textFill="#767676">
+                        <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#handleNavigation" onMouseClicked="#handleNavigation" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@Filecss/guiadmin.css" text="Naviguer" textFill="#767676">
                             <graphic>
                                 <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -68,12 +68,12 @@
                     </children>
                 </VBox>
 
-                <AnchorPane layoutX="114.0" layoutY="65.0" prefHeight="756.0" prefWidth="1219.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" stylesheets="@guiadmin.css">
+                <AnchorPane layoutX="114.0" layoutY="65.0" prefHeight="756.0" prefWidth="1219.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" stylesheets="@Filecss/guiadmin.css">
                     <VBox fx:id="content_area" layoutX="12.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1187.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
                         <children>
 
 
-                                    <AnchorPane fx:id="navapp" layoutX="88.0" layoutY="12.0" prefHeight="490.0" prefWidth="1187.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" stylesheets="@guiadmin.css" visible="false">
+                                    <AnchorPane fx:id="navapp" layoutX="88.0" layoutY="12.0" prefHeight="490.0" prefWidth="1187.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" stylesheets="@Filecss/guiadmin.css" visible="false">
                                         <children>
                                             <Pane layoutX="36.0" layoutY="191.0" prefHeight="172.0" prefWidth="252.0" style="-fx-background-color: #53A0EC; -fx-background-radius: 7;">
                                                 <children>
@@ -276,14 +276,14 @@
                                     </Label>
 
                                     <HBox alignment="CENTER" layoutX="143.0" layoutY="476.0" prefHeight="56.0" prefWidth="0.0" />
-                                    <TextField fx:id="CinFld" layoutX="77.0" layoutY="84.0" prefHeight="37.0" prefWidth="391.0" promptText="Entrez votre numéro d'identification nationale." styleClass="textfield-1" stylesheets="@page.css" />
-                                    <ComboBox fx:id="GenreFLd" layoutX="76.0" layoutY="311.0" prefHeight="40.0" prefWidth="391.0" promptText="&quot;Sélectionnez votre genre&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                                    <ComboBox fx:id="etatFLd" layoutX="76.0" layoutY="456.0" prefHeight="40.0" prefWidth="391.0" promptText="&quot;Choisissez votre état matrimonial&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                                    <DatePicker fx:id="datederFLd" layoutX="77.0" layoutY="160.0" prefHeight="38.0" prefWidth="391.0" promptText="Sélectionnez la date de votre dernier don." styleClass="datepicker-1" stylesheets="@page.css" />
-                                    <DatePicker fx:id="dateproFLd" layoutX="77.0" layoutY="231.0" prefHeight="40.0" prefWidth="391.0" promptText="Sélectionnez la date de votre prochain don." styleClass="datepicker-1" stylesheets="@page.css" />
-                                    <ComboBox fx:id="typeFLd" layoutX="76.0" layoutY="606.0" prefHeight="38.0" prefWidth="391.0" promptText="&quot;Choisissez le type de don que vous souhaitez effectuer.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                                    <ComboBox fx:id="groupeFLd" layoutX="77.0" layoutY="386.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez votre groupe sanguin.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                                    <ComboBox fx:id="centreDonComboBox" layoutX="76.0" layoutY="531.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez un centre.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                                    <TextField fx:id="CinFld" layoutX="77.0" layoutY="84.0" prefHeight="37.0" prefWidth="391.0" promptText="Entrez votre numéro d'identification nationale." styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                                    <ComboBox fx:id="GenreFLd" layoutX="76.0" layoutY="311.0" prefHeight="40.0" prefWidth="391.0" promptText="&quot;Sélectionnez votre genre&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                                    <ComboBox fx:id="etatFLd" layoutX="76.0" layoutY="456.0" prefHeight="40.0" prefWidth="391.0" promptText="&quot;Choisissez votre état matrimonial&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                                    <DatePicker fx:id="datederFLd" layoutX="77.0" layoutY="160.0" prefHeight="38.0" prefWidth="391.0" promptText="Sélectionnez la date de votre dernier don." styleClass="datepicker-1" stylesheets="@Filecss/page.css" />
+                                    <DatePicker fx:id="dateproFLd" layoutX="77.0" layoutY="231.0" prefHeight="40.0" prefWidth="391.0" promptText="Sélectionnez la date de votre prochain don." styleClass="datepicker-1" stylesheets="@Filecss/page.css" />
+                                    <ComboBox fx:id="typeFLd" layoutX="76.0" layoutY="606.0" prefHeight="38.0" prefWidth="391.0" promptText="&quot;Choisissez le type de don que vous souhaitez effectuer.&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                                    <ComboBox fx:id="groupeFLd" layoutX="77.0" layoutY="386.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez votre groupe sanguin.&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                                    <ComboBox fx:id="centreDonComboBox" layoutX="76.0" layoutY="531.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez un centre.&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
                                     <ImageView fitHeight="465.0" fitWidth="512.0" layoutX="709.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                                         <image>
                                             <Image url="@assets/indigo-hungry-vampire-drinking-donated-blood.png" />
@@ -353,9 +353,9 @@
                             </AnchorPane>
                         </children>
                     </AnchorPane>
-                    <HBox fx:id="addReviewsModel" alignment="CENTER" disable="true" layoutX="-155.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1214.0" styleClass="categoriesModel" stylesheets="@style.css" translateX="140.0" translateY="-5.0" visible="false">
+                    <HBox fx:id="addReviewsModel" alignment="CENTER" disable="true" layoutX="-155.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1214.0" styleClass="categoriesModel" stylesheets="@Filecss/style.css" translateX="140.0" translateY="-5.0" visible="false">
                         <children>
-                            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="703.0" prefWidth="600.0" styleClass="productAddedToCart__card" stylesheets="@style.css">
+                            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="703.0" prefWidth="600.0" styleClass="productAddedToCart__card" stylesheets="@Filecss/style.css">
                                 <children>
                                     <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" prefWidth="600.0">
                                         <children>
@@ -409,7 +409,7 @@
                                                     <Insets />
                                                 </VBox.margin>
                                             </TextField>
-                                            <HBox fx:id="nameInputErrorHbox" prefHeight="67.0" prefWidth="598.0" styleClass="form_errors-product" stylesheets="@style.css" visible="false">
+                                            <HBox fx:id="nameInputErrorHbox" prefHeight="67.0" prefWidth="598.0" styleClass="form_errors-product" stylesheets="@Filecss/style.css" visible="false">
                                                 <children>
                                                     <Text fill="#dc284c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form_errors-product-point" text=".  " translateY="-15.0" wrappingWidth="23.18400001525879" />
                                                     <Text fx:id="nameInputError" fill="#dc284c" strokeType="OUTSIDE" strokeWidth="0.0" text="the product  name can not be empty !">
@@ -514,9 +514,9 @@
                             </VBox>
                         </children>
                     </HBox>
-                    <HBox fx:id="viewReplyModel" alignment="CENTER" layoutX="-155.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="1208.0" styleClass="categoriesModel" stylesheets="@style.css" translateX="140.0" translateY="-5.0" visible="false">
+                    <HBox fx:id="viewReplyModel" alignment="CENTER" layoutX="-155.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="1208.0" styleClass="categoriesModel" stylesheets="@Filecss/style.css" translateX="140.0" translateY="-5.0" visible="false">
                         <children>
-                            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="612.0" styleClass="productAddedToCart__card" stylesheets="@style.css">
+                            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="612.0" styleClass="productAddedToCart__card" stylesheets="@Filecss/style.css">
                                 <children>
                                     <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="75.0" prefWidth="600.0">
                                         <children>
@@ -585,7 +585,7 @@
             </children>
         </AnchorPane>
       <HBox fx:id="hh" layoutX="89.0" layoutY="129.0" prefHeight="631.0" prefWidth="1099.0" visible="false">
-          <VBox alignment="CENTER" prefHeight="700.0" prefWidth="1100.0" spacing="10" stylesheets="DonView.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+          <VBox alignment="CENTER" prefHeight="700.0" prefWidth="1100.0" spacing="10" stylesheets="Filecss/DonView.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
               <children>
                   <!-- Ajout d'un titre -->
                   <Label styleClass="Titre" text="Explorez les dons" />
@@ -608,7 +608,7 @@
           </VBox>
       </HBox>
         <HBox fx:id="tt" layoutX="89.0" layoutY="129.0" prefHeight="631.0" prefWidth="1099.0" visible="false">
-            <VBox alignment="CENTER" prefHeight="700.0" prefWidth="1100.0" spacing="10" stylesheets="DonView.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+            <VBox alignment="CENTER" prefHeight="700.0" prefWidth="1100.0" spacing="10" stylesheets="Filecss/DonView.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
                 <children>
                     <!-- Ajout d'un titre -->
                     <Label styleClass="Titre" text="Explorez les Centres" />
@@ -627,7 +627,7 @@
                 </children>
             </VBox>
         </HBox>
-        <AnchorPane fx:id="vbox" layoutX="74.0" layoutY="76.0" prefHeight="762.0" prefWidth="1372.0" visible="true">
+        <AnchorPane fx:id="vbox" layoutX="74.0" layoutY="76.0" prefHeight="762.0" prefWidth="1372.0" visible="false">
             <children>
                 <Label fx:id="dernier" layoutX="80.0" layoutY="257.0" prefHeight="35.0" prefWidth="504.0" styleClass="label" text="𝗗𝗮𝘁𝗲 𝗗𝗲 𝗗𝗲𝗿𝗻𝗶𝗲𝗿 𝗗𝗼𝗻𝗮𝘁𝗶𝗼𝗻:">
                     <font>
@@ -712,14 +712,14 @@
                   </Label>
 
                   <HBox alignment="CENTER" layoutX="143.0" layoutY="476.0" prefHeight="56.0" prefWidth="0.0" />
-                  <TextField fx:id="CIN" layoutX="77.0" layoutY="84.0" prefHeight="37.0" prefWidth="391.0" promptText="Entrez votre numéro d'identification nationale." styleClass="textfield-1" stylesheets="@page.css" />
-                  <ComboBox fx:id="GENRE" layoutX="76.0" layoutY="311.0" prefHeight="40.0" prefWidth="391.0" promptText="&quot;Sélectionnez votre genre&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                  <ComboBox fx:id="ETAT" layoutX="76.0" layoutY="456.0" prefHeight="40.0" prefWidth="391.0" promptText="&quot;Choisissez votre état matrimonial&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                  <DatePicker fx:id="DATEDER" layoutX="77.0" layoutY="160.0" prefHeight="38.0" prefWidth="391.0" promptText="Sélectionnez la date de votre dernier don." styleClass="datepicker-1" stylesheets="@page.css" />
-                  <DatePicker fx:id="DATEPRO" layoutX="77.0" layoutY="231.0" prefHeight="40.0" prefWidth="391.0" promptText="Sélectionnez la date de votre prochain don." styleClass="datepicker-1" stylesheets="@page.css" />
-                  <ComboBox fx:id="TYPEDON" layoutX="76.0" layoutY="606.0" prefHeight="38.0" prefWidth="391.0" promptText="&quot;Choisissez le type de don que vous souhaitez effectuer.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                  <ComboBox fx:id="GROUPE" layoutX="77.0" layoutY="386.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez votre groupe sanguin.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                  <ComboBox fx:id="CENTRE" layoutX="76.0" layoutY="531.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez un centre.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                  <TextField fx:id="CIN" layoutX="77.0" layoutY="84.0" prefHeight="37.0" prefWidth="391.0" promptText="Entrez votre numéro d'identification nationale." styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                  <ComboBox fx:id="GENRE" layoutX="76.0" layoutY="311.0" prefHeight="40.0" prefWidth="391.0" promptText="&quot;Sélectionnez votre genre&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                  <ComboBox fx:id="ETAT" layoutX="76.0" layoutY="456.0" prefHeight="40.0" prefWidth="391.0" promptText="&quot;Choisissez votre état matrimonial&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                  <DatePicker fx:id="DATEDER" layoutX="77.0" layoutY="160.0" prefHeight="38.0" prefWidth="391.0" promptText="Sélectionnez la date de votre dernier don." styleClass="datepicker-1" stylesheets="@Filecss/page.css" />
+                  <DatePicker fx:id="DATEPRO" layoutX="77.0" layoutY="231.0" prefHeight="40.0" prefWidth="391.0" promptText="Sélectionnez la date de votre prochain don." styleClass="datepicker-1" stylesheets="@Filecss/page.css" />
+                  <ComboBox fx:id="TYPEDON" layoutX="76.0" layoutY="606.0" prefHeight="38.0" prefWidth="391.0" promptText="&quot;Choisissez le type de don que vous souhaitez effectuer.&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                  <ComboBox fx:id="GROUPE" layoutX="77.0" layoutY="386.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez votre groupe sanguin.&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                  <ComboBox fx:id="CENTRE" layoutX="76.0" layoutY="531.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez un centre.&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
                   <ImageView fitHeight="458.0" fitWidth="405.0" layoutX="524.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                       <image>
                           <Image url="@assets/indigo-hungry-vampire-drinking-donated-blood.png" />

@@ -13,8 +13,8 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import java.io.IOException;
 import java.sql.SQLException;
-
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import models.CentreDon;
 import models.Dons;
 import services.ServiceCentre;
@@ -34,6 +34,9 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import javafx.scene.image.ImageView;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import utils.TrayNotificationAlert;
 
 public class FrontController {
     @FXML
@@ -125,29 +128,12 @@ public class FrontController {
     @FXML
     private ImageView qrcode;
 
-    // Méthode pour filtrer les cartes des centres de don en fonction du texte de recherche
-    private void rechercher(String texteRecherche) {
-        // Parcourir toutes les cartes des centres de don dans la VBox
-        for (Node node : cardsContainer.getChildren()) {
-            // Vérifier si le texte de recherche correspond au nom du centre de don
-            if (node instanceof VBox) {
-                VBox carte = (VBox) node;
-                Label nomLabel = (Label) carte.getChildren().get(1); // Supposons que le nom du centre de don soit le deuxième élément dans la VBox
-                String nomCentre = nomLabel.getText().toLowerCase(); // Convertir le texte en minuscules pour une correspondance insensible à la casse
-                if (nomCentre.contains(texteRecherche.toLowerCase())) {
-                    // Afficher la carte si le nom du centre de don contient le texte de recherche
-                    carte.setVisible(true);
-                } else {
-                    // Masquer la carte si le nom du centre de don ne contient pas le texte de recherche
-                    carte.setVisible(false);
-                }
-            }
-        }
-    }
+
 
 
     @FXML
     public void initialize() {
+
         // TODO
         typeFLd.setItems(FXCollections.observableArrayList("Sang", "Plasma", "Organnes"));
         // Initialisation de dateproFLd
@@ -189,33 +175,36 @@ public class FrontController {
                 deleteDonation();
             }
         });
+        utils.TrayNotificationAlert.notif("HELLO", "Bienvenue dans notre application ! Merci de votre générosité et de votre volonté d'aider les autres.",
+                NotificationType.NOTICE, AnimationType.POPUP, Duration.millis(2500));
+        System.out.println("Don added successfully!");
     }
 
-    @FXML
-    private void redirectToQRCodePage() {
-        try {
-            // Load the FXML file for the QR code page
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/qrcode.fxml"));
-            Parent root = loader.load();
-
-            // Get the controller instance
-            QRCodeController qrCodeController = loader.getController();
-
-            // Set the 'don' object if needed
-            qrCodeController.setDon(don); // Assuming 'don' is properly initialized
-
-            // Generate QR code
-            qrCodeController.generateQRCode();
-
-            // Create a new stage for displaying the QR code
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
+/////////recherchecards/////////////
+    // Méthode pour filtrer les cartes des centres de don en fonction du texte de recherche
+    private void rechercher(String texteRecherche) {
+        // Parcourir toutes les cartes des centres de don dans la VBox
+        for (Node node : cardsContainer.getChildren()) {
+            // Vérifier si le texte de recherche correspond au nom du centre de don
+            if (node instanceof VBox) {
+                VBox carte = (VBox) node;
+                Label nomLabel = (Label) carte.getChildren().get(1); // Supposons que le nom du centre de don soit le deuxième élément dans la VBox
+                String nomCentre = nomLabel.getText().toLowerCase(); // Convertir le texte en minuscules pour une correspondance insensible à la casse
+                if (nomCentre.contains(texteRecherche.toLowerCase())) {
+                    // Afficher la carte si le nom du centre de don contient le texte de recherche
+                    carte.setVisible(true);
+                } else {
+                    // Masquer la carte si le nom du centre de don ne contient pas le texte de recherche
+                    carte.setVisible(false);
+                }
+            }
         }
     }
-
+//////////button ajouterdon////////////
+    private void setupAddDonLink() {
+        addDonLink.setOnMouseClicked(e -> showDonForm(null));
+        // Passing null for a new donation
+    }
     private void LOAD() {
         try {
             List<CentreDon> centreDons = sapcentre.selectAll();
@@ -233,12 +222,6 @@ public class FrontController {
             Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    private void setupAddDonLink() {
-        addDonLink.setOnMouseClicked(e -> showDonForm(null));
-        // Passing null for a new donation
-    }
-
     private void showDonForm(Dons don) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/okok.fxml"));
@@ -283,7 +266,7 @@ public class FrontController {
         }
     }
 
-
+/////////doncards//////////////
     private VBox createDonCard(Dons don) {
 
         VBox card = new VBox(5); // Réduire l'espacement entre les éléments
@@ -291,7 +274,7 @@ public class FrontController {
         card.setPadding(new Insets(10)); // Réduire la marge autour des éléments
 
         // ImageView pour l'image du don (remplacez "path_vers_votre_image" par le chemin de votre image)
-        ImageView imageView = new ImageView(new Image("C:\\Users\\Lenovo\\Desktop\\java\\PIJAVA\\src\\main\\java\\Controller\\cherry-437.png"));
+        ImageView imageView = new ImageView(new Image("C:\\Users\\Lenovo\\Desktop\\java\\PIJAVA\\src\\main\\java\\Controller\\img\\cherry-437.png"));
         imageView.setFitWidth(100); // Ajuster la largeur de l'image
         imageView.setPreserveRatio(true); // Préserver le rapport hauteur/largeur de l'image
 
@@ -367,27 +350,7 @@ public class FrontController {
         typedon.setText("Type de Don: " + (don.getTypeDeDon() == null ? "N/A" : don.getTypeDeDon()));
     }
 
-    @FXML
-    private void handleNavigation(ActionEvent event) {
-        /*try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Appnav.fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Gérer l'erreur de chargement du fichier FXML
-        }*/
-        navapp.setVisible(true);
-        main_form.setVisible(false);
 
-        hh.setVisible(false);
-        hh.setManaged(false);
-        vbox.setVisible(false);
-        modif.setVisible(false);
-        centre.setVisible(false);
-    }
 
     @FXML
     private void handledons(MouseEvent event) {
@@ -405,25 +368,7 @@ public class FrontController {
         navapp.setVisible(false);
     }
 
-    @FXML
-    private void handleUpdateButtonClick() {
-     /*try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Appnav.fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Gérer l'erreur de chargement du fichier FXML
-        }*/
-        setDonData();
-        modif.setVisible(true);
-        vbox.setVisible(false);
-        navapp.setVisible(false);
-    }
-
-
+/////////////////////ajout/////////////////////////
     public void save(MouseEvent mouseEvent) {
 //Pour CinFld
         Label errorLabel = new Label("Veuillez entrer votre numéro d'identification nationale contenant 8 chiffres.");
@@ -639,9 +584,13 @@ public class FrontController {
         try {
             donService.insertOne(don);
             loadDons();
+            utils.TrayNotificationAlert.notif("TESTING", "Donation added successfully",
+                    NotificationType.SUCCESS, AnimationType.POPUP, Duration.millis(2500));
             System.out.println("Don added successfully!");
+            SmsDon.sms();
         } catch (Exception e) {
             System.out.println("Error adding Don: " + e.getMessage());
+
         }
     }
 
@@ -734,14 +683,9 @@ public class FrontController {
         }
     }
 
-    @FXML
-    private void handleBack() {
-        hh.setVisible(true);
-        vbox.setVisible(false);
-        main_form.setVisible(false);
-    }
 
 
+///modifier/////
     public void update(MouseEvent mouseEvent) {
         // Pour CinFld
         if (CIN.getText().length() == 0) {
@@ -834,14 +778,16 @@ public class FrontController {
         // Update the donation
         try {
             donService.updateOne(don);
+            utils.TrayNotificationAlert.notif("SUCCESS", "Updated successfully",
+                    NotificationType.SUCCESS, AnimationType.POPUP, Duration.millis(2500));
             System.out.println("Donation updated successfully!");
+
         } catch (Exception e) {
             System.out.println(don);
             e.getMessage();
         }
     }
-    ////////////////////////////////////////
-
+    ////////////////////////////////////////centrecards/////
 
     private VBox createCentreCard(CentreDon centreDon) {
         VBox cards = new VBox(5); // Réduire l'espacement entre les éléments
@@ -864,6 +810,10 @@ public class FrontController {
         // Étiquette pour l'adresse email du centre de don
         Label emailLabel = new Label("Email: " + centreDon.getEmail());
         emailLabel.setStyle("-fx-font-family: Arial;"); // Définir la police de caractères
+        // Étiquette pour l'heure de fermeture du centre de don
+        Label lieu = new Label("Heure de fermeture: " + centreDon.getLieu());
+        lieu.setStyle("-fx-font-family: Arial;"); // Définir la police de caractères
+
 
         // Étiquette pour l'heure d'ouverture du centre de don
         Label heureOuvertureLabel = new Label("Heure d'ouverture: " + centreDon.getHeureouv());
@@ -877,8 +827,12 @@ public class FrontController {
         Button detailsButton = new Button("Détails");
         detailsButton.setOnAction(e -> showcentreDetails(centreDon)); // Définir l'action pour afficher les détails du centre de don
 
+        // Ajouter un nouveau bouton
+        Button map = new Button("map");
+        map.setOnAction(e -> afficherCarte(lieu));
+
         // Ajouter tous les composants à VBox
-        cards.getChildren().addAll(imageView, nomLabel, gouvernoratLabel, emailLabel, heureOuvertureLabel, heureFermetureLabel, detailsButton);
+        cards.getChildren().addAll(imageView, nomLabel, gouvernoratLabel, emailLabel, heureOuvertureLabel, heureFermetureLabel, detailsButton, map);
         cards.setAlignment(Pos.CENTER); // Centrer le contenu dans VBox
         return cards; // Retourner la carte entièrement construite
     }
@@ -889,7 +843,7 @@ public class FrontController {
         tt.setVisible(false);
         this.vbox.setVisible(true);
     }
-
+///delete///
     public void deleteDonation() {
         Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this donation?");
         confirmation.showAndWait().ifPresent(response -> {
@@ -912,44 +866,101 @@ public class FrontController {
         });
     }
 
-}
 
- /*
-    private void Modifier(Dons don) {
+    /////map///
+    private void openMap(String location) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierDonFront.fxml"));
+            // Charger le fichier FXML de la vue de la carte
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Map.fxml"));
             Parent root = loader.load();
 
-            FrontController controller = loader.getController();
-            controller.setDon(don);
+            // Obtenir le contrôleur de la vue de la carte
+            Map mapController = loader.getController();
 
+            // Passer la localisation au contrôleur de la vue de la carte
+            mapController.setLocation(location);
+
+            // Afficher la vue de la carte dans une nouvelle fenêtre
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.setTitle("Modifier le Don");
-            stage.showAndWait();
-
-            // Mettez à jour l'affichage ou effectuez d'autres actions après la fermeture de la fenêtre de modification si nécessaire
-        } catch (IOException ex) {
-            ex.printStackTrace();
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
-    */
+    public void afficherCarte(Label lieu) {
+        String location = lieu.getText(); // Récupérer la localisation de l'activité
+        openMap(location);
+    }
+//handle//
+@FXML
+private void handleBack() {
+    hh.setVisible(true);
+    vbox.setVisible(false);
+    main_form.setVisible(false);
+}
 
-    /*
-    private void deleteDon(int id) {
-        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this donation?");
-        confirmation.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.OK) {
-                try {
-                    donService.deleteOne(don);
-                    // Navigate back to DonView after successful deletion
-                    handleBack();
-                } catch (Exception ex) {
-                    Alert errorAlert = new Alert(Alert.AlertType.ERROR, "Error deleting donation: " + ex.getMessage());
-                    errorAlert.show();
-                }
-            }
-        });
+    @FXML
+    private void handleNavigation(ActionEvent event) {
+        /*try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Appnav.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Gérer l'erreur de chargement du fichier FXML
+        }*/
+        navapp.setVisible(true);
+        main_form.setVisible(false);
+
+        hh.setVisible(false);
+        hh.setManaged(false);
+        vbox.setVisible(false);
+        modif.setVisible(false);
+        centre.setVisible(false);
+    }
+    @FXML
+    private void handleUpdateButtonClick() {
+     /*try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Appnav.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Gérer l'erreur de chargement du fichier FXML
+        }*/
+        setDonData();
+        modif.setVisible(true);
+        vbox.setVisible(false);
+        navapp.setVisible(false);
+    }
+    @FXML
+    private void redirectToQRCodePage() {
+        try {
+            // Load the FXML file for the QR code page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/qrcode.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller instance
+            QRCodeController qrCodeController = loader.getController();
+
+            // Set the 'don' object if needed
+            qrCodeController.setDon(don); // Assuming 'don' is properly initialized
+
+            // Generate QR code
+            qrCodeController.generateQRCode();
+
+            // Create a new stage for displaying the QR code
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-     */
+}

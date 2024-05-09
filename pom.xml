@@ -44,6 +44,11 @@
             <artifactId>javafx-controls</artifactId>
             <version>17</version>
         </dependency>
+        <dependency>
+            <groupId>com.twilio.sdk</groupId>
+            <artifactId>twilio</artifactId>
+            <version>8.23.0</version> <!-- Assurez-vous de vérifier la dernière version disponible -->
+        </dependency>
         <!-- Nouvelle dépendance pour javafx-web -->
         <dependency>
             <groupId>org.openjfx</groupId>
@@ -60,8 +65,18 @@
             <artifactId>javase</artifactId>
             <version>3.4.1</version>
         </dependency>
-
-
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>TrayTester</groupId>
+            <artifactId>TrayTester</artifactId>
+            <scope>system</scope>
+            <version>1.0</version>
+            <systemPath>${basedir}\lib\TrayTester.jar</systemPath>
+        </dependency>
         <dependency>
             <groupId>de.jensd</groupId>
             <artifactId>fontawesomefx-fontawesome</artifactId>

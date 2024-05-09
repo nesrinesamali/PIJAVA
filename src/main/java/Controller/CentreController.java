@@ -147,7 +147,7 @@ public class CentreController implements Initializable {
 
     @FXML
     private void PrintPdf() {
-        String filePath = "C:/Users/Lenovo/Desktop/output.pdf";
+        String filePath = "./output.pdf";
         String imagePath = "C:/Users/Lenovo/Desktop/java/PIJAVA/src/main/resources/assets/icons8-blood-sample.gif";
         PDDocument document = new PDDocument(); // Create a new PDDocument instance
        PDFExport.exportTableViewToPDF(CentreTable, imagePath, filePath, document);
@@ -205,7 +205,37 @@ public class CentreController implements Initializable {
         }
 
     }
+    private void openMap(String location) {
+        try {
+            // Charger le fichier FXML de la vue de la carte
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Map.fxml"));
+            Parent root = loader.load();
 
+            // Obtenir le contrôleur de la vue de la carte
+            Map mapController = loader.getController();
+
+            // Passer la localisation au contrôleur de la vue de la carte
+            mapController.setLocation(location);
+
+            // Afficher la vue de la carte dans une nouvelle fenêtre
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void afficherCarte(String lieu) {
+        CentreDon centreDon = CentreTable.getSelectionModel().getSelectedItem(); // Récupérer le centre sélectionné
+        if (centreDon != null) {// Récupérer le lieu du centre sélectionné
+            String location = lieuCol.getText(); // Récupérer la localisation de l'activité
+            openMap(location);
+        } else {
+            // Gérer le cas où aucun centre n'est sélectionné
+            System.out.println("Aucun centre sélectionné.");
+        }
+
+    }
     private void loadDate() {
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
@@ -269,10 +299,12 @@ public class CentreController implements Initializable {
                             Logger.getLogger(CentreController.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     });
-                    qrCodeIcon.setOnMouseClicked(event -> {
-                        // Call method to redirect to QR code page
-                        //redirectToQRCodePage(centreDon);
+                    btn.setOnMouseClicked(event -> {
+                        afficherCarte(String.valueOf(lieuCol));
                     });
+
+
+
 
 
                     HBox managebtn = new HBox(deleteIcon, editIcon, btn);

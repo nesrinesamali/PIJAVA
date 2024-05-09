@@ -24,16 +24,18 @@ import org.w3c.dom.Text;
 import services.ServiceCentre;
 import test.HelloApplication;
 import test.Main;
+import utils.sendMail;
 
+import javax.mail.MessagingException;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.Map;
 
 public class AjouterCentre implements Initializable {
     @FXML
@@ -200,32 +202,42 @@ public class AjouterCentre implements Initializable {
             centreDon.setLieu(lieuText);
             centreDon.setHeureouv(houvTime.toString());
             centreDon.setHeureferm(hfermTime.toString());
+            Map<String, String> emailData = new HashMap<>();
+            Map<String, String> data = new HashMap<>();
+            data.put("titlePlaceholder", "Transaction effectuée avec succées");
+            data.put("msgPlaceholder", "Hello, this is the email message.");
+            data.put("emailSubject", "Transaction effectuée avec succées");
 
             // Insertion du centre dans la base de données
             cap.insertOne(centreDon);
             System.out.println("Centre ajouté avec succès !");
             closeWindow(event);
-            parentFXMLLoader.RefreshTable();
+
+            sendMail.send(data);
 
             // Suppose que vous avez une instance du contrôleur stat appelée statController
         } catch (NumberFormatException e) {
             System.out.println("Erreur de format pour le numéro du centre.");
         } catch (SQLException ex) {
             System.out.println("Erreur lors de l'ajout du centre : " + ex.getMessage());
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
         }
     }
 
-
+    private String readHtmlContent(String filePath) {
+        try {
+            return new String(Files.readAllBytes(Paths.get(filePath)));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ""; // Return empty string in case of error
+        }
+    }
     private void closeWindow(MouseEvent event) {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
-
-    public void setParentFXMLLoader(CentreController centreController) {
-        this.parentFXMLLoader = centreController;
-    }
-
 }
 
 

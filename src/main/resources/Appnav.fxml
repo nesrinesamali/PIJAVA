@@ -13,10 +13,10 @@
 
 <AnchorPane id="AnchorPane" fx:id="bord" prefHeight="771.0" prefWidth="1147.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FrontController">
     <stylesheets>
-        <URL value="@guiadmin.css" />
+        <URL value="@Filecss/guiadmin.css" />
     </stylesheets>
     <children>
-        <Pane layoutX="831.0" layoutY="12.0" prefHeight="94.0" prefWidth="394.0" style="-fx-background-radius: 20 20 0 0; -fx-background-color: #53A0EC;" styleClass="linear-grad" stylesheets="@guiadmin.css">
+        <Pane layoutX="831.0" layoutY="12.0" prefHeight="94.0" prefWidth="394.0" style="-fx-background-radius: 20 20 0 0; -fx-background-color: #53A0EC;" styleClass="linear-grad" stylesheets="@Filecss/guiadmin.css">
             <children>
                 <ImageView fitHeight="76.0" fitWidth="58.0" layoutX="319.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -43,7 +43,7 @@
         <VBox fx:id="activityListContainer" layoutY="1.0" prefHeight="775.0" prefWidth="74.0">
             <children>
                 <Pane prefHeight="164.0" prefWidth="74.0" />
-                <Button fx:id="btnNaviguer" contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" style="-fx-background-color: #53a0ec;" styleClass="button3" stylesheets="@guiadmin.css" text="Naviguer" textFill="#767676">
+                <Button fx:id="btnNaviguer" contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" style="-fx-background-color: #53a0ec;" styleClass="button3" stylesheets="@Filecss/guiadmin.css" text="Naviguer" textFill="#767676">
                     <graphic>
                         <ImageView fitHeight="36.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -62,7 +62,7 @@
                 <Image url="@assets/tfarhida.png" />
             </image>
         </ImageView>
-        <AnchorPane fx:id="navapp" layoutX="88.0" layoutY="12.0" prefHeight="681.0" prefWidth="1154.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" stylesheets="@guiadmin.css">
+        <AnchorPane fx:id="navapp" layoutX="88.0" layoutY="12.0" prefHeight="681.0" prefWidth="1154.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" stylesheets="@Filecss/guiadmin.css">
             <children>
                 <Pane layoutX="36.0" layoutY="191.0" prefHeight="172.0" prefWidth="252.0" style="-fx-background-color: #53A0EC; -fx-background-radius: 7;">
                     <children>

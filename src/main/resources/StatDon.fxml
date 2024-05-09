@@ -7,7 +7,7 @@
 <?import java.net.URL?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Statdon">
     <stylesheets>
-        <URL value="@charts.css" />
+        <URL value="@Filecss/charts.css" />
     </stylesheets>
     <children>
         <Text layoutX="151.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistiques des Groupes Sanguins">

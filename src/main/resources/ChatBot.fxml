@@ -9,30 +9,27 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="601.0" prefWidth="928.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cotrollers.AfficherRendezvous">
 
     <children>
-        <AnchorPane layoutX="14.0" layoutY="9.0" prefHeight="125.0" prefWidth="906.0" style="-fx-background-color: #73AA18;">
+        <AnchorPane prefHeight="145.0" prefWidth="950.0" style="-fx-background-color: #00308F;">
             <children>
-                <Label layoutX="296.0" layoutY="28.0" prefHeight="31.0" prefWidth="385.0" text="Any Questions?" textFill="#0c2d48">
+                <Label layoutX="219.0" layoutY="12.0" prefHeight="58.0" prefWidth="483.0" text="DevDinaCity AidBot" textFill="#eff8ff">
                     <font>
-                        <Font name="Constantia Italic" size="48.0" />
+                        <Font name="Myanmar Text" size="51.0" />
                     </font>
                 </Label>
-                <ImageView fitHeight="102.0" fitWidth="143.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@/image2.png" />
-                    </image>
-                </ImageView>
-                <Line endX="354.60003662109375" endY="7.62939453125E-6" layoutX="365.0" layoutY="96.0" startX="-159.8000030517578" startY="7.62939453125E-6" />
-                <Line endX="312.20001220703125" endY="7.62939453125E-6" layoutX="361.0" layoutY="104.0" startX="-100.0" />
+
+              <ImageView fitHeight="127.0" fitWidth="143.0" layoutX="47.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/icons8-chatbot-94.png" />
+               </image>
+            </ImageView>
             </children>
         </AnchorPane>
-        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-        <AnchorPane layoutX="15.0" layoutY="158.0" prefHeight="407.0" prefWidth="630.0" style="-fx-background-color: #F5EEF8;">
+        <AnchorPane layoutY="145.0" prefHeight="575.0" prefWidth="950.0" style="-fx-background-color: #F5EEF8;">
             <children>
                 <HBox layoutX="14.0" layoutY="22.0" spacing="10.0">
                     <children>
@@ -42,26 +39,26 @@
                                 <String fx:value="white-form" />
                             </styleClass>
                         </TextField>
-                        <Button mnemonicParsing="false" onAction="#GetReponse" prefHeight="42.0" prefWidth="80.0" style="-fx-background-color: #AD1457;" text="send" textFill="WHITE"/>
+                        <Button mnemonicParsing="false" onAction="#GetReponse" prefHeight="42.0" prefWidth="80.0" style="-fx-background-color: #FFC72C; -fx-background-radius: 100;" text="send" textFill="WHITE" />
                     </children>
                 </HBox>
-                <Button layoutX="689.0" layoutY="548.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="226.0" style="-fx-background-color: #AD1457;" text="RETOUR" textFill="WHITE">
+                <Button layoutX="716.0" layoutY="510.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="143.0" style="-fx-background-color: #FFC72C; -fx-background-radius: 100;" text="RETOUR" textFill="WHITE">
                     <font>
                         <Font name="Constantia" size="14.0" />
                     </font>
                 </Button>
-                <TextArea fx:id="outputLabel" layoutX="14.0" layoutY="77.0" prefHeight="303.0" prefWidth="583.0" style="-fx-font-size: 16px;">
+                <TextArea fx:id="outputLabel" layoutX="14.0" layoutY="77.0" prefHeight="303.0" prefWidth="574.0" style="-fx-font-size: 16px;">
                     <styleClass>
                         <String fx:value="border" />
                         <String fx:value="white-form" />
                     </styleClass>
                 </TextArea>
+              <ImageView fitHeight="391.0" fitWidth="331.0" layoutX="608.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@/kit-robo-advisor-working-on-holographic-screen.gif" />
+                  </image>
+              </ImageView>
             </children>
         </AnchorPane>
-        <ImageView fitHeight="339.0" fitWidth="259.0" layoutX="655.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@/image1.jpg" />
-            </image>
-        </ImageView>
     </children>
 </AnchorPane>

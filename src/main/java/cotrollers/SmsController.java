@@ -8,15 +8,15 @@ import java.net.URI;
 import java.math.BigDecimal;
 public class SmsController {
     // Find your Account Sid and Token at twilio.com/console
-    public static final String ACCOUNT_SID = "AC791d09b8db164f42e2229230f42e9bd1";
-    public static final String AUTH_TOKEN = "15f711e3ab3c06457d80c90aa393c1b7";
+    public static final String ACCOUNT_SID = "AC29426580069fc89e74927d2d6a861577";
+    public static final String AUTH_TOKEN = "201de44f04a1555f5e2035c249603c64";
 
     public static void sms() {
         System.out.println("Sending SMS now");
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         Message message = Message.creator(
                 new com.twilio.type.PhoneNumber("+21629063475"),
-                new com.twilio.type.PhoneNumber("+13853992334"),
+                new com.twilio.type.PhoneNumber("+12568889797"),
 
 
                 "Vous avez reçu une réponse à votre rendez-vous").create();

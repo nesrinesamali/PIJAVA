@@ -57,7 +57,7 @@ public class GuiPaiementController implements Initializable {
             // int k = floatToInt(f);
             // PaymentApi.pay(k);
             float f = 10000;
-            int k = floatToInt(f);
+            int k = floatToInt(f);//Cela appelle une méthode floatToInt(float value) pour convertir la valeur de f en un entier k
             String url=PaymentAPI.pay(k);
 
             // Insert your logic for payment success
@@ -114,13 +114,13 @@ public class GuiPaiementController implements Initializable {
     private boolean isValidVisaCardNo(String text) {
         String regex = "^4[0-9]{12}(?:[0-9]{3})?$";
         Pattern p = Pattern.compile(regex);
-        CharSequence cs = text;
+        CharSequence cs = text; // conversion en chaine de caractére
         Matcher m = p.matcher(cs);
         return m.matches();
     }
 
     public static boolean isNum(String str) {
-        String expression = "\\d+";
+        String expression = "\\d+";//un ou plusieur chiffre
         return str.matches(expression);
     }
 

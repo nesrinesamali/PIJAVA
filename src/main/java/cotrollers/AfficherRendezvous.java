@@ -305,7 +305,7 @@ public class AfficherRendezvous implements Initializable {
                 alert.showAndWait();
         }
     public static String execPromptGpt(String prompt) {
-        GPTAPI gptApi = new GPTAPI("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");
+        GPTAPI gptApi = new GPTAPI("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");
         String model = "gpt-3.5-turbo-instruct";
         String result = gptApi.queryGPT(prompt, model);
 

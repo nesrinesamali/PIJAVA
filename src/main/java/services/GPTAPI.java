@@ -24,7 +24,7 @@ public class GPTAPI {
     public String queryGPT(String prompt, String model) {
         try {
             JSONObject data = new JSONObject();
-            data.put("prompt", prompt);
+            data.put("prompt", prompt); //Cette méthode permet de faire une requête à l'API GPT en lui passant un prompt et le modèle à utiliser pour la génération de texte.
             data.put("model", model);
             data.put("max_tokens", 500); // Adjust based on your needs
 

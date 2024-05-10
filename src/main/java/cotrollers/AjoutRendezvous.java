@@ -1,5 +1,7 @@
 package cotrollers;
 
+import controllers.logincontroller;
+import entities.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import models.Rendezvous;
-import models.User;
 import services.RendezvousService;
 
 import java.io.IOException;
@@ -18,7 +19,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -162,10 +162,9 @@ public class AjoutRendezvous implements Initializable {
         newRendezvous.setNompatient(selectedNomPatient);
 
         RendezvousService rs = new RendezvousService();
-        User user = rs.getUserById(2);
+        User user = logincontroller.user;
 
         newRendezvous.setUser(user);
-        newRendezvous.setReponse_id(1);
 
         System.out.println(newRendezvous);
 

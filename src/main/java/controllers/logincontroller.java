@@ -22,7 +22,7 @@ public class logincontroller {
 
     @FXML
     private TextField emailTF;
-
+    public static User user;
     @FXML
     private PasswordField mdpTF;
 
@@ -39,7 +39,9 @@ public class logincontroller {
                 User loggedInUser = userService.login(nom, password);
                 if (loggedInUser != null) {
 
-                    if (loggedInUser.getRoles().contains("[\"ADMIN\"]")) {
+                    System.out.println(loggedInUser);
+                    logincontroller.user=loggedInUser;
+                    if (loggedInUser.getRoles().contains("ADMIN")) {
                         System.out.println("Loading admin interface");
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard.fxml"));
                         Parent root = loader.load();
@@ -48,10 +50,10 @@ public class logincontroller {
                         UserService us = new UserService();
                         ConnectUser = us.getUserByEmail(nom);
                         System.out.println("Loading user profile");
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/profile.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/okok.fxml"));
                         Parent root = loader.load();
-                        ProfileController controller = loader.getController();
-                        controller.setUser(ConnectUser);
+                     //   ProfileController controller = loader.getController();
+                   //     controller.setUser(ConnectUser);
                         emailTF.getScene().setRoot(root);
                     }
 
@@ -68,6 +70,17 @@ public class logincontroller {
         }
 
     }
+
+
+
+
+
+
+
+
+
+
+
 
     @FXML
     void GoToRegister(MouseEvent event) throws IOException {

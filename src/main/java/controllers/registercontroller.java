@@ -117,7 +117,9 @@ public class registercontroller {
                 profilePic = selectedFile.toURI().toString();
                 // Passer une chaîne vide pour la brochure en tant que placeholder
                 User newuser = new User(name, email, motdp, prenom, profilePic, role);
+                System.out.println(role);
                 UserService userService = new UserService();
+                newuser.setBrochure("https://i.ibb.co/hCpbz8M/icons8-folder-tree-100.png");
                 userService.ajouter(newuser);
                 System.out.println(newuser);
                 System.out.println("Utilisateur ajouté avec succès !");

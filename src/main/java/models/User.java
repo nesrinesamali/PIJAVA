@@ -2,8 +2,6 @@ package models;
 
 import jakarta.persistence.OneToMany;
 
-import java.util.List;
-
 public class User {
     private int id ;
     private String nom;
@@ -19,10 +17,7 @@ public class User {
     private String email;
     @OneToMany
     private Rendezvous rendezvous;
-    //@ManyToOne
-    //@JoinColumn(name = "centre_don_id") // Nom de la colonne dans la table Don faisant référence au CentreDon
-    private Dons dons;
-    private List<Dons> donsList;
+
     public int getId() {
         return id;
     }
@@ -152,4 +147,3 @@ public class User {
         this.email = email;
     }
 }
-

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import controllers.logincontroller;
 import javafx.scene.chart.XYChart;
 import models.CentreDon;
 import models.Dons;
@@ -36,7 +37,9 @@ public class ServiceDon implements CRUD<Dons> {
         ps.setObject(5, don.getGroupeSanguin());
         ps.setObject(6, don.getTypeDeDon());
         ps.setObject(7, don.getEtatMarital());
-        ps.setObject(8, don.getId_User());
+        ps.setObject(9, logincontroller.user.getId());
+
+        // ps.setObject(8, don.getId_User());
         // Vérifiez si l'objet CentreDon associé à Dons est null
         if (don.getCentreDon() != null) {
             ps.setObject(8, don.getCentreDon().getId());
@@ -58,7 +61,7 @@ public class ServiceDon implements CRUD<Dons> {
 
 
     public void updateOne(Dons don) throws SQLException {
-        String req = "UPDATE `Dons` SET `cin`=?, `genre`=?, `date_don`=?, `datedernierdon`=?, `groupe_sanguin`=?, `typededon`=?, `etatmarital`=?,`centre_don_id`=? ,`user_id`=? WHERE `id`=?";
+        String req = "UPDATE `Dons` SET `cin`=?, `genre`=?, `date_don`=?, `datedernierdon`=?, `groupe_sanguin`=?, `typededon`=?, `etatmarital`=?,`centre_don_id`=? =? WHERE `id`=?";
         PreparedStatement ps = connection.prepareStatement(req);
         ps.setString(1, don.getCin());
         ps.setString(2, don.getGenre());
@@ -67,8 +70,7 @@ public class ServiceDon implements CRUD<Dons> {
         ps.setString(5, don.getGroupeSanguin());
         ps.setString(6, don.getTypeDeDon());
         ps.setString(7, don.getEtatMarital());
-        ps.setInt(9, don.getId());
-        ps.setInt(10, don.getId_User());// Assuming you have an id field in your don class
+    // Assuming you have an id field in your don class
         if (don.getCentreDon() != null) {
             ps.setObject(8, don.getCentreDon().getId());
         } else {
@@ -164,5 +166,32 @@ public class ServiceDon implements CRUD<Dons> {
         }
 
         return barChartData;
+    }
+
+    public List<Dons> readByUserId(int id) throws SQLException {
+        String sql = "SELECT * FROM Dons WHERE id=?";
+        List<Dons> dons = new ArrayList<>();
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, logincontroller.user.getId());
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                Dons don = new Dons();
+                don.setId(rs.getInt(("id")));
+                don.setCin(rs.getString("cin"));
+                don.setTypeDeDon(rs.getString("typededon"));
+                don.setGenre(rs.getString("genre"));
+                don.setDatePro(rs.getString("date_don"));
+                don.setDateDer(rs.getString("datedernierdon"));
+                don.setGroupeSanguin(rs.getString("groupe_sanguin"));
+                don.setEtatMarital(rs.getString("etatmarital"));
+                don.setId_centre(rs.getInt("centre_don_id"));
+                don.setId_User(rs.getInt("user_id"));
+                dons.add(don);
+            }
+        }
+
+        return dons;
     }
 }

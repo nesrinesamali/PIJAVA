@@ -181,12 +181,12 @@ public class User {
 
     // Setter and getter for user id
     public void setId_user(int id_user) {
-        // Add code to set the user id property if needed
+      id=id_user;
     }
 
     public int getId_user() {
         // Add code to get the user id property if needed
-        return 0; // Replace with actual implementation
+        return id; // Replace with actual implementation
     }
 
 }

@@ -1,5 +1,7 @@
 package Controller;
 import controllers.ProfileController;
+import controllers.logincontroller;
+import entities.User;
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -18,6 +20,7 @@ import java.sql.SQLException;
 import javafx.stage.Stage;
 import models.CentreDon;
 import models.Dons;
+import services.RendezvousService;
 import services.ServiceCentre;
 import services.ServiceDon;
 import javafx.scene.control.Hyperlink;
@@ -45,6 +48,7 @@ public class FrontController {
     AnchorPane navapp;
     @FXML
     AnchorPane main_form;
+    public User user = logincontroller.user;
     @FXML
     private TilePane cardsContainercentre;
     @FXML
@@ -260,7 +264,7 @@ public class FrontController {
     private void loadDons() {
         cardsContainer.getChildren().clear(); // Clear existing cards before loading new ones
         try {
-            List<Dons> allDons = donService.selectAll(); // Retrieve all donations
+            List<Dons> allDons = donService.readByUserId(logincontroller.user.getId()); // Retrieve all donations
             for (Dons don : allDons) {
                 VBox card = createDonCard(don); // Create a card for each donation
                 cardsContainer.getChildren().add(card); // Add the card to the container
@@ -292,9 +296,9 @@ public class FrontController {
         card.setPadding(new Insets(10)); // Réduire la marge autour des éléments
 
         // ImageView pour l'image du don (remplacez "path_vers_votre_image" par le chemin de votre image)
-        ImageView imageView = new ImageView(new Image("C:\\Users\\Lenovo\\Desktop\\java\\PIJAVA\\src\\main\\java\\Controller\\cherry-437.png"));
-        imageView.setFitWidth(100); // Ajuster la largeur de l'image
-        imageView.setPreserveRatio(true); // Préserver le rapport hauteur/largeur de l'image
+//        ImageView imageView = new ImageView(new Image("C:\\Users\\Lenovo\\Desktop\\java\\PIJAVA\\src\\main\\java\\Controller\\cherry-437.png"));
+//        imageView.setFitWidth(100); // Ajuster la largeur de l'image
+//        imageView.setPreserveRatio(true); // Préserver le rapport hauteur/largeur de l'image
 
         // Étiquette pour le type de don
         Label typeLabel = new Label("\uD835\uDE4F\uD835\uDE6E\uD835\uDE65\uD835\uDE5A \uD835\uDE59\uD835\uDE6A \uD835\uDE59\uD835\uDE64\uD835\uDE63\uD835\uDE56\uD835\uDE69\uD835\uDE5E\uD835\uDE64\uD835\uDE63: " + don.getTypeDeDon());
@@ -317,7 +321,7 @@ public class FrontController {
         detailsButton.setOnAction(e -> showDonDetails(don)); // Définir l'action pour afficher les détails du don
 
         // Ajouter tous les composants à VBox
-        card.getChildren().addAll(imageView, typeLabel, cinLabel, bloodGroupLabel, dateLabel, detailsButton);
+        card.getChildren().addAll( typeLabel, cinLabel, bloodGroupLabel, dateLabel, detailsButton);
         card.setAlignment(Pos.CENTER); // Centrer le contenu dans VBox
         return card; // Retourner la carte entièrement construite
     }
@@ -725,6 +729,10 @@ public class FrontController {
         don.setDatePro(datePro.toString());
         don.setDateDer(dateDer.toString());
         don.setCentreDon(selectedCentre);
+        ServiceDon serviceDon = new ServiceDon();
+        User user = logincontroller.user;
+        don.setId(logincontroller.user.getId());
+        System.out.println(serviceDon);
 
         try {
             donService.updateOne(don);
@@ -928,24 +936,17 @@ public class FrontController {
         }
 
     }
-    @FXML
-    private void goToUserProfile(MouseEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/profile.fxml"));
-            Parent root = loader.load();
 
-            Stage newStage = new Stage();
-            newStage.setScene(new Scene(root));
 
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.hide();
+    public void goToProfile(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/profile.fxml"));
+        Parent root = loader.load();
+          ProfileController controller = loader.getController();
+             controller.setUser(logincontroller.user);
+        centre.getScene().setRoot(root);
 
-            newStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
-
 }
 
  /*

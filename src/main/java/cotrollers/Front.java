@@ -106,7 +106,7 @@ public class Front  {
 
         try {
             // Call the read method on the rendezvousService instance
-            List<Rendezvous> rendezvousList = rendezvousService.read();
+            List<Rendezvous> rendezvousList = rendezvousService.readByUserId();
 
             // Iterate through the list of rendezvous and create cards
             for (Rendezvous rendezvous : rendezvousList) {

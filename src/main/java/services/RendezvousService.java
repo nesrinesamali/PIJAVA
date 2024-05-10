@@ -1,7 +1,8 @@
 package services;
 
-import models.Rendezvous;
+import controllers.logincontroller;
 import models.User;
+import models.Rendezvous;
 import utils.MyDatabase;
 
 import java.sql.*;
@@ -38,14 +39,16 @@ public class RendezvousService implements IService<Rendezvous>{
            // pstmt.setInt(7, rendezvous.getUser().getId());
 
 
-            User user = rendezvous.getUser();
+           // User user = rendezvous.getUser();
+            pstmt.setInt(7, logincontroller.user.getId());
+            /*
             if (user != null) {
                 pstmt.setInt(7, user.getId());
             } else {
                 // Handle the case where the User object is null
                 // For example, you can set user_id to NULL or throw an exception
                 pstmt.setNull(7, java.sql.Types.INTEGER);
-            }
+            }*/
 
             // Execute the statement
             pstmt.executeUpdate();
@@ -107,6 +110,29 @@ public class RendezvousService implements IService<Rendezvous>{
             System.out.println(r.getEtat());
             rendezvous.add(r);
         }
+        return rendezvous;
+    }
+    public List<Rendezvous> readByUserId() throws SQLException {
+        String sql = "SELECT * FROM rendezvous WHERE id=?";
+        List<Rendezvous> rendezvous = new ArrayList<>();
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, logincontroller.user.getId());
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                Rendezvous r = new Rendezvous();
+                r.setId(rs.getInt("id"));
+                r.setDate(rs.getDate("date"));
+                r.setNompatient(rs.getString("nompatient"));
+                r.setNommedecin(rs.getString("nommedecin"));
+                r.setEtat(rs.getBoolean("etat"));
+                r.setHeure(rs.getString("heure"));
+                System.out.println(r.getEtat());
+                rendezvous.add(r);
+            }
+        }
+
         return rendezvous;
     }
 

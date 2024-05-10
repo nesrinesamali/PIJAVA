@@ -14,7 +14,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
             // Load the FXML file
-            Parent parent = FXMLLoader.load(getClass().getResource("/Affiche.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/login.fxml"));
 
             // Create the scene and set it on the stage
             Scene scene = new Scene(parent);

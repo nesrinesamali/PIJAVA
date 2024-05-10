@@ -1,5 +1,7 @@
 package models;
 
+import entities.User;
+
 import java.sql.Date;
 
 public class Rendezvous {

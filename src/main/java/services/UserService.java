@@ -181,8 +181,10 @@ public class UserService implements IService {
                // String status = rs.getString("statuteligibilite");
               //  String reset_token = rs.getString("token");
                 String roles = rs.getString("role");
+                String image = rs.getString("brochure");
                // User user = new User( id,  nom,  email,  roles,  prenom,  status,  reset_token);
                 User user= new User();
+                user.setBrochure(image);
                 user.setId_user(id);
                 user.setNom(nom);
                 user.setEmail(email);

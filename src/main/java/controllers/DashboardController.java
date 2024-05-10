@@ -3,6 +3,7 @@ package controllers;
 import entities.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,7 +17,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import services.UserService;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -164,5 +164,13 @@ public class DashboardController implements Initializable {
             // Update the TableView with the filtered list of users
             tabUsrs.setItems(filteredList);
         }
+    }
+
+    public void redirectToAnotherFXML(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherCentre.fxml"));
+        Parent root = loader.load();
+        root.prefHeight(800);
+        root.prefWidth(1200);
+        tabUsrs.getScene().setRoot(root);
     }
 }

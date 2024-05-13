@@ -126,7 +126,7 @@
                                 <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
                                 <ImageView fitHeight="50.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@/assets/profile.png" />
+                                        <Image url="@/profile.png" />
 
                                     </image>
                                 </ImageView>

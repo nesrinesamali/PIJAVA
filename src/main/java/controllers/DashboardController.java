@@ -113,6 +113,7 @@ public class DashboardController implements Initializable {
 
             tabUsrs.getColumns().add(deleteColumn);
         }
+
         ObservableList<User> observableList = FXCollections.observableArrayList(list);
         tabUsrs.setItems(observableList);
 

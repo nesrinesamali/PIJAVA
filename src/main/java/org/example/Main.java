@@ -1,5 +1,6 @@
 package org.example;
 
+
 import java.sql.SQLException;
 
 import entities.User;
@@ -21,6 +22,7 @@ public class Main {
         System.out.println("Utilisateurs après ajout :");
         userService.afficher().forEach(System.out::println);
     }
+
 
     public static void testAfficher(UserService userService) {
         // Affichage de tous les utilisateurs

@@ -23,7 +23,7 @@ public class logincontroller {
     @FXML
     private TextField emailTF;
     public static User user;
-    @FXML
+@FXML
     private PasswordField mdpTF;
 
     @FXML
@@ -38,7 +38,6 @@ public class logincontroller {
                 UserService userService = new UserService();
                 User loggedInUser = userService.login(nom, password);
                 if (loggedInUser != null) {
-
                     System.out.println(loggedInUser);
                     logincontroller.user=loggedInUser;
                     if (loggedInUser.getRoles().contains("ADMIN")) {
@@ -46,66 +45,47 @@ public class logincontroller {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard.fxml"));
                         Parent root = loader.load();
                         emailTF.getScene().setRoot(root);
-                    } else  {
+                    } else {
                         UserService us = new UserService();
-                        ConnectUser = us.getUserByEmail(nom);
+                        User connectUser = us.getUserByEmail(nom);
                         System.out.println("Loading user profile");
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/okok.fxml"));
                         Parent root = loader.load();
-                     //   ProfileController controller = loader.getController();
-                   //     controller.setUser(ConnectUser);
                         emailTF.getScene().setRoot(root);
                     }
-
-
                 } else {
                     JOptionPane.showMessageDialog(null, "Invalid username or password. Please try again.");
                 }
-            } catch (SQLException ex) {
+            } catch (SQLException | IOException ex) {
                 JOptionPane.showMessageDialog(null, "An error occurred while logging in. Please try again later.");
                 ex.printStackTrace();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
             }
         }
 
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-    @FXML
-    void GoToRegister(MouseEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/register.fxml"));
-        Parent root;
-        root = loader.load();
-        Scene scene = mdpTF.getScene();
-        if (scene != null) {
-            Stage currentStage = (Stage) scene.getWindow();
-            currentStage.close();
         }
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
 
-    @FXML
-    private void forgor() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/forgotPassword.fxml"));
+        @FXML
+        void GoToRegister(MouseEvent event) throws IOException {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/register.fxml"));
             Parent root = loader.load();
-            emailTF.getScene().setRoot(root);
-
-        } catch (IOException ex) {
-            System.err.println(ex.getMessage());
+            Scene scene = emailTF.getScene();
+            if (scene != null) {
+                Stage currentStage = (Stage) scene.getWindow();
+                currentStage.close();
+            }
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
         }
-    }
-}
+
+        @FXML
+        private void forgor() {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/forgotPassword.fxml"));
+                Parent root = loader.load();
+                emailTF.getScene().setRoot(root);
+            } catch (IOException ex) {
+                System.err.println(ex.getMessage());
+            }
+        }
+        }

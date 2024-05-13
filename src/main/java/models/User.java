@@ -1,5 +1,6 @@
 package models;
 
+
 import jakarta.persistence.OneToMany;
 
 public class User {
@@ -147,3 +148,4 @@ public class User {
         this.email = email;
     }
 }
+

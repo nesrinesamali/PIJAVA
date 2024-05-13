@@ -67,7 +67,6 @@ public class ForgotPasswordController {
         }
     }
 
-
     public static int generateVerificationCode() {
         // Générer un code de vérification aléatoire à 6 chiffres
         Random random = new Random();

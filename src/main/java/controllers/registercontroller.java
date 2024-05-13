@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -173,11 +174,15 @@ public class registercontroller {
 
         // Show open file dialog
         selectedFile = fileChooser.showOpenDialog(null);
+
+
         if (selectedFile != null) {
             String imagePath = selectedFile.toURI().toString();
             System.out.println("Selected file: " + imagePath);
             // Now you can save the imagePath to the database or perform any other operation
+
         }
+
     }
 
 }

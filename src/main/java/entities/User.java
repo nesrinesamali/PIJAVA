@@ -5,20 +5,45 @@ import org.mindrot.jbcrypt.BCrypt;
 public class User {
     private int id;
     private String nom, email, roles, password, prenom, typemaladie, specialite, groupesanguin, statuteligibilite, token, brochure;
+    private String status;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", email='" + email + '\'' +
-                ", roles='" + roles + '\'' +
-                ", password='" + password + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", typemaladie='" + typemaladie + '\'' +
-                ", specialite='" + specialite + '\'' +
-                ", groupesanguin='" + groupesanguin + '\'' +
-                '}';
+    public User(int id, String nom, String email, String roles, String password, String prenom, String typemaladie, String specialite, String groupesanguin, String statuteligibilite, String token, String brochure, String status) {
+        this.id = id;
+        this.nom = nom;
+        this.email = email;
+        this.roles = roles;
+        this.password = password;
+        this.prenom = prenom;
+        this.typemaladie = typemaladie;
+        this.specialite = specialite;
+        this.groupesanguin = groupesanguin;
+        this.statuteligibilite = statuteligibilite;
+        this.token = token;
+        this.brochure = brochure;
+        this.status = status;
+    }
+
+    public User(String nom, String email, String roles, String password, String prenom, String typemaladie, String specialite, String groupesanguin, String statuteligibilite, String token, String brochure, String status) {
+        this.nom = nom;
+        this.email = email;
+        this.roles = roles;
+        this.password = password;
+        this.prenom = prenom;
+        this.typemaladie = typemaladie;
+        this.specialite = specialite;
+        this.groupesanguin = groupesanguin;
+        this.statuteligibilite = statuteligibilite;
+        this.token = token;
+        this.brochure = brochure;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public User(int i, int i1, String johnDoe, String mail, String password123, String image, String roleUser, String token) {
@@ -58,6 +83,17 @@ public class User {
         this.prenom = prenom;
         this.statuteligibilite = statuteligibilite;
         this.token = token;
+    }
+
+    public User(int id, String nom, String email, String roles, String prenom, String statuteligibilite, String token,String Status) {
+        this.id = id;
+        this.nom = nom;
+        this.email = email;
+        this.roles = roles;
+        this.prenom = prenom;
+        this.statuteligibilite = statuteligibilite;
+        this.token = token;
+        this.status = Status;
     }
 
     public User() {
@@ -182,11 +218,14 @@ public class User {
     // Setter and getter for user id
     public void setId_user(int id_user) {
       id=id_user;
+
     }
 
     public int getId_user() {
         // Add code to get the user id property if needed
+
         return id; // Replace with actual implementation
     }
+
 
 }

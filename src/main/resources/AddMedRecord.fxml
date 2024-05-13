@@ -48,7 +48,7 @@
                   <Color red="0.250980406999588" green="0.1882352977991104" blue="0.3764705955982208" />
                </textFill>
             </MFXTextField>
-            <MFXTextField fx:id="Test" floatingText="Test" layoutX="332.0" layoutY="331.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="244.0" stylesheets="@css/MFXTextField.css">
+            <MFXTextField fx:id="Test" floatingText="Medical Test" layoutX="332.0" layoutY="331.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="244.0" stylesheets="@css/MFXTextField.css">
                <styleClass>
                   <String fx:value="css\MFXTextField.css" />
                   <String fx:value="floating-text" />

@@ -36,7 +36,13 @@
             <artifactId>pdfbox</artifactId>
             <version>2.0.24</version>
         </dependency>
-
+        <dependency>
+            <groupId>TrayTester</groupId>
+            <artifactId>TrayTester</artifactId>
+            <scope>system</scope>
+            <version>1.0</version>
+            <systemPath>${basedir}\lib\TrayTester.jar</systemPath>
+        </dependency>
         <!-- QRGen -->
         <dependency>
             <groupId>com.google.zxing</groupId>
@@ -50,6 +56,11 @@
         </dependency>
 
         <!-- JavaMail -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
@@ -125,6 +136,11 @@
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>
             <version>5.5.13</version> <!-- Ou la dernière version disponible -->
+        </dependency>
+        <dependency>
+            <groupId>com.twilio.sdk</groupId>
+            <artifactId>twilio</artifactId>
+            <version>8.23.0</version> <!-- Assurez-vous de vérifier la dernière version disponible -->
         </dependency>
         <dependency>
             <groupId>com.twilio.sdk</groupId>

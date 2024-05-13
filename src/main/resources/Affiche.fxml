@@ -14,19 +14,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cotrollers.Front">
    <children>
-      <VBox alignment="CENTER" layoutX="100.0" prefHeight="700.0" prefWidth="1000.0" spacing="10" stylesheets="Front.css">
+      <VBox alignment="CENTER" layoutX="161.0" prefHeight="700.0" prefWidth="781.0" spacing="10" stylesheets="Filecss/Front.css">
           <children>
               <!-- Ajout d'un titre -->
               <Label styleClass="Titre" text="Explorez les rendez-vous" />
               <!-- Ajout d'un lien pour ajouter un don -->
               <Hyperlink fx:id="addRendezvous" styleClass="hyperlink" text="Ajouter rendez-vous" />
               <Button fx:id="chatbotButton" onAction="#chatbot" text="Chatbot" />
-              <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" styleClass="scroll-pane">
+              <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" prefHeight="543.0" prefWidth="718.0" styleClass="scroll-pane">
                   <content>
-                      <TilePane fx:id="cardsContainer" hgap="10" prefColumns="4" styleClass="tile-pane" vgap="10">
+                      <TilePane fx:id="cardsContainer" hgap="10" prefColumns="4" prefHeight="542.0" prefWidth="718.0" styleClass="tile-pane" vgap="10">
                           <padding>
                               <Insets bottom="10" left="10" right="10" top="10" />
                           </padding>
@@ -42,9 +41,9 @@
               </ScrollPane>
           </children>
       </VBox>
-      <Pane layoutX="-6.0" prefHeight="691.0" prefWidth="110.0">
+      <Pane layoutX="-6.0" prefHeight="700.0" prefWidth="106.0" styleClass="linear-grad" stylesheets="@Filecss/guiadmin.css">
          <children>
-            <Button contentDisplay="TOP" layoutY="115.0" mnemonicParsing="false" onAction="#handleNavigation" onMouseClicked="#handleNavigation" prefHeight="90.0" prefWidth="110.0" styleClass="button3" stylesheets="@guiadmin.css" text="Naviguer" textFill="#767676">
+            <Button contentDisplay="TOP" layoutY="233.0" mnemonicParsing="false" onAction="#handleNavigation" onMouseClicked="#handleNavigation" prefHeight="90.0" prefWidth="106.0" styleClass="button3" stylesheets="@Filecss/guiadmin.css" text="Naviguer" textFill="#767676">
                <graphic>
                   <ImageView fitHeight="46.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                      <image>

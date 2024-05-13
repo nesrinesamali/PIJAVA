@@ -20,21 +20,21 @@
           <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="444.0" layoutY="270.0" mnemonicParsing="false" onAction="#Add" prefHeight="37.0" prefWidth="132.0" style="-fx-background-color: #FFA500; -fx-background-radius: 100;" styleClass="#00008B" text="Ajouter" textAlignment="RIGHT" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" />
       <ImageView fitHeight="308.0" fitWidth="353.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/beam-registration-of-medical-insurance.gif" />
+            <Image url="@/assets/beam-registration-of-medical-insurance.gif" />
          </image>
       </ImageView>
       <ImageView fitHeight="66.0" fitWidth="69.0" layoutX="346.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/icons8-choice-50.png" />
+            <Image url="@/assets/icons8-choice-50.png" />
          </image></ImageView>
       <ImageView fitHeight="66.0" fitWidth="69.0" layoutX="353.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/icons8-schedule-50.png" />
+            <Image url="@/assets/icons8-schedule-50.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="66.0" fitWidth="69.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/icons8-top-menu-50.png" />
+            <Image url="@/assets/icons8-top-menu-50.png" />
          </image>
       </ImageView>
     </children>

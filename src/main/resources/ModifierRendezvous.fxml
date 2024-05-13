@@ -36,24 +36,24 @@
           <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="5.0" layoutX="498.0" layoutY="454.0" mnemonicParsing="false" onMouseClicked="#update" prefHeight="37.0" prefWidth="132.0" style="-fx-background-color: #FFA500; -fx-background-radius: 100;" styleClass="#00008B" text="update" textAlignment="RIGHT" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" />
         <ImageView fitHeight="411.0" fitWidth="410.0" layoutX="456.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="486.0" AnchorPane.topAnchor="0.0">
             <image>
-                <Image url="@beam-online-medical-consultation.gif" />
+                <Image url="@assets/beam-online-medical-consultation.gif" />
             </image>
         </ImageView>
       <ImageView fitHeight="59.0" fitWidth="64.0" layoutX="21.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@icons8-name-100.png" />
+            <Image url="@assets/icons8-name-100.png" />
          </image></ImageView>
       <ImageView fitHeight="74.0" fitWidth="48.0" layoutX="27.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@icons8-02_00-50.png" />
+            <Image url="@assets/icons8-02_00-50.png" />
          </image></ImageView>
       <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="26.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@icons8-medical-doctor-50.png" />
+            <Image url="@assets/icons8-medical-doctor-50.png" />
          </image></ImageView>
       <ImageView fitHeight="60.0" fitWidth="48.0" layoutX="26.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@icons8-date-64.png" />
+            <Image url="@assets/icons8-date-64.png" />
          </image></ImageView>
       <Text fill="#4f51e7" layoutX="12.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="𝓜𝓸𝓭𝓲𝓯𝓲𝓮𝓻 𝓿𝓸𝓽𝓻𝓮 𝓡𝓮𝓷𝓭𝓮𝔃-𝓿𝓸𝓾𝓼" wrappingWidth="418.38751220703125">
          <font>

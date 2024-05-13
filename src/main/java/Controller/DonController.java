@@ -294,7 +294,7 @@ public class DonController implements Initializable {
 
     @FXML
     private void PrintPdf() {
-        String filePath = "C:/Users/Lenovo/Desktop/output.pdf";
+        String filePath = "C:\\Users\\Lenovo\\Desktop\\java\\PIJAVA\\Don.pdf";
         String imagePath = "C:/Users/Lenovo/Desktop/java/PIJAVA/src/main/resources/assets/icons8-blood-sample.gif";
         PDDocument document = new PDDocument(); // Create a new PDDocument instance
         PDFEXPORTDON.exportTableViewToPDF(DonTable, imagePath, filePath, document);

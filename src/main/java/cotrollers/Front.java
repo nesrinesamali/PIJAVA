@@ -12,6 +12,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.BarcodeQRCode;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.sun.javafx.menu.MenuItemBase;
+import controllers.logincontroller;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
@@ -107,7 +108,8 @@ public class Front  {
         try {
             // Call the read method on the rendezvousService instance
             List<Rendezvous> rendezvousList = rendezvousService.readByUserId();
-
+            System.out.println(rendezvousList);
+            System.out.println(logincontroller.user.getId());
             // Iterate through the list of rendezvous and create cards
             for (Rendezvous rendezvous : rendezvousList) {
                 VBox card = createDonCard(rendezvous);

@@ -21,23 +21,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="bord" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="859.0" prefWidth="1452.0" style="-fx-background-color: #f8f5f5;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FrontController">
+<AnchorPane id="AnchorPane" fx:id="bord" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="881.0" prefWidth="1450.0" style="-fx-background-color: #f8f5f5;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FrontController">
     <children>
-        <AnchorPane layoutX="-38.0" layoutY="14.0" prefHeight="865.0" prefWidth="1424.0" style="-fx-background-color: #f8f5f5; -fx-background-radius: 15;">
+        <AnchorPane layoutX="-42.0" layoutY="1.0" prefHeight="881.0" prefWidth="1490.0" style="-fx-background-color: #f8f5f5; -fx-background-radius: 15;">
             <children>
-                <Pane layoutX="961.0" layoutY="-8.0" prefHeight="102.0" prefWidth="352.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@guiadmin.css">
+                <Pane layoutX="961.0" layoutY="-8.0" onMouseClicked="#logout" prefHeight="102.0" prefWidth="352.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@Filecss/guiadmin.css">
                     <children>
                         <ImageView fitHeight="76.0" fitWidth="58.0" layoutX="274.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@/assets/icons8-client-94.png" />
                             </image>
                         </ImageView>
-                        <Label fx:id="nomPrenom" layoutX="154.0" layoutY="14.0" text="Client" textFill="#fffefe">
+                        <Label fx:id="nomPrenom" layoutX="154.0" layoutY="14.0" onMouseClicked="#logout" text="Client" textFill="#fffefe">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Label>
-                        <Label layoutX="178.0" layoutY="41.0" text="Déconnecter" textFill="WHITE">
+                        <Label layoutX="178.0" layoutY="41.0" onMouseClicked="#logout" text="Déconnecter" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -53,7 +53,7 @@
 
                     <children>
                         <Pane prefHeight="170.0" prefWidth="74.0" />
-                        <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#handleNavigation" onMouseClicked="#handleNavigation" prefHeight="90.0" prefWidth="98.0" styleClass="button3" stylesheets="@guiadmin.css" text="Naviguer" textFill="#767676">
+                        <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#handleNavigation" onMouseClicked="#handleNavigation" prefHeight="90.0" prefWidth="98.0" styleClass="button3" stylesheets="@Filecss/guiadmin.css" text="Naviguer" textFill="#767676">
                             <graphic>
                                 <ImageView fitHeight="46.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -68,12 +68,12 @@
                     </children>
                 </VBox>
 
-                <AnchorPane layoutX="134.0" layoutY="65.0" prefHeight="802.0" prefWidth="1351.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" stylesheets="@guiadmin.css">
-                    <VBox fx:id="content_area" layoutX="55.0" layoutY="-1.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1234.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+                <AnchorPane layoutX="134.0" layoutY="65.0" prefHeight="802.0" prefWidth="1351.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" stylesheets="@Filecss/guiadmin.css">
+                    <VBox fx:id="content_area" layoutX="-2.0" layoutY="-4.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1351.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
                         <children>
 
 
-                                    <AnchorPane fx:id="navapp" layoutX="88.0" layoutY="12.0" prefHeight="702.0" prefWidth="1221.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" stylesheets="@guiadmin.css" visible="true">
+                                    <AnchorPane fx:id="navapp" layoutX="88.0" layoutY="12.0" prefHeight="702.0" prefWidth="1221.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" stylesheets="@Filecss/guiadmin.css" visible="false">
                                         <children>
                                             <Pane fx:id="mainPane" layoutX="20.0" layoutY="120.0" onMouseClicked="#goToProfile" prefHeight="253.0" prefWidth="372.0" style="-fx-background-color: #53A0EC; -fx-background-radius: 7;">
                                                 <children>
@@ -102,19 +102,19 @@
                                                     <Font name="System Bold" size="25.0" />
                                                 </font>
                                             </Label>
-                                            <Pane layoutX="418.0" layoutY="120.0" prefHeight="253.0" prefWidth="372.0" style="-fx-background-color: #53a0ec; -fx-background-radius: 7;">
+                                            <Pane layoutX="418.0" layoutY="120.0" onMouseClicked="#redirectCentre" prefHeight="253.0" prefWidth="372.0" style="-fx-background-color: #53a0ec; -fx-background-radius: 7;">
                                                 <children>
-                                                    <Label layoutX="10.0" layoutY="138.0" prefHeight="47.0" prefWidth="352.0" text="𝐂𝐞𝐧𝐭𝐫𝐞𝐬 𝐝𝐞s 𝐝𝐨𝐧𝐚𝐭𝐢𝐨𝐧𝐬">
+                                                    <Label layoutX="10.0" layoutY="138.0" onMouseClicked="#redirectCentre" prefHeight="47.0" prefWidth="352.0" text="𝐂𝐞𝐧𝐭𝐫𝐞𝐬 𝐝𝐞s 𝐝𝐨𝐧𝐚𝐭𝐢𝐨𝐧𝐬">
                                                         <font>
                                                             <Font name="System Bold" size="32.0" />
                                                         </font>
                                                     </Label>
-                                                    <ImageView fitHeight="134.0" fitWidth="124.0" layoutX="124.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                    <ImageView fitHeight="134.0" fitWidth="124.0" layoutX="124.0" layoutY="14.0" onMouseClicked="#redirectCentre" pickOnBounds="true" preserveRatio="true">
                                                         <image>
                                                             <Image url="@assets/icons8-blood-sample-64.png" />
                                                         </image>
                                                     </ImageView>
-                                                    <Label layoutX="102.0" layoutY="185.0" prefHeight="36.0" prefWidth="217.0" text="Gérer les Centres">
+                                                    <Label layoutX="102.0" layoutY="185.0" onMouseClicked="#redirectCentre" prefHeight="36.0" prefWidth="217.0" text="Gérer les Centres">
                                                         <font>
                                                             <Font name="System Bold" size="24.0" />
                                                         </font>
@@ -217,9 +217,9 @@
 
                         </children>
                     </VBox>
-                    <AnchorPane fx:id="main_form" prefHeight="755.0" prefWidth="1244.0" visible="false">
+                    <AnchorPane fx:id="main_form" prefHeight="814.0" prefWidth="1351.0" visible="false">
                         <children>
-                            <AnchorPane fx:id="login_form" layoutX="-4.0" layoutY="-7.0" prefHeight="762.0" prefWidth="1252.0" styleClass="white-bg" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="-7.0">
+                            <AnchorPane fx:id="login_form" layoutX="-4.0" layoutY="-7.0" prefHeight="823.0" prefWidth="1362.0" styleClass="white-bg" AnchorPane.bottomAnchor="-61.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="-7.0">
                                 <children>
 
                                     <Label layoutX="292.0" layoutY="22.0" text="ADD a Donation" textFill="#188ba7">
@@ -232,14 +232,14 @@
                                     </Label>
 
                                     <HBox alignment="CENTER" layoutX="143.0" layoutY="476.0" prefHeight="56.0" prefWidth="0.0" />
-                                    <TextField fx:id="CinFld" layoutX="77.0" layoutY="84.0" prefHeight="37.0" prefWidth="391.0" promptText="Entrez votre numéro d'identification nationale." styleClass="textfield-1" stylesheets="@page.css" />
-                                    <ComboBox fx:id="GenreFLd" layoutX="76.0" layoutY="311.0" prefHeight="40.0" prefWidth="391.0" promptText="&quot;Sélectionnez votre genre&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                                    <ComboBox fx:id="etatFLd" layoutX="76.0" layoutY="456.0" prefHeight="40.0" prefWidth="391.0" promptText="&quot;Choisissez votre état matrimonial&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                                    <DatePicker fx:id="datederFLd" layoutX="77.0" layoutY="160.0" prefHeight="38.0" prefWidth="391.0" promptText="Sélectionnez la date de votre dernier don." styleClass="datepicker-1" stylesheets="@page.css" />
-                                    <DatePicker fx:id="dateproFLd" layoutX="77.0" layoutY="231.0" prefHeight="40.0" prefWidth="391.0" promptText="Sélectionnez la date de votre prochain don." styleClass="datepicker-1" stylesheets="@page.css" />
-                                    <ComboBox fx:id="typeFLd" layoutX="76.0" layoutY="606.0" prefHeight="38.0" prefWidth="391.0" promptText="&quot;Choisissez le type de don que vous souhaitez effectuer.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                                    <ComboBox fx:id="groupeFLd" layoutX="77.0" layoutY="386.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez votre groupe sanguin.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                                    <ComboBox fx:id="centreDonComboBox" layoutX="76.0" layoutY="531.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez un centre.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
+                                    <TextField fx:id="CinFld" layoutX="77.0" layoutY="84.0" prefHeight="37.0" prefWidth="391.0" promptText="Entrez votre numéro d'identification nationale." styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                                    <ComboBox fx:id="GenreFLd" layoutX="76.0" layoutY="311.0" prefHeight="40.0" prefWidth="391.0" promptText="&quot;Sélectionnez votre genre&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                                    <ComboBox fx:id="etatFLd" layoutX="76.0" layoutY="456.0" prefHeight="40.0" prefWidth="391.0" promptText="&quot;Choisissez votre état matrimonial&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                                    <DatePicker fx:id="datederFLd" layoutX="77.0" layoutY="160.0" prefHeight="38.0" prefWidth="391.0" promptText="Sélectionnez la date de votre dernier don." styleClass="datepicker-1" stylesheets="@Filecss/page.css" />
+                                    <DatePicker fx:id="dateproFLd" layoutX="77.0" layoutY="231.0" prefHeight="40.0" prefWidth="391.0" promptText="Sélectionnez la date de votre prochain don." styleClass="datepicker-1" stylesheets="@Filecss/page.css" />
+                                    <ComboBox fx:id="typeFLd" layoutX="76.0" layoutY="606.0" prefHeight="38.0" prefWidth="391.0" promptText="&quot;Choisissez le type de don que vous souhaitez effectuer.&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                                    <ComboBox fx:id="groupeFLd" layoutX="77.0" layoutY="386.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez votre groupe sanguin.&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                                    <ComboBox fx:id="centreDonComboBox" layoutX="76.0" layoutY="531.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez un centre.&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
                                     <ImageView fitHeight="465.0" fitWidth="512.0" layoutX="709.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                                         <image>
                                             <Image url="@assets/indigo-hungry-vampire-drinking-donated-blood.png" />
@@ -289,7 +289,7 @@
                                             <Image url="@assets/icons8-syringe-with-a-drop-of-blood-32.png" />
                                         </image>
                                     </ImageView>
-                                    <ImageView fitHeight="47.0" fitWidth="56.0" layoutX="1198.0" layoutY="8.0" onMouseClicked="#handleBack" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="47.0" fitWidth="56.0" layoutX="1295.0" layoutY="19.0" onMouseClicked="#handleBack" pickOnBounds="true" preserveRatio="true">
                                         <image>
                                             <Image url="@assets/icons8-back-64.png" />
                                         </image>
@@ -309,9 +309,9 @@
                             </AnchorPane>
                         </children>
                     </AnchorPane>
-                    <HBox fx:id="addReviewsModel" alignment="CENTER" disable="true" layoutX="-155.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1214.0" styleClass="categoriesModel" stylesheets="@style.css" translateX="140.0" translateY="-5.0" visible="false">
+                    <HBox fx:id="addReviewsModel" alignment="CENTER" disable="true" layoutX="-155.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1214.0" styleClass="categoriesModel" stylesheets="@Filecss/style.css" translateX="140.0" translateY="-5.0" visible="false">
                         <children>
-                            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="703.0" prefWidth="600.0" styleClass="productAddedToCart__card" stylesheets="@style.css">
+                            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="703.0" prefWidth="600.0" styleClass="productAddedToCart__card" stylesheets="@Filecss/style.css">
                                 <children>
                                     <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" prefWidth="600.0">
                                         <children>
@@ -365,7 +365,7 @@
                                                     <Insets />
                                                 </VBox.margin>
                                             </TextField>
-                                            <HBox fx:id="nameInputErrorHbox" prefHeight="67.0" prefWidth="598.0" styleClass="form_errors-product" stylesheets="@style.css" visible="false">
+                                            <HBox fx:id="nameInputErrorHbox" prefHeight="67.0" prefWidth="598.0" styleClass="form_errors-product" stylesheets="@Filecss/style.css" visible="false">
                                                 <children>
                                                     <Text fill="#dc284c" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form_errors-product-point" text=".  " translateY="-15.0" wrappingWidth="23.18400001525879" />
                                                     <Text fx:id="nameInputError" fill="#dc284c" strokeType="OUTSIDE" strokeWidth="0.0" text="the product  name can not be empty !">
@@ -470,9 +470,9 @@
                             </VBox>
                         </children>
                     </HBox>
-                    <HBox fx:id="viewReplyModel" alignment="CENTER" layoutX="-155.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="1208.0" styleClass="categoriesModel" stylesheets="@style.css" translateX="140.0" translateY="-5.0" visible="false">
+                    <HBox fx:id="viewReplyModel" alignment="CENTER" layoutX="-155.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="707.0" prefWidth="1208.0" styleClass="categoriesModel" stylesheets="@Filecss/style.css" translateX="140.0" translateY="-5.0" visible="false">
                         <children>
-                            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="612.0" styleClass="productAddedToCart__card" stylesheets="@style.css">
+                            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="612.0" styleClass="productAddedToCart__card" stylesheets="@Filecss/style.css">
                                 <children>
                                     <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="75.0" prefWidth="600.0">
                                         <children>
@@ -533,25 +533,27 @@
                     </HBox>
 
                 </AnchorPane>
-                <ImageView fitHeight="147.0" fitWidth="149.0" layoutX="114.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@assets/social-doctor-doing-a-health-check-up.gif" />
-                    </image>
-                </ImageView>
             </children>
         </AnchorPane>
-      <HBox fx:id="hh" layoutX="89.0" layoutY="129.0" prefHeight="631.0" prefWidth="1099.0" visible="false">
-          <VBox alignment="CENTER" prefHeight="700.0" prefWidth="1100.0" spacing="10" stylesheets="DonView.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+      <HBox fx:id="hh" layoutX="96.0" layoutY="63.0" prefHeight="814.0" prefWidth="1351.0" visible="false">
+          <VBox alignment="CENTER" prefHeight="762.0" prefWidth="1352.0" spacing="10" stylesheets="Filecss/DonView.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
               <children>
-                  <!-- Ajout d'un titre -->
-                  <Label styleClass="Titre" text="Explorez les dons" />
                   <!-- Ajout d'un lien pour ajouter un don -->
-                  <Hyperlink fx:id="addDonLink" styleClass="hyperlink" text="Ajouter Don" />
-                  <!-- Zone de recherche -->
-                  <TextField fx:id="rechercheField" promptText="Rechercher..." />
-                  <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" styleClass="scroll-pane">
+                  <Hyperlink fx:id="addDonLink" prefHeight="19.0" prefWidth="77.0" styleClass="hyperlink" text="Ajouter Don" />
+               <HBox>
+                  <children>
+                     <ImageView fitHeight="40.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@assets/icons8-search-60.png" />
+                        </image>
+                     </ImageView>
+                        <!-- Zone de recherche -->
+                        <TextField fx:id="rechercheField" prefHeight="40.0" prefWidth="1263.0" promptText="Rechercher..." />
+                  </children>
+               </HBox>
+                  <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" prefHeight="662.0" prefWidth="1356.0" styleClass="scroll-pane">
                       <content>
-                          <TilePane fx:id="cardsContainer" hgap="10" prefColumns="4" prefHeight="620.0" prefWidth="1141.0" styleClass="tile-pane" vgap="10">
+                          <TilePane fx:id="cardsContainer" hgap="10" prefColumns="4" prefHeight="648.0" prefWidth="1359.0" styleClass="tile-pane" vgap="10">
                               <padding>
                                   <Insets bottom="10" left="10" right="10" top="10" />
                               </padding>
@@ -563,15 +565,13 @@
               </children>
           </VBox>
       </HBox>
-        <HBox fx:id="tt" layoutX="89.0" layoutY="129.0" prefHeight="631.0" prefWidth="1099.0" visible="false">
-            <VBox alignment="CENTER" prefHeight="700.0" prefWidth="1100.0" spacing="10" stylesheets="DonView.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+        <HBox fx:id="tt" layoutX="89.0" layoutY="69.0" prefHeight="814.0" prefWidth="1372.0" visible="false">
+            <VBox alignment="CENTER" prefHeight="814.0" prefWidth="1362.0" spacing="10" stylesheets="Filecss/DonView.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
                 <children>
-                    <!-- Ajout d'un titre -->
-                    <Label styleClass="Titre" text="Explorez les Centres" />
                     <!-- Ajout d'un lien pour ajouter un don -->
-                    <ScrollPane fx:id="scrollPane1" fitToHeight="true" fitToWidth="true" styleClass="scroll-pane">
+                    <ScrollPane fx:id="scrollPane1" fitToHeight="true" fitToWidth="true" prefHeight="714.0" prefWidth="1362.0" styleClass="scroll-pane">
                         <content>
-                            <TilePane fx:id="cardsContainercentre" hgap="10" prefColumns="4" prefHeight="620.0" prefWidth="1141.0" styleClass="tile-pane" vgap="10">
+                            <TilePane fx:id="cardsContainercentre" hgap="10" prefColumns="4" prefHeight="802.0" prefWidth="1361.0" styleClass="tile-pane" vgap="10">
                                 <padding>
                                     <Insets bottom="10" left="10" right="10" top="10" />
                                 </padding>
@@ -583,7 +583,7 @@
                 </children>
             </VBox>
         </HBox>
-        <AnchorPane fx:id="vbox" layoutX="74.0" layoutY="76.0" prefHeight="762.0" prefWidth="1372.0" visible="false">
+        <AnchorPane fx:id="vbox" layoutX="90.0" layoutY="63.0" prefHeight="823.0" prefWidth="1362.0" visible="false">
             <children>
                 <Label fx:id="dernier" layoutX="80.0" layoutY="257.0" prefHeight="35.0" prefWidth="504.0" styleClass="label" text="𝗗𝗮𝘁𝗲 𝗗𝗲 𝗗𝗲𝗿𝗻𝗶𝗲𝗿 𝗗𝗼𝗻𝗮𝘁𝗶𝗼𝗻:">
                     <font>
@@ -606,7 +606,7 @@
                         <Image url="@assets/techny-patient-card-and-tests.png" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="52.0" fitWidth="74.0" layoutX="1178.0" layoutY="30.0" onMouseClicked="#handleBack" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="52.0" fitWidth="74.0" layoutX="1260.0" layoutY="25.0" onMouseClicked="#handleBack" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@assets/icons8-return-32.png" />
                     </image>
@@ -655,7 +655,7 @@
 
             </children>
         </AnchorPane>
-          <AnchorPane fx:id="modif" layoutX="75.2" layoutY="82.4" prefHeight="762.0" prefWidth="1252.0" styleClass="white-bg" visible="false" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="82.0">
+          <AnchorPane fx:id="modif" layoutX="98.4" layoutY="63.2" prefHeight="823.0" prefWidth="1352.0" styleClass="white-bg" visible="false" AnchorPane.bottomAnchor="-5.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="63.0">
               <children>
 
                   <Label layoutX="292.0" layoutY="22.0" text="update a Donation" textFill="#188ba7">
@@ -668,15 +668,15 @@
                   </Label>
 
                   <HBox alignment="CENTER" layoutX="143.0" layoutY="476.0" prefHeight="56.0" prefWidth="0.0" />
-                  <TextField fx:id="CIN" layoutX="77.0" layoutY="84.0" prefHeight="37.0" prefWidth="391.0" promptText="Entrez votre numéro d'identification nationale." styleClass="textfield-1" stylesheets="@page.css" />
-                  <ComboBox fx:id="GENRE" layoutX="76.0" layoutY="311.0" prefHeight="40.0" prefWidth="391.0" promptText="&quot;Sélectionnez votre genre&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                  <ComboBox fx:id="ETAT" layoutX="76.0" layoutY="456.0" prefHeight="40.0" prefWidth="391.0" promptText="&quot;Choisissez votre état matrimonial&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                  <DatePicker fx:id="DATEDER" layoutX="77.0" layoutY="160.0" prefHeight="38.0" prefWidth="391.0" promptText="Sélectionnez la date de votre dernier don." styleClass="datepicker-1" stylesheets="@page.css" />
-                  <DatePicker fx:id="DATEPRO" layoutX="77.0" layoutY="231.0" prefHeight="40.0" prefWidth="391.0" promptText="Sélectionnez la date de votre prochain don." styleClass="datepicker-1" stylesheets="@page.css" />
-                  <ComboBox fx:id="TYPEDON" layoutX="76.0" layoutY="606.0" prefHeight="38.0" prefWidth="391.0" promptText="&quot;Choisissez le type de don que vous souhaitez effectuer.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                  <ComboBox fx:id="GROUPE" layoutX="77.0" layoutY="386.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez votre groupe sanguin.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                  <ComboBox fx:id="CENTRE" layoutX="76.0" layoutY="531.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez un centre.&quot;" styleClass="textfield-1" stylesheets="@page.css" />
-                  <ImageView fitHeight="458.0" fitWidth="405.0" layoutX="524.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                  <TextField fx:id="CIN" layoutX="77.0" layoutY="84.0" prefHeight="37.0" prefWidth="391.0" promptText="Entrez votre numéro d'identification nationale." styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                  <ComboBox fx:id="GENRE" layoutX="76.0" layoutY="311.0" prefHeight="40.0" prefWidth="391.0" promptText="&quot;Sélectionnez votre genre&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                  <ComboBox fx:id="ETAT" layoutX="76.0" layoutY="456.0" prefHeight="40.0" prefWidth="391.0" promptText="&quot;Choisissez votre état matrimonial&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                  <DatePicker fx:id="DATEDER" layoutX="77.0" layoutY="160.0" prefHeight="38.0" prefWidth="391.0" promptText="Sélectionnez la date de votre dernier don." styleClass="datepicker-1" stylesheets="@Filecss/page.css" />
+                  <DatePicker fx:id="DATEPRO" layoutX="77.0" layoutY="231.0" prefHeight="40.0" prefWidth="391.0" promptText="Sélectionnez la date de votre prochain don." styleClass="datepicker-1" stylesheets="@Filecss/page.css" />
+                  <ComboBox fx:id="TYPEDON" layoutX="76.0" layoutY="606.0" prefHeight="38.0" prefWidth="391.0" promptText="&quot;Choisissez le type de don que vous souhaitez effectuer.&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                  <ComboBox fx:id="GROUPE" layoutX="77.0" layoutY="386.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez votre groupe sanguin.&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                  <ComboBox fx:id="CENTRE" layoutX="76.0" layoutY="531.0" prefHeight="40.0" prefWidth="391.0" promptText=" &quot;Sélectionnez un centre.&quot;" styleClass="textfield-1" stylesheets="@Filecss/page.css" />
+                  <ImageView fitHeight="458.0" fitWidth="405.0" layoutX="643.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                       <image>
                           <Image url="@assets/indigo-hungry-vampire-drinking-donated-blood.png" />
                       </image>
@@ -725,17 +725,17 @@
                           <Image url="@assets/icons8-syringe-with-a-drop-of-blood-32.png" />
                       </image>
                   </ImageView>
-                  <ImageView fitHeight="47.0" fitWidth="56.0" layoutX="869.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="47.0" fitWidth="56.0" layoutX="1279.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                       <image>
                           <Image url="@assets/icons8-back-64.png" />
                       </image>
                   </ImageView>
-                  <ImageView fitHeight="102.0" fitWidth="119.0" layoutX="558.0" layoutY="445.0" onMouseClicked="#update" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="102.0" fitWidth="119.0" layoutX="643.0" layoutY="457.0" onMouseClicked="#update" pickOnBounds="true" preserveRatio="true">
                       <image>
                           <Image url="@assets/icons8-form-68.png" />
                       </image>
                   </ImageView>
-                  <ImageView fitHeight="102.0" fitWidth="119.0" layoutX="676.0" layoutY="449.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="102.0" fitWidth="119.0" layoutX="795.0" layoutY="467.0" pickOnBounds="true" preserveRatio="true">
                       <image>
                           <Image url="@assets/icons8-clean-50.png" />
                       </image>

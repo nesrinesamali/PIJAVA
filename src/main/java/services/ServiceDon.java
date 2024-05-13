@@ -54,31 +54,42 @@ public class ServiceDon implements CRUD<Dons> {
     }
 
     @Override
-    public void updateOne(CentreDon don) throws SQLException {
+    public void updateOne(Dons dons) throws SQLException {
 
     }
-///////UPDATE DONATION////////
 
 
-    public void updateOne(Dons don) throws SQLException {
-        String req = "UPDATE `Dons` SET `cin`=?, `genre`=?, `date_don`=?, `datedernierdon`=?, `groupe_sanguin`=?, `typededon`=?, `etatmarital`=?,`centre_don_id`=? =? WHERE `id`=?";
-        PreparedStatement ps = connection.prepareStatement(req);
+    ///////UPDATE DONATION////////
+    public void updateOnedon(Dons don) throws SQLException {
+        System.out.println("Updating don");
+        System.out.println(don);
+        String req = "UPDATE `Dons` SET `cin`=?, `genre`=?, `date_don`=?, `datedernierdon`=?, `groupe_sanguin`=?, `typededon`=?, `etatmarital`=?,`centre_don_id`=?, `user_id`=? WHERE `id`=?";
+        try {
+
+            PreparedStatement ps = connection.prepareStatement(req);
         ps.setString(1, don.getCin());
         ps.setString(2, don.getGenre());
         ps.setString(3, don.getDatePro());
         ps.setString(4, don.getDateDer());
         ps.setString(5, don.getGroupeSanguin());
-        ps.setString(6, don.getTypeDeDon());
-        ps.setString(7, don.getEtatMarital());
-    // Assuming you have an id field in your don class
+        ps.setString(7, don.getTypeDeDon());
+        ps.setString(6, don.getEtatMarital());
+// Assuming you have an id field in your don class
         if (don.getCentreDon() != null) {
             ps.setObject(8, don.getCentreDon().getId());
         } else {
             ps.setNull(8, Types.INTEGER); // Si null, définissez le centre_don_id sur NULL dans la base de données
         }
+        ps.setInt(9, logincontroller.user.getId());
+        ps.setInt(10,don.getId());
         ps.executeUpdate();
         System.out.println("Donation Updated !");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the SQLException here, show an error message, or perform any necessary actions
+        }
     }
+
 
     @Override
     public void deleteOne(int id) throws SQLException {
@@ -169,7 +180,7 @@ public class ServiceDon implements CRUD<Dons> {
     }
 
     public List<Dons> readByUserId(int id) throws SQLException {
-        String sql = "SELECT * FROM Dons WHERE id=?";
+        String sql = "SELECT * FROM Dons WHERE user_id=?";
         List<Dons> dons = new ArrayList<>();
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -191,6 +202,8 @@ public class ServiceDon implements CRUD<Dons> {
                 dons.add(don);
             }
         }
+        System.out.println(dons);
+        System.out.println(logincontroller.user.getId());
 
         return dons;
     }

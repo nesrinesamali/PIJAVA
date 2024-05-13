@@ -1,0 +1,90 @@
+/* General settings for the TilePane container */
+.tile-pane {
+    -fx-background-color: #f9f9f9; /* Fond gris plus doux pour le conteneur */
+    -fx-hgap: 20px; /* Augmenter l'espacement horizontal pour une meilleure répartition */
+    -fx-vgap: 20px; /* Augmenter l'espacement vertical pour une meilleure répartition */
+    -fx-padding: 30px; /* Augmenter le padding pour fournir plus d'espace autour des tuiles */
+}
+/* Styles pour l'image au-dessus du texte dans la carte */
+
+
+/* Enhanced styles for each card, including a more pronounced shadow */
+/* Enhanced styles for each card, including a more pronounced shadow */
+.card-pane {
+    -fx-background-color: #ffffff; /* Maintain a clean, white background */
+    -fx-padding: 20; /* Increase padding for a more spacious layout inside each card */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0.5, 0, 0); /* Stronger shadow for better depth */
+    -fx-alignment: center; /* Ensure all content is centered within each card */
+    -fx-pref-width: 600px;
+    /* New: Add a blue border */
+    -fx-border-color: #007bff; /* Blue border color */
+    -fx-border-width: 2px; /* Border width */
+    -fx-border-radius: 10; /* Smoother, larger rounded corners */
+    -fx-background-radius: 10; /* Consistent radius with border for a seamless look */
+
+
+}
+
+
+/* Improved label styling with enhanced readability */
+.label {
+    -fx-text-fill: #2a2a2a; /* Slightly darker text for better contrast */
+    /* Maintain bold font weight */
+    -fx-font-size: 16px; /* Increase font size for better legibility */
+}
+.hyperlink {
+    font-size: 18px; /* Taille de police légèrement plus grande pour le lien */
+    color: #007bff; /* Couleur du texte du lien */
+    text-align: right; /* Aligner le texte à droite */
+    text-decoration: underline; /* Souligner le lien */
+
+}
+.Titre {
+    -fx-font-weight: bold; /* Rendre le titre en gras */
+    -fx-font-size: 24px; /* Taille de police plus grande pour le titre */
+    -fx-text-fill: #2a2a2a; /* Couleur du texte plus foncée */
+    -fx-alignment: center; /* Centrer le texte horizontalement */
+    -fx-padding: 10px 0; /* Ajouter un espace de padding au-dessus et en dessous du titre */
+    -fx-background-color: #f2f2f2; /* Couleur de fond légèrement plus claire */
+    -fx-border-color: #d3d3d3; /* Couleur de la bordure légèrement plus claire */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-border-radius: 5px; /* Coins arrondis pour un aspect plus doux */
+    -fx-background-radius: 5px; /* Coins arrondis pour le fond */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1); /* Ombre subtile pour un effet 3D */
+}
+
+/* Ajoutez des styles pour le bouton en état initial */
+
+.button {
+    /* Autres styles du bouton... */
+    -fx-background-color: transparent; /* Fond transparent */
+    -fx-text-fill: #007bff; /* Couleur du texte bleu */
+    -fx-font-family: 'Arial'; /* Changer en Arial pour une apparence propre et lisible */
+    -fx-font-size: 14px; /* Ajuster la taille de la police pour le texte du bouton */
+    -fx-font-weight: bold; /* Texte en gras pour faire ressortir le texte du bouton */
+    -fx-padding: 10px 20px; /* Ajuster le padding pour s'adapter à la taille du texte */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0.3, 0, 2); /* Ombre subtile pour un effet 3D */
+    -fx-border-color: #007bff; /* Couleur de la bordure bleue */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-border-radius: 20; /* Coins arrondis pour une touche moderne */
+}
+
+.button:hover {
+    -fx-background-color: #007bff; /* Fond bleu au survol */
+    -fx-text-fill: #ffffff; /* Couleur du texte blanc au survol */
+}
+
+.button:pressed {
+    -fx-background-color: #0056b3; /* Fond bleu plus foncé lorsqu'il est enfoncé */
+    -fx-text-fill: #ffffff; /* Couleur du texte blanc lorsqu'il est enfoncé */
+}
+
+
+
+
+/* Styling for image views to maintain consistency while improving aesthetics */
+.image-view {
+    -fx-fit-width: 100; /* Increased width for better visibility */
+    -fx-fit-height: 100; /* Increased height to match width */
+    -fx-preserve-ratio: true; /* Ensure the image's aspect ratio is maintained */
+}

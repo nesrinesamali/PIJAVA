@@ -17,7 +17,7 @@
         <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0">
                 <image>
-                    <Image url="@/00000000000.jpg" />
+                    <Image url="@/assets/00000000000.jpg" />
                 </image>
             </ImageView>
         </graphic>

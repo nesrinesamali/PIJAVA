@@ -62,7 +62,7 @@ public class AjoutReponseController {
 
         // Close the current stage
         stage.close();
-        //SmsController.sms();
+        SmsController.sms();
         if (afficheReponseController != null) {
             afficheReponseController.RefreshTable();
         } else {

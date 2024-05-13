@@ -78,7 +78,6 @@ public class PDFExport {
     private static float drawTableHeaders(PDPageContentStream contentStream, float xStart, float yStart, float rowHeight, float cellMargin, ObservableList<TableColumn<CentreDon, ?>> columns) throws IOException {
         float nextX = xStart + cellMargin;
         float nextY = yStart - rowHeight - cellMargin;
-
         // Draw table headers
         for (TableColumn<CentreDon, ?> column : columns) {
             contentStream.setNonStrokingColor(255, 0, 0); // Red

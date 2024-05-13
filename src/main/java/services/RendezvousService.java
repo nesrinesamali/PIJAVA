@@ -113,7 +113,7 @@ public class RendezvousService implements IService<Rendezvous>{
         return rendezvous;
     }
     public List<Rendezvous> readByUserId() throws SQLException {
-        String sql = "SELECT * FROM rendezvous WHERE id=?";
+        String sql = "SELECT * FROM rendezvous WHERE user_id=?";
         List<Rendezvous> rendezvous = new ArrayList<>();
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -132,7 +132,7 @@ public class RendezvousService implements IService<Rendezvous>{
                 rendezvous.add(r);
             }
         }
-
+        System.out.println(rendezvous);
         return rendezvous;
     }
 

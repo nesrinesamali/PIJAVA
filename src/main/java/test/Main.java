@@ -19,7 +19,6 @@ public class Main extends Application {
             // Create the scene and set it on the stage
             Scene scene = new Scene(parent);
             primaryStage.setScene(scene);
-
             // Show the stage
             primaryStage.show();
         } catch (IOException e) {

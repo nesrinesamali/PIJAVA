@@ -22,7 +22,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cotrollers.AfficheReponse">
     <stylesheets>
-        <URL value="@style.css" />
+        <URL value="@Filecss/style.css" />
     </stylesheets>
     <children>
         <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -79,7 +79,7 @@
                                     <children>
                                         <ImageView fitHeight="53.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@list.png" />
+                                                <Image url="@assets/list.png" />
                                             </image>
                                         </ImageView>
                                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion Rendez-vous" wrappingWidth="213.53199005126953">
@@ -147,7 +147,7 @@
                                     <graphic>
                                         <ImageView fitHeight="43.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@profile.png" />
+                                                <Image url="@assets/profile.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>

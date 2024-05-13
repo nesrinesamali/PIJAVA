@@ -46,7 +46,7 @@ public class QRCodeController {
     }
 
     private String createQRCodeText(Dons don) {
-        return "Name: " + don.getId() + "\nID: " + don.getCin();
+        return  "\nCIN: " + don.getCin()+"\nDate de dernier don: " + don.getDateDer()+"\nDate de prochaine don: " + don.getDatePro()+"\nGenre: " + don.getGenre()+"\nType de don: " + don.getTypeDeDon()+"\nCentre de don: " + don.getCentreDon()+"\nGroupeSanguin: " + don.getGroupeSanguin() +"\n";
     }
 
     public void generateQRCode() {

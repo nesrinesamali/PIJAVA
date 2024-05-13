@@ -24,9 +24,9 @@
             <children>
                 <BorderPane layoutX="-2.0" layoutY="64.0" prefHeight="622.0" prefWidth="1135.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
                     <top>
-                        <AnchorPane prefHeight="40.0" prefWidth="1121.0" stylesheets="style.css" BorderPane.alignment="CENTER">
+                        <AnchorPane prefHeight="40.0" prefWidth="1121.0" stylesheets="Filecss/style.css" BorderPane.alignment="CENTER">
                             <children>
-                                <AnchorPane layoutX="-58.0" layoutY="-86.0" prefHeight="40.0" prefWidth="214.0" styleClass="bg-color-1" stylesheets="style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <AnchorPane layoutX="-58.0" layoutY="-86.0" prefHeight="40.0" prefWidth="214.0" styleClass="bg-color-1" stylesheets="Filecss/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
                                         <Label layoutX="21.0" layoutY="11.0" text="Hospital Management System" textFill="WHITE">
                                             <font>
@@ -45,12 +45,12 @@
                                     </font>
                                 </Label>
                                 <Label fx:id="date_time" alignment="CENTER_RIGHT" layoutX="470.0" layoutY="12.0" prefHeight="17.0" prefWidth="187.0" text="MM:DD:YYYY" AnchorPane.rightAnchor="443.0" />
-                                <Label fx:id="current_form" layoutX="233.0" layoutY="11.0" prefHeight="17.0" prefWidth="325.0" styleClass="header-1" stylesheets="style.css" text="Dashboard Form" AnchorPane.leftAnchor="233.0" AnchorPane.topAnchor="11.0">
+                                <Label fx:id="current_form" layoutX="233.0" layoutY="11.0" prefHeight="17.0" prefWidth="325.0" styleClass="header-1" stylesheets="Filecss/style.css" text="Dashboard Form" AnchorPane.leftAnchor="233.0" AnchorPane.topAnchor="11.0">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
                                 </Label>
-                                <Button fx:id="logout_btn" layoutX="879.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" styleClass="btn-1" stylesheets="page.css" text="Logout" AnchorPane.rightAnchor="142.0" AnchorPane.topAnchor="10.0" />
+                                <Button fx:id="logout_btn" layoutX="879.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" styleClass="btn-1" stylesheets="Filecss/page.css" text="Logout" AnchorPane.rightAnchor="142.0" AnchorPane.topAnchor="10.0" />
                             </children>
                             <styleClass>
                                 <String fx:value="white-bg" />
@@ -60,7 +60,7 @@
                     </top>
                     <left>
 
-                        <AnchorPane prefHeight="560.0" prefWidth="214.0" styleClass="bg-color-1" stylesheets="style.css" BorderPane.alignment="CENTER">
+                        <AnchorPane prefHeight="560.0" prefWidth="214.0" styleClass="bg-color-1" stylesheets="Filecss/style.css" BorderPane.alignment="CENTER">
                             <children>
                                 <Label layoutX="23.0" layoutY="85.0" text="Admin ID:" textFill="WHITE" />
                                 <Label fx:id="nav_adminID" layoutX="83.0" layoutY="84.0" prefHeight="17.0" prefWidth="117.0" text="1" textFill="WHITE">
@@ -76,33 +76,33 @@
                                 </Label>
                                 <Line endX="88.0" layoutX="113.0" layoutY="152.0" startX="-100.0" stroke="WHITE" />
                                 <Label layoutX="13.0" layoutY="162.0" text="Feature" textFill="WHITE" />
-                                <Button fx:id="dashboard_btn" layoutX="7.0" layoutY="187.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="style.css" text="Dashboard">
+                                <Button fx:id="dashboard_btn" layoutX="7.0" layoutY="187.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="Filecss/style.css" text="Dashboard">
                                     <graphic>
 
                                     </graphic>
                                 </Button>
-                                <Button fx:id="getAddCentre" layoutX="7.0" layoutY="237.0" mnemonicParsing="false" onMouseClicked="#goToCenterView" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="style.css" text="Centre">
+                                <Button fx:id="getAddCentre" layoutX="7.0" layoutY="237.0" mnemonicParsing="false" onMouseClicked="#goToCenterView" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="Filecss/style.css" text="Centre">
                                     <graphic>
 
                                     </graphic>
                                 </Button>
-                                <Button fx:id="patients_btn" layoutX="7.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#goToDonView" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="style.css" text="Donation">
+                                <Button fx:id="patients_btn" layoutX="7.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#goToDonView" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="Filecss/style.css" text="Donation">
                                     <graphic>
 
                                     </graphic>
                                 </Button>
-                                <Button fx:id="appointments_btn" layoutX="7.0" layoutY="335.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="style.css" text="Réponse Rendez-vous">
+                                <Button fx:id="appointments_btn" layoutX="7.0" layoutY="335.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="Filecss/style.css" text="Réponse Rendez-vous">
                                     <graphic>
 
                                     </graphic>
                                 </Button>
-                                <Button fx:id="payment_btn" layoutX="7.0" layoutY="387.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="style.css" text="Rendez-vous">
+                                <Button fx:id="payment_btn" layoutX="7.0" layoutY="387.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="Filecss/style.css" text="Rendez-vous">
                                     <graphic>
 
                                     </graphic>
                                 </Button>
                                 <Label layoutX="13.0" layoutY="435.0" text="Profile" textFill="WHITE" />
-                                <Button fx:id="profile_btn" layoutX="7.0" layoutY="460.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="style.css" text="Profile Setting">
+                                <Button fx:id="profile_btn" layoutX="7.0" layoutY="460.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="nav-btn-1" stylesheets="Filecss/style.css" text="Profile Setting">
                                     <graphic>
 
                                     </graphic>
@@ -138,7 +138,7 @@
                              </styleClass>
                          </HBox>
 
-                             <TableView fx:id="tv" layoutX="18.0" layoutY="131.0" prefHeight="367.0" prefWidth="946.0" styleClass="table-view" stylesheets="style.css">
+                             <TableView fx:id="tv" layoutX="18.0" layoutY="131.0" prefHeight="367.0" prefWidth="946.0" styleClass="table-view" stylesheets="Filecss/style.css">
                                  <columns>
                                      <TableColumn fx:id="nompatient" prefWidth="204.0" text="Nom Patient" />
                                      <TableColumn fx:id="nommedecin" minWidth="0.0" prefWidth="142.39996337890625" text="Nom Medecin" />
@@ -152,7 +152,7 @@
                                     <graphic>
                                         <ImageView fitHeight="29.0" fitWidth="28.0">
                                             <image>
-                                                <Image url="@/00000000000.jpg" />
+                                                <Image url="@/assets/00000000000.jpg" />
                                             </image>
                                         </ImageView>
                                     </graphic>

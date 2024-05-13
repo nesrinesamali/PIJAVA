@@ -10,7 +10,7 @@ public interface CRUD<T> {
    
 
     void insertOne(T t) throws SQLException;
-    void updateOne(CentreDon don) throws SQLException;
+    void updateOne(T t) throws SQLException;
     void deleteOne(int id) throws SQLException; // Change parameter to int
       List<T> selectAll() throws SQLException;
 

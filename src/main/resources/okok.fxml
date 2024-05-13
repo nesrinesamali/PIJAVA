@@ -1,27 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.TilePane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" fx:id="bord" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="881.0" prefWidth="1450.0" style="-fx-background-color: #f8f5f5;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FrontController">
+<AnchorPane id="AnchorPane" fx:id="bord" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="881.0" prefWidth="1450.0" style="-fx-background-color: #f8f5f5;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FrontController">
     <children>
         <AnchorPane layoutX="-42.0" layoutY="1.0" prefHeight="881.0" prefWidth="1490.0" style="-fx-background-color: #f8f5f5; -fx-background-radius: 15;">
             <children>
@@ -73,7 +60,7 @@
                         <children>
 
 
-                                    <AnchorPane fx:id="navapp" layoutX="88.0" layoutY="12.0" prefHeight="702.0" prefWidth="1221.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" stylesheets="@Filecss/guiadmin.css" visible="false">
+                                    <AnchorPane fx:id="navapp" layoutX="88.0" layoutY="12.0" prefHeight="702.0" prefWidth="1221.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10;" stylesheets="@Filecss/guiadmin.css" visible="true">
                                         <children>
                                             <Pane fx:id="mainPane" layoutX="20.0" layoutY="120.0" onMouseClicked="#goToProfile" prefHeight="253.0" prefWidth="372.0" style="-fx-background-color: #53A0EC; -fx-background-radius: 7;">
                                                 <children>
@@ -124,19 +111,19 @@
                                                     <DropShadow />
                                                 </effect>
                                             </Pane>
-                                            <Pane layoutX="827.0" layoutY="120.0" prefHeight="253.0" prefWidth="372.0" style="-fx-background-color: #53a0ec; -fx-background-radius: 7;">
+                                            <Pane layoutX="827.0" layoutY="120.0" onMouseClicked="#gotomedical" prefHeight="253.0" prefWidth="372.0" style="-fx-background-color: #53a0ec; -fx-background-radius: 7;">
                                                 <children>
-                                                    <Label layoutX="33.0" layoutY="138.0" prefHeight="53.0" prefWidth="336.0" text="Dossiers Médicaux">
+                                                    <Label layoutX="33.0" layoutY="138.0" onMouseClicked="#gotomedical" prefHeight="53.0" prefWidth="336.0" text="Dossiers Médicaux">
                                                         <font>
                                                             <Font name="System Bold" size="36.0" />
                                                         </font>
                                                     </Label>
-                                                    <ImageView fitHeight="124.0" fitWidth="134.0" layoutX="129.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                    <ImageView fitHeight="124.0" fitWidth="134.0" layoutX="129.0" layoutY="14.0" onMouseClicked="#gotomedical" pickOnBounds="true" preserveRatio="true">
                                                         <image>
                                                             <Image url="@assets/icons8-folder-tree-100.png" />
                                                         </image>
                                                     </ImageView>
-                                                    <Label layoutX="45.0" layoutY="180.0" prefHeight="56.0" prefWidth="327.0" text="Gérer les dossiers médicaux">
+                                                    <Label layoutX="45.0" layoutY="180.0" onMouseClicked="#gotomedical" prefHeight="56.0" prefWidth="327.0" text="Gérer les dossiers médicaux">
                                                         <font>
                                                             <Font name="System Bold" size="24.0" />
                                                         </font>
@@ -168,19 +155,19 @@
                                                     <DropShadow />
                                                 </effect>
                                             </Pane>
-                                            <Pane layoutX="827.0" layoutY="403.0" prefHeight="253.0" prefWidth="372.0" style="-fx-background-color: #53a0ec; -fx-background-radius: 7;">
+                                            <Pane layoutX="827.0" layoutY="403.0" onMouseClicked="#gotomedicalpres" prefHeight="253.0" prefWidth="372.0" style="-fx-background-color: #53a0ec; -fx-background-radius: 7;">
                                                 <children>
-                                                    <Label layoutX="78.0" layoutY="137.0" prefHeight="36.0" prefWidth="217.0" text="Prescription">
+                                                    <Label layoutX="78.0" layoutY="137.0" onMouseClicked="#gotomedicalpres" prefHeight="36.0" prefWidth="217.0" text="Prescription">
                                                         <font>
                                                             <Font name="System Bold" size="36.0" />
                                                         </font>
                                                     </Label>
-                                                    <ImageView fitHeight="134.0" fitWidth="124.0" layoutX="125.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                                    <ImageView fitHeight="134.0" fitWidth="124.0" layoutX="125.0" layoutY="14.0" onMouseClicked="#gotomedicalpres" pickOnBounds="true" preserveRatio="true">
                                                         <image>
                                                             <Image url="@assets/icons8-prescription-53.png" />
                                                         </image>
                                                     </ImageView>
-                                                    <Label layoutX="78.0" layoutY="180.0" prefHeight="36.0" prefWidth="272.0" text="Gérer les prescriptions ">
+                                                    <Label layoutX="78.0" layoutY="180.0" onMouseClicked="#gotomedicalpres" prefHeight="36.0" prefWidth="272.0" text="Gérer les prescriptions ">
                                                         <font>
                                                             <Font name="System Bold" size="24.0" />
                                                         </font>

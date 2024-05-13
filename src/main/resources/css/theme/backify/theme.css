@@ -1,0 +1,18 @@
+* {
+    -fx-success-color: #C8F362;
+    -fx-error-color: #EF2D54;
+    -fx-info-color: #8D62F3;
+    -fx-warning-color: #F1C9AC;
+}
+
+.regular {
+    -fx-font-family: "Proxima Nova Alt Regular";
+}
+
+.semibold {
+    -fx-font-family: "Proxima Nova Alt Semibold";
+}
+
+.bold {
+    -fx-font-family: "Proxima Nova Alt Bold";
+}
